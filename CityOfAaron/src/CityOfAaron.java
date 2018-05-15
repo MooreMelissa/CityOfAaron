@@ -7,6 +7,14 @@ import model.Game;
 import model.Player;
 import model.Storehouse;
 import model.Map;
+import model.Point;
+import model.Location;
+import model.Author;
+import model.InventoryItem;
+import model.Animal;
+import model.Provision;
+import model.ItemType;
+import model.Condition;
 /**
  *
  * @author heatherholt

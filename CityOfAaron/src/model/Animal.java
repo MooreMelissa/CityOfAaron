@@ -6,16 +6,20 @@
 package model;
 
 import java.io.Serializable;
-
-public class Player implements Serializable {
-    
+/**
+ *
+ * @author Rebekah
+ */
+public class Animal implements Serializable {
     private String name;
+    private int age;
     
-    public Player(){
+    public Animal(){
         //Empty constructor for JavaBeans
     }
-
+    
     //Getters and Setters
+
     public String getName() {
         return name;
     }
@@ -23,10 +27,21 @@ public class Player implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-   
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
     
     @Override
     public String toString(){
-        return "Player{" + "name=" + name + '}';
+        return "Animal{"
+                + " ,name=" + name
+                + " ,age=" + age
+                + '}';
     }
+    
 }

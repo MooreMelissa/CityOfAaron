@@ -6,10 +6,7 @@
 package model;
 
 import java.io.Serializable;
-/**
- *
- * @author JK
- */
+
 public class Game implements Serializable {
     private Player thePlayer;
     private Map theMap;

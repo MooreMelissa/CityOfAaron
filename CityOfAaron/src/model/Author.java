@@ -7,11 +7,15 @@ package model;
 
 import java.io.Serializable;
 
-public class Player implements Serializable {
+/**
+ *
+ * @author Rebekah
+ */
+public class Author implements Serializable {
+    public String name;
+    public String title;
     
-    private String name;
-    
-    public Player(){
+    public Author(){
         //Empty constructor for JavaBeans
     }
 
@@ -23,10 +27,21 @@ public class Player implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-   
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
     
     @Override
-    public String toString(){
-        return "Player{" + "name=" + name + '}';
+    public String toString() {
+        return "Author{" 
+                + "name=" + name 
+                + ", title=" + title
+                + '}';
     }
+    
 }
