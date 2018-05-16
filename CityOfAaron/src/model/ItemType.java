@@ -7,11 +7,16 @@ package model;
 
 /**
  *
- * @author 
+ * @author Melissa
  */
+
+
+
 public enum ItemType {
+    
     Animal,
     Tool,
     Provisions;
    
 }
+

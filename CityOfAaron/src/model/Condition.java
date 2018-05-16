@@ -7,11 +7,13 @@ package model;
 
 /**
  *
- * @author 
+ * @author Melissa
  */
 public enum Condition {
+    
     Good,
     Fair,
     Poor;
+     
     
 }
