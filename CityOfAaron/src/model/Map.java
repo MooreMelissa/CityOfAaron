@@ -28,7 +28,7 @@ public class Map implements Serializable {
         return currentLocation;
     }
 
-    public void setCurrentLocation(Point currentLocation) {
+    public void setCurrentLocation(Point point) {
         this.currentLocation = currentLocation;
     }
     
