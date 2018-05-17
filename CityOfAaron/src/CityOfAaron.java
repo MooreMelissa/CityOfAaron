@@ -36,7 +36,15 @@ public class CityOfAaron {
             theGame.setCurrentYear(0);
             
             System.out.println(theGame.toString());
+            
+          Animal theInventoryItem = new Animal();
+          theInventoryItem.setName("Tiger");
+          theInventoryItem.setItemType(ItemType.Animal);
+          theInventoryItem.setQuantity(1);
+          theInventoryItem.setCondition(Condition.Good);
+          theInventoryItem.setAge(10);
 	
+          System.out.println(theInventoryItem.toString());
 	}
 	
 }

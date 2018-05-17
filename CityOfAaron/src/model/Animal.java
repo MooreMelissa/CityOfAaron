@@ -10,15 +10,19 @@ import java.io.Serializable;
  *
  * @author Melissa
  */
-public class Animal implements Serializable {
+public class Animal extends InventoryItem implements Serializable {
+
     
     private int age;
     
     public Animal(){
         
         //Empty constructor for JavaBeans
-        
+        super();
+        setItemType(ItemType.Animal);
     }
+    
+ 
     
     //Getters and Setters
 
@@ -36,7 +40,9 @@ public class Animal implements Serializable {
     @Override
     public String toString(){
         
-        return "Animal{"
+        String sup = super.toString();
+        
+        return sup + "Animal{"
                 + " ,age=" + age
                 + '}';
     }
