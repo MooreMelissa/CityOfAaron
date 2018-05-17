@@ -45,6 +45,15 @@ public class CityOfAaron {
           theInventoryItem.setAge(10);
 	
           System.out.println(theInventoryItem.toString());
+          
+          Provision theProvisionItem = new Provision();
+          theProvisionItem.setName("Apple");
+          theProvisionItem.setItemType(ItemType.Provisions);
+          theProvisionItem.setQuantity(5);
+          theProvisionItem.setCondition(Condition.Good);
+          theProvisionItem.setPerishable(true);
+          
+          System.out.println(theProvisionItem.toString());
 	}
 	
 }

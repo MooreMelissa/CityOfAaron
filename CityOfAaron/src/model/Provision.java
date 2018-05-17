@@ -5,21 +5,24 @@
  */
 package model;
 
+import java.io.Serializable;
 
 /**
  *
  * @author Melissa
  */
-public class Provision extends InventoryItem {
+public class Provision extends InventoryItem implements Serializable {
  
     
     private boolean perishable;
     
+    
     public Provision(){
         
-        //Empty constructo for JavaBeans
+        //Empty constructor for JavaBeans
         super();
-        setItemType(ItemType.Provisions);
+       // setItemType(ItemType.Provisions);
+        
     }
 
 
@@ -33,6 +36,9 @@ public class Provision extends InventoryItem {
         this.perishable = perishable;
     }
     
+     
+      
+       
     @Override
     public String toString(){
         

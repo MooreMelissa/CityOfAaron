@@ -19,7 +19,8 @@ public class Animal extends InventoryItem implements Serializable {
         
         //Empty constructor for JavaBeans
         super();
-        setItemType(ItemType.Animal);
+        //setItemType(ItemType.Animal);
+        
     }
     
  

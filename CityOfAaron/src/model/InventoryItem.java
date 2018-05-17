@@ -19,9 +19,13 @@ public class InventoryItem implements Serializable {
     
     public InventoryItem()  {
         
+        
         //Empty constructor for JavaBeans
     }
     
+    public InventoryItem(String name) {
+    
+}
     //Getters and Setters
 
     public String getName() {
