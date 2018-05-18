@@ -56,17 +56,20 @@ public class CityOfAaron {
           
           System.out.println(theProvisionItem.toString());
           
+          
          Point thePoint = new Point(3,2);
          
          System.out.println(thePoint.toString());
          
+         
          Location theLocation = new Location();
-         theLocation.setName("Wakanda");
-         theLocation.setDescription("Wakanda Forever!");
-         theLocation.setMapSymbol("X");
-         theLocation.setGameTips(new String[0]);
+         theLocation.setName("name 1");
+         theLocation.setDescription("description 1");
+         theLocation.setMapSymbol("symbol 1");
+         theLocation.setGameTips(args);
          
          System.out.println(theLocation.toString());
+
 	}
 	
 }

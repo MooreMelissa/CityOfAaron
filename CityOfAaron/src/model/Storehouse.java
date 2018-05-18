@@ -9,10 +9,12 @@ import java.io.Serializable;
 
 /**
  *
- * @author Rebekah, heatherholt
+ * @author heatherholt
  */
 public class Storehouse implements Serializable {
-    private Author[] authors = new Author[3];
+    private Author[] authors = {new Author("Melissa Moore", "Maiden of Skyfall"),
+				new Author("Rebekah Harris", "Queen of Wakanda"),
+				new Author("Heather Holt", "Lady of Asgard")};
     private InventoryItem[] animals;
     private InventoryItem[] tools;
     private InventoryItem[] provisions;

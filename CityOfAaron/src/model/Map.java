@@ -12,12 +12,49 @@ import java.io.Serializable;
  */
 public class Map implements Serializable {
     
-    private Location[][] locations;
+    private Location[][] locations = {{new Location("Undeveloped Land","description","U"),
+                                       new Location("Undeveloped Land","description","U"),
+                                       new Location("Wheat Fields","description","W"),
+                                       new Location("Wakanda","description","X"),
+                                       new Location("Wheat Fields","description","W")
+                                       },
+                                    //row2
+                                     {new Location("Wheat Fields","description","W"),
+                                      new Location("Granary & Storehouse","description","G"),
+                                      new Location("Wheat Fields","description","W"),
+                                      new Location("Undeveloped Land","description","U"),
+                                      new Location("Undeveloped Land","description","U")
+                                      },                           
+                                    //row3
+                                     {new Location("Wheat Fields","description","W"),
+                                      new Location("Wheat Fields","description","W"),
+                                      new Location("Temple","description","T"),
+                                      new Location("Wheat Fields","description","W"),
+                                      new Location("Asgard","description","A")
+                                      },
+                                     //row4
+                                     {new Location("Wheat Fields","description","W"),
+                                      new Location("Skyfall","description","S"),
+                                      new Location("Market","description","M"),
+                                      new Location("Wheat Fields","description","W"),
+                                      new Location("River","description","R")
+                                      },
+                                     //row5
+                                     {new Location("Undeveloped Land","description","U"),
+                                      new Location("Wheat Fields","description","W"),
+                                      new Location("Wheat Fields","description","W"),
+                                      new Location("River","description","R"),
+                                      new Location("Border of Lamanite Land","description","L")
+                                      }};
+
     private Point currentLocation;
     
+    
     public Map(){
-        //Empty constructor for JavaBeans
+    //Empty constructor for JavaBeans
+        currentLocation = new Point (0,0);
     }
+
     //Getters and Setters
     public Location[][] getLocations() {
         return locations;

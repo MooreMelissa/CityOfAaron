@@ -19,7 +19,7 @@ public class Point implements Serializable {
     public Point(){
         //Empty constructor for JavaBeans
     }
-    
+
     //Convenience constructor
     public Point(int row, int column) {
         setRow(row);

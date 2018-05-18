@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Rebekah, heatherholt
+ * @author heatherholt
  */
 public class Author implements Serializable {
     public String name;
@@ -17,6 +17,11 @@ public class Author implements Serializable {
     
     public Author(){
         //Empty constructor for JavaBeans
+    }
+    
+    public Author(String name, String title) {
+        this.name = name;
+        this.title = title;
     }
 
     //Getters and Setters
