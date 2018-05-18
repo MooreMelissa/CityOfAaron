@@ -36,6 +36,7 @@ public class CityOfAaron {
             theGame.setCurrentYear(0);
             
             System.out.println(theGame.toString());
+
             
           Animal theInventoryItem = new Animal();
           theInventoryItem.setName("Tiger");
@@ -54,6 +55,20 @@ public class CityOfAaron {
           theProvisionItem.setPerishable(true);
           
           System.out.println(theProvisionItem.toString());
+          
+         Point thePoint = new Point();
+         thePoint.setRow(1);
+         thePoint.setColumn(1);
+         
+         System.out.println(thePoint.toString());
+         
+         Location theLocation = new Location();
+         theLocation.setName("Wakanda");
+         theLocation.setDescription("Wakanda Forever!");
+         theLocation.setMapSymbol("X");
+         theLocation.setGameTips(args);
+         
+         System.out.println(theLocation.toString());
 	}
 	
 }

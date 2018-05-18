@@ -5,10 +5,43 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
- * @author JK
+ * @author Rebekah
  */
-public class Point {
+public class Point implements Serializable {
     
+    private int row;
+    private int column;
+    
+    public Point(){
+        //Empty constructor for JavaBeans
+    }
+    
+    //Getters and Setters
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
+    }
+    
+    @Override
+    public String toString() {
+        return "Point{"
+                + "row=" + row
+                + ", column=" + column
+                + '}';
+    }
 }
