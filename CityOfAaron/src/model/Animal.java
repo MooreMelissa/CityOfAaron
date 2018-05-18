@@ -44,7 +44,7 @@ public class Animal extends InventoryItem implements Serializable {
         String sup = super.toString();
         
         return sup + "Animal{"
-                + " ,age=" + age
+                + "age=" + age
                 + '}';
     }
     

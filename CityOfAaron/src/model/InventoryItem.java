@@ -73,10 +73,10 @@ public class InventoryItem implements Serializable {
     public String toString(){
         
         return "InventoryItem{"
-                + " ,name="  + name
-                + " ,itemType=" + itemType
-                + " ,quantity=" + quantity
-                + " ,condition=" + condition
+                + "name="  + name
+                + ", itemType=" + itemType
+                + ", quantity=" + quantity
+                + ", condition=" + condition
                 + '}';
     }
     

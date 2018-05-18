@@ -9,17 +9,16 @@ import java.io.Serializable;
 
 /**
  *
- * @author Rebekah
+ * @author Rebekah, heatherholt
  */
 public class Storehouse implements Serializable {
-    private Author[] authors;
+    private Author[] authors = new Author[3];
     private InventoryItem[] animals;
     private InventoryItem[] tools;
     private InventoryItem[] provisions;
     
     public Storehouse(){
-        //Empty constructor for JavaBeans
-        
+        //Empty constructor for JavaBeans   
     }
 
     public Author[] getAuthors() {
