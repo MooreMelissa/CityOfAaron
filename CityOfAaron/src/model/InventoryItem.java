@@ -23,10 +23,9 @@ public class InventoryItem implements Serializable {
         
     }
     
-    public InventoryItem(String name, ItemType itemType, int quantity, Condition condition) {
+   
     
-        
-    }
+    
     //Getters and Setters
 
     public String getName() {
