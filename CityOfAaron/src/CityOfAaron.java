@@ -56,9 +56,7 @@ public class CityOfAaron {
           
           System.out.println(theProvisionItem.toString());
           
-         Point thePoint = new Point();
-         thePoint.setRow(1);
-         thePoint.setColumn(1);
+         Point thePoint = new Point(3,2);
          
          System.out.println(thePoint.toString());
          
@@ -66,7 +64,7 @@ public class CityOfAaron {
          theLocation.setName("Wakanda");
          theLocation.setDescription("Wakanda Forever!");
          theLocation.setMapSymbol("X");
-         theLocation.setGameTips(args);
+         theLocation.setGameTips(new String[0]);
          
          System.out.println(theLocation.toString());
 	}

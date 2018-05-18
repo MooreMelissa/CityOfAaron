@@ -14,10 +14,16 @@ public class Location implements Serializable {
     private String name;
     private String description;
     private String mapSymbol;
-    private String[] gameTips;
-    
+    private String[] gameTips = new String[3];
+
     public Location(){
         //Empty constructor for JavaBeans
+    }
+    
+    private void createGameTips() {
+    gameTips[0] = "One person can't care for more than 10 acres of wheat.";
+    gameTips[1] = "Each person consumes about 20 bushels of wheat per year.";
+    gameTips[2] = "Each acres requires one bushel for planting.";
     }
     
     //Getters and Setters
@@ -53,6 +59,8 @@ public class Location implements Serializable {
     public void setGameTips(String[] gameTips) {
         this.gameTips = gameTips;
     }
+
+
     
     @Override
     public String toString() {
@@ -63,4 +71,5 @@ public class Location implements Serializable {
                 + ", gameTips=" + gameTips
                 + '}';
     }
+
 }

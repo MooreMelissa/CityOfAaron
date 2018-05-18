@@ -18,10 +18,6 @@ public class Map implements Serializable {
     public Map(){
         //Empty constructor for JavaBeans
     }
-    public Map(Location[][] locations, Point currentLocation){
-        
-    }
-    
     //Getters and Setters
     public Location[][] getLocations() {
         return locations;
