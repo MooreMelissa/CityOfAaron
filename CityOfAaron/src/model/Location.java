@@ -64,9 +64,8 @@ public class Location implements Serializable {
     public String toString() {
         return "Location{" 
                 + "name=" + name 
-                + ", description=" + description 
-                + ", mapSymbol=" + mapSymbol 
-                + ", gameTips=" + gameTips
+                + " description=" + description 
+                + " mapSymbol=" + mapSymbol 
                 + '}';
     } 
 }

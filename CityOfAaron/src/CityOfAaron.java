@@ -64,16 +64,14 @@ public class CityOfAaron {
          
          
          Location theLocation = new Location();
-         theLocation.setName("name 1");
-         theLocation.setDescription("description 1");
-         theLocation.setMapSymbol("symbol 1");
-         theLocation.setGameTips(args);
-         
+         theLocation.setName("Wheat Fields");
+         theLocation.setDescription("The field is white, all ready to harvest. Literally.");
+         theLocation.setMapSymbol("W");
          
          System.out.println(theLocation.toString());
          
-       
-
+         String[] tip = theLocation.getGameTips();
+         System.out.println("gameTip=" + tip[0]);
 	}
 	
 }
