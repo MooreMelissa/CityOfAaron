@@ -84,7 +84,7 @@ public class CityOfAaron {
          System.out.println("animal=" + ani[2]);
          InventoryItem[] too = theStorehouse.getTools();
          System.out.println("tools=" + too[1]);
-         InventoryItem[] pro = theStorehouse.getTools();
+         InventoryItem[] pro = theStorehouse.getProvisions();
          System.out.println("provisions=" + pro[0]);
          
 	}
