@@ -72,6 +72,21 @@ public class CityOfAaron {
          
          String[] tip = theLocation.getGameTips();
          System.out.println("gameTip=" + tip[0]);
+         
+         Map theMap = new Map();
+         Location[][] loc = theMap.getLocations();
+         System.out.println("loc=" + loc[0][1]);
+         
+         Storehouse theStorehouse = new Storehouse();
+          Author[] aut = theStorehouse.getAuthors();
+         System.out.println("author=" + aut[0]);
+         InventoryItem[] ani = theStorehouse.getAnimals();
+         System.out.println("animal=" + ani[2]);
+         InventoryItem[] too = theStorehouse.getTools();
+         System.out.println("tools=" + too[1]);
+         InventoryItem[] pro = theStorehouse.getTools();
+         System.out.println("provisions=" + pro[0]);
+         
 	}
 	
 }
