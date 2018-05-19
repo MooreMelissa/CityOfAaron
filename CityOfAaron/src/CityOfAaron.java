@@ -38,7 +38,7 @@ public class CityOfAaron {
             System.out.println(theGame.toString());
 
             
-          /*Animal theInventoryItem = new Animal();
+          Animal theInventoryItem = new Animal();
           theInventoryItem.setName("Tiger");
           theInventoryItem.setItemType(ItemType.Animal);
           theInventoryItem.setQuantity(1);
@@ -54,7 +54,7 @@ public class CityOfAaron {
           theProvisionItem.setCondition(Condition.Good);
           theProvisionItem.setPerishable(true);
           
-          System.out.println(theProvisionItem.toString());*/
+          System.out.println(theProvisionItem.toString());
 		  
 		           
           
@@ -69,7 +69,10 @@ public class CityOfAaron {
          theLocation.setMapSymbol("symbol 1");
          theLocation.setGameTips(args);
          
+         
          System.out.println(theLocation.toString());
+         
+       
 
 	}
 	
