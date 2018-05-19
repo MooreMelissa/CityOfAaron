@@ -22,6 +22,11 @@ public class Animal extends InventoryItem implements Serializable {
         //setItemType(ItemType.Animal);
         
     }
+	
+	public Animal(String name, ItemType itemType, int quantity, Condition condition, int age){
+        super(name, itemType, quantity, condition);
+        this.age = age;
+    }
     
  
     

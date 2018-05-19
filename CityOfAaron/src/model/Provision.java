@@ -24,6 +24,11 @@ public class Provision extends InventoryItem implements Serializable {
        // setItemType(ItemType.Provisions);
         
     }
+	
+	public Provision(String name, ItemType itemType, int quantity, Condition condition, boolean perishable){
+        super(name, itemType, quantity, condition);
+        this.perishable = perishable;
+    }
 
 
     public boolean isPerishable() {
