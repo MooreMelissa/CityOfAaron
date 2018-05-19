@@ -13,11 +13,17 @@ import java.io.Serializable;
  */
 public class Storehouse implements Serializable {
     private Author[] authors = {new Author("Melissa Moore", "Maiden of Skyfall"),
-				new Author("Rebekah Harris", "Queen of Wakanda"),
-				new Author("Heather Holt", "Lady of Asgard")};
-    private InventoryItem[] animals;
-    private InventoryItem[] tools;
-    private InventoryItem[] provisions;
+		new Author("Rebekah Harris", "Queen of Wakanda"),
+		new Author("Heather Holt", "Lady of Asgard")};
+    private InventoryItem[] animals = {new InventoryItem("Tiger", ItemType.Animal, 2, Condition.Good), //age 10
+		new InventoryItem("Emu", ItemType.Animal, 5, Condition.Good), //age 7
+		new InventoryItem("Llama", ItemType.Animal, 3, Condition.Good)}; // age 1
+    private InventoryItem[] tools = {new InventoryItem("Hammer", ItemType.Tool, 2, Condition.Fair), 
+		new InventoryItem("Jig Saw", ItemType.Tool, 1, Condition.Good),
+		new InventoryItem("Axe", ItemType.Tool, 4, Condition.Poor)};
+    private InventoryItem[] provisions = {new InventoryItem("Apples", ItemType.Provisions, 5, Condition.Good), //true
+		new InventoryItem("Crates", ItemType.Provisions, 20, Condition.Good), //false
+		new InventoryItem("Blankets", ItemType.Provisions, 10, Condition.Poor)}; //false
     
     public Storehouse(){
         //Empty constructor for JavaBeans   

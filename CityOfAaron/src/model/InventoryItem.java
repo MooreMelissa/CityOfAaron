@@ -23,14 +23,19 @@ public class InventoryItem implements Serializable {
         
     }
     
-   
+   public InventoryItem(String name, ItemType itemType, int quantity, Condition condition) {
+	   this.name = name;
+	   this.itemType = itemType;
+	   this.quantity = quantity;
+	   this.condition = condition;
+   }
     
     
     //Getters and Setters
 
     public String getName() {
         
-         return name;
+        return name;
     }
     
     public void setName(String name) {
