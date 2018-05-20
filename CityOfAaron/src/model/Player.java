@@ -7,26 +7,29 @@ package model;
 
 import java.io.Serializable;
 
+/**
+ *
+ * @author heatherholt
+ */
 public class Player implements Serializable {
-    
-    private String name;
-    
-    public Player(){
-        //Empty constructor for JavaBeans
-    }
 
-    //Getters and Setters
-    public String getName() {
-        return name;
-    }
+	private String name;
 
-    public void setName(String name) {
-        this.name = name;
-    }
-   
-    
-    @Override
-    public String toString(){
-        return "Player{" + "name=" + name + '}';
-    }
+	public Player() {
+		//Empty constructor for JavaBeans
+	}
+
+	//Getters and Setters
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Player{" + "name=" + name + '}';
+	}
 }

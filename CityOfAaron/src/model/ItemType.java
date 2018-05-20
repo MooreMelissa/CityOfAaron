@@ -9,14 +9,10 @@ package model;
  *
  * @author Melissa
  */
-
-
-
 public enum ItemType {
-    
-    Animal,
-    Tool,
-    Provisions;
-   
-}
 
+	Animal,
+	Tool,
+	Provisions;
+
+}

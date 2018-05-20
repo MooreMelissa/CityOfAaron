@@ -15,6 +15,7 @@ import model.Animal;
 import model.Provision;
 import model.ItemType;
 import model.Condition;
+
 /**
  *
  * @author heatherholt
@@ -25,68 +26,64 @@ public class CityOfAaron {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
-            
-            Game theGame = new Game();
-            theGame.setThePlayer(new Player());
-            theGame.setTheMap(new Map());
-            theGame.setTheStorehouse(new Storehouse());
-            theGame.setCurrentPopulation(105);
-            theGame.setAcresOwned(2000);
-            theGame.setWheatInStorage(15000);
-            theGame.setCurrentYear(0);
-            
-            System.out.println(theGame.toString());
 
-            
-          Animal theInventoryItem = new Animal();
-          theInventoryItem.setName("Tiger");
-          theInventoryItem.setItemType(ItemType.Animal);
-          theInventoryItem.setQuantity(1);
-          theInventoryItem.setCondition(Condition.Good);
-          theInventoryItem.setAge(10);
-	
-          System.out.println(theInventoryItem.toString());
-          
-          Provision theProvisionItem = new Provision();
-          theProvisionItem.setName("Apple");
-          theProvisionItem.setItemType(ItemType.Provisions);
-          theProvisionItem.setQuantity(5);
-          theProvisionItem.setCondition(Condition.Good);
-          theProvisionItem.setPerishable(true);
-          
-          System.out.println(theProvisionItem.toString());
-		  
-		           
-          
-         Point thePoint = new Point(3,2);
-         
-         System.out.println(thePoint.toString());
-         
-         
-         Location theLocation = new Location();
-         theLocation.setName("Wheat Fields");
-         theLocation.setDescription("The field is white, all ready to harvest. Literally.");
-         theLocation.setMapSymbol("W");
-         
-         System.out.println(theLocation.toString());
-         
-         String[] tip = theLocation.getGameTips();
-         System.out.println("gameTip=" + tip[0]);
-         
-         Map theMap = new Map();
-         Location[][] loc = theMap.getLocations();
-         System.out.println("loc=" + loc[0][1]);
-         
-         Storehouse theStorehouse = new Storehouse();
-          Author[] aut = theStorehouse.getAuthors();
-         System.out.println("author=" + aut[0]);
-         InventoryItem[] ani = theStorehouse.getAnimals();
-         System.out.println("animal=" + ani[2]);
-         InventoryItem[] too = theStorehouse.getTools();
-         System.out.println("tools=" + too[1]);
-         InventoryItem[] pro = theStorehouse.getProvisions();
-         System.out.println("provisions=" + pro[0]);
-         
+		Game theGame = new Game();
+		theGame.setThePlayer(new Player());
+		theGame.setTheMap(new Map());
+		theGame.setTheStorehouse(new Storehouse());
+		theGame.setCurrentPopulation(105);
+		theGame.setAcresOwned(2000);
+		theGame.setWheatInStorage(15000);
+		theGame.setCurrentYear(0);
+
+		System.out.println(theGame.toString());
+
+		Animal theInventoryItem = new Animal();
+		theInventoryItem.setName("Tiger");
+		theInventoryItem.setItemType(ItemType.Animal);
+		theInventoryItem.setQuantity(1);
+		theInventoryItem.setCondition(Condition.Good);
+		theInventoryItem.setAge(10);
+
+		System.out.println(theInventoryItem.toString());
+
+		Provision theProvisionItem = new Provision();
+		theProvisionItem.setName("Apple");
+		theProvisionItem.setItemType(ItemType.Provisions);
+		theProvisionItem.setQuantity(5);
+		theProvisionItem.setCondition(Condition.Good);
+		theProvisionItem.setPerishable(true);
+
+		System.out.println(theProvisionItem.toString());
+
+		Point thePoint = new Point(3, 2);
+
+		System.out.println(thePoint.toString());
+
+		Location theLocation = new Location();
+		theLocation.setName("Wheat Fields");
+		theLocation.setDescription("The field is white, all ready to harvest. Literally.");
+		theLocation.setMapSymbol("W");
+
+		System.out.println(theLocation.toString());
+
+		String[] tip = theLocation.getGameTips();
+		System.out.println("gameTip=" + tip[0]);
+
+		Map theMap = new Map();
+		Location[][] loc = theMap.getLocations();
+		System.out.println("loc=" + loc[0][1]);
+
+		Storehouse theStorehouse = new Storehouse();
+		Author[] aut = theStorehouse.getAuthors();
+		System.out.println("author=" + aut[0]);
+		InventoryItem[] ani = theStorehouse.getAnimals();
+		System.out.println("animal=" + ani[2]);
+		InventoryItem[] too = theStorehouse.getTools();
+		System.out.println("tools=" + too[1]);
+		InventoryItem[] pro = theStorehouse.getProvisions();
+		System.out.println("provisions=" + pro[0]);
+
 	}
-	
+
 }

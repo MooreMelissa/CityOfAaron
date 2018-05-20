@@ -6,51 +6,47 @@
 package model;
 
 import java.io.Serializable;
+
 /**
  *
  * @author Melissa
  */
 public class Animal extends InventoryItem implements Serializable {
 
-    
-    private int age;
-    
-    public Animal(){
-        
-        //Empty constructor for JavaBeans
-        super();
-        //setItemType(ItemType.Animal);
-        
-    }
-	
-	public Animal(String name, ItemType itemType, int quantity, Condition condition, int age){
-        super(name, itemType, quantity, condition);
-        this.age = age;
-    }
-    
- 
-    
-    //Getters and Setters
+	private int age;
 
- 
-    public int getAge() {
-        
-        return age;
-    }
+	public Animal() {
 
-    public void setAge(int age) {
-        
-        this.age = age;
-    }
-    
-    @Override
-    public String toString(){
-        
-        String sup = super.toString();
-        
-        return sup + "Animal{"
-                + "age=" + age
-                + '}';
-    }
-    
+		//Empty constructor for JavaBeans
+		super();
+		//setItemType(ItemType.Animal);
+
+	}
+
+	public Animal(String name, ItemType itemType, int quantity, Condition condition, int age) {
+		super(name, itemType, quantity, condition);
+		this.age = age;
+	}
+
+	//Getters and Setters
+	public int getAge() {
+
+		return age;
+	}
+
+	public void setAge(int age) {
+
+		this.age = age;
+	}
+
+	@Override
+	public String toString() {
+
+		String sup = super.toString();
+
+		return sup + "Animal{"
+				+ "age=" + age
+				+ '}';
+	}
+
 }
