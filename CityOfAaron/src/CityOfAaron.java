@@ -37,6 +37,10 @@ public class CityOfAaron {
 		theGame.setCurrentYear(0);
 
 		System.out.println(theGame.toString());
+		
+		Player thePlayer = new Player();
+		thePlayer.setName("Hammurabi");
+		System.out.println(thePlayer.toString());
 
 		Animal theInventoryItem = new Animal();
 		theInventoryItem.setName("Tiger");
