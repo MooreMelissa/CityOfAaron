@@ -6,83 +6,79 @@
 package model;
 
 import java.io.Serializable;
+
 /**
  *
  * @author Melissa
  */
 public class InventoryItem implements Serializable {
-    
-    private String name;
-    private ItemType itemType;
-    private int quantity;
-    private Condition condition;
-    
-    public InventoryItem()  {
-        
-        //Empty constructor for JavaBeans
-        
-    }
-    
-   public InventoryItem(String name, ItemType itemType, int quantity, Condition condition) {
-	   this.name = name;
-	   this.itemType = itemType;
-	   this.quantity = quantity;
-	   this.condition = condition;
-   }
-    
-    
-    //Getters and Setters
 
-    public String getName() {
-        
-        return name;
-    }
-    
-    public void setName(String name) {
-        
-        this.name = name;
-    }
-    
-    
-    public ItemType getItemType() {
-        
-        return itemType;
-    }
+	private String name;
+	private ItemType itemType;
+	private int quantity;
+	private Condition condition;
 
-    public void setItemType(ItemType itemType) {
-        
-        this.itemType = itemType;
-    }
+	public InventoryItem() {
+		//Empty constructor for JavaBeans
+	}
 
-    public int getQuantity() {
-        
-        return quantity;
-    }
+	public InventoryItem(String name, ItemType itemType, int quantity, Condition condition) {
+		this.name = name;
+		this.itemType = itemType;
+		this.quantity = quantity;
+		this.condition = condition;
+	}
 
-    public void setQuantity(int quantity) {
-        
-        this.quantity = quantity;
-    }
+	//Getters and Setters
+	public String getName() {
 
-    public Condition getCondition() {
-        
-        return condition;
-    }
+		return name;
+	}
 
-    public void setCondition(Condition condition) {
-        
-        this.condition = condition;
-    }
-    
-    @Override
-    public String toString(){
-        
-        return "InventoryItem{"
-                + "name="  + name
-                + ", itemType=" + itemType
-                + ", quantity=" + quantity
-                + ", condition=" + condition
-                + '}';
-    }
-    
+	public void setName(String name) {
+
+		this.name = name;
+	}
+
+	public ItemType getItemType() {
+
+		return itemType;
+	}
+
+	public void setItemType(ItemType itemType) {
+
+		this.itemType = itemType;
+	}
+
+	public int getQuantity() {
+
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+
+		this.quantity = quantity;
+	}
+
+	public Condition getCondition() {
+
+		return condition;
+	}
+
+	public void setCondition(Condition condition) {
+
+		this.condition = condition;
+	}
+
+	@Override
+	public String toString() {
+
+		return "InventoryItem{"
+				+ "name=" + name
+				+ ", itemType=" + itemType
+				+ ", quantity=" + quantity
+				+ ", condition=" + condition
+				+ '}';
+	}
+
 }

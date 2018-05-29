@@ -10,10 +10,9 @@ package model;
  * @author Melissa
  */
 public enum Condition {
-    
-    Good,
-    Fair,
-    Poor;
-     
-    
+
+	Good,
+	Fair,
+	Poor;
+
 }
