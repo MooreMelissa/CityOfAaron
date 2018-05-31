@@ -58,6 +58,7 @@ public class GameControl {
 		totalAcres = totalAcres + acresToBuy;
 		//sellLand() - H
 		//feedPeople() - M
+                int feedThePeople = feedPeople(bushelsFed, totalWheat);
 		if (acresToPlant < 0) {
 			return false;
 		}
@@ -163,7 +164,73 @@ public class GameControl {
 
 		int bushelsUsed = acresToPlant / 2;
 		return bushelsUsed;
+             
 
 	}
+
+        /**  public int feedPeople(int bushelsFed, int totalWheat) BEGIN
+         *IF (bushelsFed < 0) THEN RETURN -1
+         *IF (bushelsFed > totalWheat) THEN RETURN -2
+         *totalWheat = totalWheat - bushelsFed
+         *RETURN totalWheat
+         *END
+         * @param bushelsFed
+         * @param totalWheat
+         * @return
+         */
+
+        public static int feedPeople(int bushelsFed, int totalWheat) {
+                
+                if (bushelsFed < 0) {
+                       return -1;
+                }
+              
+                if (bushelsFed > totalWheat) {
+                       return -2;
+                }
+              
+                totalWheat = totalWheat - bushelsFed;
+                
+                return totalWheat;
+        }
+        
+    
+        /** public int populationMortality (int bushelFed, int totalPopulation) BEGIN
+         *IF (bushelFed < 0 ) THEN RETURN -1
+         *int noPeopleFed = bushelFed / 20 
+         *IF (noPeopleFed < totalPopulation) THEN
+         *int starvedPeople = totalPopulation – noPeopleFed
+         *RETURN starvedPeople
+         *ELSE
+         *starvedPeople = 0
+         *RETURN starvedPeople
+         *END
+         * @param bushelFed
+         * @param totalPopulation
+         * @return
+         */
+        
+        public static int populationMortality(int bushelFed, int totalPopulation) {
+          
+                if (bushelFed < 0) {
+                       return -1;
+                }
+               
+                int noPeopleFed = bushelFed / 20;
+               
+                if (noPeopleFed < totalPopulation) {
+                   int starvedPeople = totalPopulation - noPeopleFed;
+                   
+                   return starvedPeople;
+            
+                }
+               
+                else {
+                  int starvedPeople = 0;
+                   
+                  return starvedPeople;
+                }
+                    
+        }
 
 }
