@@ -12,7 +12,7 @@ import java.util.Random;
  */
 
 
-public class RandomNumbers extends Random {
+public class RandomNumbers {
 
     /* public static void main(String[] args) {
         Random random = new Random();
@@ -34,4 +34,10 @@ public class RandomNumbers extends Random {
 		random = newRandom;
 	}
 
+      
+        public static int getRandom (int origin, int bound) {
+            return random.nextInt((bound + 1)-origin) + origin;
+            
+        }
+        
 }
