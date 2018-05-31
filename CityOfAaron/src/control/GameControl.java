@@ -22,6 +22,7 @@ public class GameControl{
 		
 	    int totalWheat = game.getWheatInStorage();
 		int totalAcres = game.getAcresOwned();
+                int totalPopulation = game.getCurrentPopulation();
 		int randomPrice = RandomNumbers.getRandom(17, 27);
 		
 		
@@ -39,12 +40,25 @@ public class GameControl{
 		totalAcres = totalAcres + acresToBuy;
         //sellLand() - H
 		//feedPeople() - M
-		
-                plantCrops(acresToPlant,
-                           game.getAcresOwned(), 
-                           game.getCurrentPopulation(), 
-        
-                          game.getWheatInStorage()); 
+		if (acresToPlant < 0) {
+                    return false;
+                }
+                int bushelsWheatUsed = plantCrops(acresToPlant,
+                           totalAcres, 
+                           totalPopulation, 
+                           totalWheat); 
+                if (bushelsWheatUsed < 0) {
+                    return false;
+                }
+                totalWheat = totalWheat - bushelsWheatUsed;
+                
+                
+                
+                
+                
+                
+              
+                game.setAcresPlanted(acresToPlant);
                 
 		return true;
 	}
@@ -119,12 +133,9 @@ public class GameControl{
                 return -4;
             }
 	
-            //game.setWheatInStorage(wheatInStorage - (acresToPlant / 2));
-            
-            //game.setAcresPlanted(acresToPlant);
-            
-            //return acresToPlant;
-            return wheatInStorage - (acresToPlant/ 2);
+           
+            int bushelsUsed = acresToPlant / 2;
+            return bushelsUsed;
 	
         }
 	

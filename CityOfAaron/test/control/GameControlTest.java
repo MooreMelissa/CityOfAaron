@@ -61,5 +61,16 @@ public class GameControlTest {
 		int result = GameControl.buyLand(100, 27, 2700, 1000);
 		assertEquals(2700, result);
 	}
+        
+        /**
+	 * Test of plantcrops method, of class GameControl.
+	 */
+	
+	@Test
+	public void testPlantCrops1() {
+		int result = GameControl.plantCrops(800, 1000, 100, 2700);
+		assertEquals(400, result);
+	}
+        
 	
 }
