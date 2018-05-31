@@ -28,3 +28,4 @@ hs_err_pid*
 
 # Mac Stuff
 .DS_Store
+/CityOfAaron/dist/

@@ -11,29 +11,33 @@ import java.util.Random;
  *
  * @author heatherholt
  */
-public class GameControl{
+public class GameControl{	
 	
-	
-	int acresToBuy = 80; //get user input
-	
-        int acresToPlant = 0; // get user input
-	
-	
-	public boolean liveTheYear(Game game, int acresToBuy, int acresToPlant) {
+	public boolean liveTheYear(Game game, 
+		int acresToBuy, 
+		int acresToSell, 
+		int bushelsFed, 
+		int acresToPlant, 
+		int percentage) {
+		
 	    int totalWheat = game.getWheatInStorage();
-            int randomPrice = RandomNumbers.getRandom(17, 27);
-                 //harvestWheat() - H
+		int totalAcres = game.getAcresOwned();
+		int randomPrice = RandomNumbers.getRandom(17, 27);
+		
+		
+		//harvestWheat() - H
 		//wheatOfferings() - R
 		//wheatEatenRats() - H
 		//populationMortality() - M
 		//peopleMoveIn() - R
 		
-		int landCostInWheat = buyLand (acresToBuy, randomPrice, game.getWheatInStorage(), game.getAcresOwned());
+		int landCostInWheat = buyLand (acresToBuy, randomPrice, totalWheat, totalAcres);
 		if (landCostInWheat < 0) {
-                    return false;
-                }
-                totalWheat = totalWheat - landCostInWheat;
-                //sellLand() - H
+			return false;
+		}
+        totalWheat = totalWheat - landCostInWheat;
+		totalAcres = totalAcres + acresToBuy;
+        //sellLand() - H
 		//feedPeople() - M
 		
                 plantCrops(acresToPlant,
@@ -42,7 +46,7 @@ public class GameControl{
         
                           game.getWheatInStorage()); 
                 
-                return true;
+		return true;
 	}
 	
 	/**
@@ -62,7 +66,10 @@ public class GameControl{
 	 * @return 
 	 */
 	
-	public static int buyLand(int acresToBuy, int randomPrice, int wheatInStorage, int acresOwned) {
+	public static int buyLand(int acresToBuy, 
+		int randomPrice, 
+		int wheatInStorage, 
+		int acresOwned) {
 				
 		if (acresToBuy < 0) {
 			return -1;
@@ -73,12 +80,8 @@ public class GameControl{
 		if (cost > wheatInStorage) {
 			return -1;
 		}
-		
-		game.setAcresOwned(acresOwned + acresToBuy);
-		game.setWheatInStorage(wheatInStorage - cost);
 				
-		return game.getAcresOwned();
-		
+		return cost;
 	}
 	
 	/**
@@ -116,9 +119,9 @@ public class GameControl{
                 return -4;
             }
 	
-            game.setWheatInStorage(wheatInStorage - (acresToPlant / 2));
+            //game.setWheatInStorage(wheatInStorage - (acresToPlant / 2));
             
-            game.setAcresPlanted(acresToPlant);
+            //game.setAcresPlanted(acresToPlant);
             
             //return acresToPlant;
             return wheatInStorage - (acresToPlant/ 2);
