@@ -316,5 +316,50 @@ public class GameControlTest {
 		assertEquals(5, result);
                 System.out.println(result);
         }
+        
+        /**
+         * Test of wheatOfferings method, of class GameControl
+         */
+        
+        @Test
+        public void testWheatOfferings1() {
+            int result = GameControl.wheatOfferings(10, 2000);
+            assertEquals(200, result);
+        }
+        
+	@Test
+        public void testWheatOfferings2() {
+            int result = GameControl.wheatOfferings(-10, 2000);
+            assertEquals(-1, result);
+        }
+        
+        @Test
+        public void testWheatOfferings3() {
+            int result = GameControl.wheatOfferings(110, 2000);
+            assertEquals(-1, result);
+        }
+        
+        @Test
+        public void testWheatOfferings4() {
+            int result = GameControl.wheatOfferings(0, 2000);
+            assertEquals(0, result);
+        }
+        
+        @Test
+        public void testWheatOfferings5() {
+            int result = GameControl.wheatOfferings(100, 2000);
+            assertEquals(2000, result);
+        }
+        
+        /**
+         * Test of peopleMoveIn method, of class GameControl
+         * Because the only validation is on a random number, only one validity test is needed.
+         */
+        @Test
+        public void testPeopleMoveIn1(){
+            int result = GameControl.peopleMoveIn(5, 150);
+            assertEquals(7, result); // Because of the explicit typecasting, any decimal is rounded DOWN to the nearest whole number.
+        }
+        
 	
 }
