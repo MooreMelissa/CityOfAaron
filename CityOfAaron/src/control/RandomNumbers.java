@@ -34,4 +34,7 @@ public class RandomNumbers extends Random {
 		random = newRandom;
 	}
 
+	public static int getRandom (int origin, int bound) {
+		return random.nextInt((bound + 1) - origin) + origin;       
+	}
 }

@@ -25,24 +25,11 @@ public class GameControlTest {
 	/**
 	 * Test of buyLand method, of class GameControl.
 	 */
-	/*@Test
-	public void testBuyLand() {
-		System.out.println("buyLand");
-		int acresToBuy = 0;
-		int randomPrice = 0;
-		int wheatInStorage = 0;
-		int acresOwned = 0;
-		int expResult = 0;
-		int result = GameControl.buyLand(acresToBuy, randomPrice, wheatInStorage, acresOwned);
-		assertEquals(expResult, result);
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
-	}*/
 	
 	@Test
 	public void testBuyLand1() {
 		int result = GameControl.buyLand(10, 20, 2700, 1000);
-		assertEquals(1010, result);
+		assertEquals(200, result);
 	}
 	
 	@Test
@@ -60,19 +47,19 @@ public class GameControlTest {
 	@Test
 	public void testBuyLand4() {
 		int result = GameControl.buyLand(0, 17, 2700, 1000);
-		assertEquals(1000, result);
+		assertEquals(0, result);
 	}
 	
 	@Test
 	public void testBuyLand5() {
 		int result = GameControl.buyLand(30, 17, 2700, 1000);
-		assertEquals(1030, result);
+		assertEquals(510, result);
 	}
 	
 	@Test
 	public void testBuyLand6() {
 		int result = GameControl.buyLand(100, 27, 2700, 1000);
-		assertEquals(1100, result);
+		assertEquals(2700, result);
 	}
 	
 }
