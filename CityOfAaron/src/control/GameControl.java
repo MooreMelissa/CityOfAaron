@@ -30,7 +30,7 @@ public class GameControl {
 		int randomYieldMid = RandomNumbers.getRandom(2, 4); // harvestWheat
 		int randomYieldHigh = RandomNumbers.getRandom(2, 5); // harvestWheat
 		int randomPrice = RandomNumbers.getRandom(17, 27);  // buyLand
-
+                int randomGrowth = RandomNumbers.getRandom(1, 5); //peopleMoveIn
 		
 		// Beginning of harvestWheat function
 		if (acresToPlant < 0) {
@@ -46,10 +46,17 @@ public class GameControl {
 		}
 		totalWheat = totalWheat + totalHarvest;
 
-		//wheatOfferings() - R
+		//Beginning of wheatOfferings function
+                int totalTithe = wheatOfferings(percentage, totalHarvest);
+                totalWheat = totalWheat - totalTithe;
+                
 		//wheatEatenRats() - H
 		//populationMortality() - M
-		//peopleMoveIn() - R
+                
+		//Beginning of peopleMoveIn function
+                int populationGrowth = peopleMoveIn(randomGrowth, totalPopulation);
+                totalPopulation = totalPopulation + populationGrowth;
+                
 		int landCostInWheat = buyLand(acresToBuy, randomPrice, totalWheat);
 		if (landCostInWheat < 0) {
 			return false;
@@ -231,6 +238,32 @@ public class GameControl {
                   return starvedPeople;
                 }
                     
+        }
+        
+        /**
+         * @param percentage
+         * @param totalHarvest
+         * @return
+         */
+        public static int wheatOfferings(int percentage, int totalHarvest) {
+            if (percentage < 0 || percentage > 100) {
+			return -1;
+            }
+            int offeringsTithes = (int) (totalHarvest * (percentage * 0.01)); //Explicit typecasting. Let me know if you want me to explain.
+            return offeringsTithes;
+        }
+        
+        /**
+         * @param randomGrowth
+         * @param totalPopulation
+         * @return
+         */
+        public static int peopleMoveIn(int randomGrowth, int totalPopulation) {
+            if (randomGrowth < 1 || randomGrowth > 5){ // This isn't really even necessary. I just had to do a check for test matrix.
+                return -1; 
+            }
+            int growPopulation = (int) (totalPopulation * (randomGrowth * 0.01)); //Explicit typecasting.
+            return growPopulation;
         }
 
 }
