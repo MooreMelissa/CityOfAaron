@@ -12,7 +12,7 @@ import java.util.Random;
  */
 
 
-public class RandomNumbers {
+public class RandomNumbers extends Random {
 
     /* public static void main(String[] args) {
         Random random = new Random();
