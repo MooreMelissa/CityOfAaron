@@ -279,7 +279,6 @@ public class GameControl {
 	 * IF (noPeopleFed < totalPopulation) THEN
 	 * starvedPeople = totalPopulation – noPeopleFed
 	 * RETURN starvedPeople
-	 * ELSE
 	 * END
 	 * @param bushelsFed
 	 * @param totalPopulation
