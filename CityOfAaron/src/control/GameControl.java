@@ -60,8 +60,7 @@ public class GameControl {
 	 * public int feedPeople(int bushelsFed, int totalWheat) BEGIN
 	 * IF (bushelsFed < 0) THEN RETURN -1
 	 * IF (bushelsFed > totalWheat) THEN RETURN -2
-	 * totalWheat = totalWheat - bushelsFed
-	 * RETURN totalWheat
+	 * RETURN buselsFed
 	 * END
 	 * @param bushelsFed
 	 * @param totalWheat
@@ -77,7 +76,7 @@ public class GameControl {
 			   return -2;
 		}
 
-		return bushelsFed;
+		return bushelsFed; // validates users amount
 	}
 	
 	
@@ -275,13 +274,12 @@ public class GameControl {
     
 	/** public int populationMortality (int bushelFed, int totalPopulation) BEGIN
 	 * IF (bushelFed < 0 ) THEN RETURN -1
-	 * int noPeopleFed = bushelFed / 20 
+	 * int noPeopleFed = bushelFed / 20
+         * int starvedPeople = 0
 	 * IF (noPeopleFed < totalPopulation) THEN
-	 * int starvedPeople = totalPopulation – noPeopleFed
+	 * starvedPeople = totalPopulation – noPeopleFed
 	 * RETURN starvedPeople
 	 * ELSE
-	 * starvedPeople = 0
-	 * RETURN starvedPeople
 	 * END
 	 * @param bushelsFed
 	 * @param totalPopulation
