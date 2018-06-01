@@ -120,6 +120,54 @@ public class GameControlTest {
 		int result = GameControl.buyLand(100, 27, 2700);
 		assertEquals(2700, result);
 	}
+	
+	
+	/**
+	 * Test of sellLand method, of class GameControl.
+	 */
+    
+    @Test
+	public void testSellLand1() {
+		int result = GameControl.sellLand(50, 22, 1000);
+		assertEquals(1100, result);
+	}
+
+	@Test
+	public void testSellLand2() {
+		int result = GameControl.sellLand(-75, 22, 1000);
+		assertEquals(-1, result);
+	}
+
+	@Test
+	public void testSellLand3() {
+		int result = GameControl.sellLand(1100, 22, 1000);
+		assertEquals(-1, result);
+	}
+
+	@Test
+	public void testSellLand4() {
+		int result = GameControl.sellLand(0, 17, 1000);
+		assertEquals(0, result);
+	}
+
+	@Test
+	public void testSellLand5() {
+		int result = GameControl.sellLand(1000, 17, 1000);
+		assertEquals(17000, result);
+	}
+
+	@Test
+	public void testSellLand6() {
+		int result = GameControl.sellLand(0, 27, 1000);
+		assertEquals(0, result);
+	}
+
+	@Test
+	public void testSellLand7() {
+		int result = GameControl.sellLand(1000, 27, 1000);
+		assertEquals(27000, result);
+	}
+	
         
     /**
 	 * Test of plantCrops method, of class GameControl.
@@ -209,66 +257,120 @@ public class GameControlTest {
 	 * Test of testFeedPeople method, of class GameControl.
 	 */
         
-        @Test
-        public void testFeedPeople1() {
-                System.out.println("testFeedPeople1");
-                int result = GameControl.feedPeople(800, 2700);
-                assertEquals(800, result);
-                System.out.println(result);
-        }
-        
-        @Test
-        public void testFeedPeople2() {
-                System.out.println("testFeedPeople2");
-                int result = GameControl.feedPeople(-100, 2700);
-                assertEquals(-1, result);
-                System.out.print(result);
-        }
-        
-        @Test
-        public void testFeedPeople3() {
-               System.out.println("testFeedPeople3");
-               int result = GameControl.feedPeople(2800, 2700);
-               assertEquals(-2, result);
-               System.out.println(result);
-        }
-        
-        @Test
-        public void testFeedPeople4() {
-               System.out.println("testFeedPeople4");
-               int result = GameControl.feedPeople(0, 2700);
-               assertEquals(0, result);
-               System.out.println(result);
-        }
-        
-        @Test
-        public void testFeedPeople5() {
-               System.out.println("testFeedPeople5");
-               int result = GameControl.feedPeople(0, 0);
-               assertEquals(0, result);
-               System.out.println(result);
-        }
-        
-        @Test
-        public void testFeedPeople6() {
-               System.out.println("testFeedPeople6");
-               int result = GameControl.feedPeople(50, 50);
-               assertEquals(50, result);
-               System.out.println(result);
-        }
-        
-        @Test
-        public void testFeedPeople7() {
-               System.out.println("testFeedPeople7");
-               int result = GameControl.feedPeople(3500, 4000);
-               assertEquals(3500, result);
-        }
-        
+	@Test
+	public void testFeedPeople1() {
+		System.out.println("testFeedPeople1");
+		int result = GameControl.feedPeople(800, 2700);
+		assertEquals(800, result);
+		System.out.println(result);
+	}
+
+	@Test
+	public void testFeedPeople2() {
+		System.out.println("testFeedPeople2");
+		int result = GameControl.feedPeople(-100, 2700);
+		assertEquals(-1, result);
+		System.out.print(result);
+	}
+
+	@Test
+	public void testFeedPeople3() {
+		System.out.println("testFeedPeople3");
+		int result = GameControl.feedPeople(2800, 2700);
+		assertEquals(-2, result);
+		System.out.println(result);
+	}
+
+	@Test
+	public void testFeedPeople4() {
+		System.out.println("testFeedPeople4");
+		int result = GameControl.feedPeople(0, 2700);
+		assertEquals(0, result);
+		System.out.println(result);
+	}
+
+	@Test
+	public void testFeedPeople5() {
+		System.out.println("testFeedPeople5");
+		int result = GameControl.feedPeople(0, 0);
+		assertEquals(0, result);
+		System.out.println(result);
+	}
+
+	@Test
+	public void testFeedPeople6() {
+		System.out.println("testFeedPeople6");
+		int result = GameControl.feedPeople(50, 50);
+		assertEquals(50, result);
+		System.out.println(result);
+	}
+
+	@Test
+	public void testFeedPeople7() {
+		System.out.println("testFeedPeople7");
+		int result = GameControl.feedPeople(3500, 4000);
+		assertEquals(3500, result);
+		System.out.println(result);
+	}
+     
+	
+	/**
+	 * Test of wheatEatenByRats method, of class GameControl.
+	 */
+    
+    @Test
+	public void testWheatEatenByRats1() {
+		int result = GameControl.wheatEatenByRats(15, 25, 8, 5, 4, 2700);
+		assertEquals(108, result);
+	}
+
+	@Test
+	public void testWheatEatenByRats2() {
+		int result = GameControl.wheatEatenByRats(-5, 25, 1, 2, 4, 2700);
+		assertEquals(-1, result);
+	}
+
+	@Test
+	public void testWheatEatenByRats3() {
+		int result = GameControl.wheatEatenByRats(115, 25, 1, 2, 4, 2700);
+		assertEquals(-1, result);
+	}
+
+	@Test
+	public void testWheatEatenByRats4() {
+		int result = GameControl.wheatEatenByRats(0, 25, 10, 7, 5, 2700);
+		assertEquals(270, result);
+	}
+
+	@Test
+	public void testWheatEatenByRats5() {
+		int result = GameControl.wheatEatenByRats(100, 25, 6, 3, 3, 2700);
+		assertEquals(81, result);
+	}
+
+	@Test
+	public void testWheatEatenByRats6() {
+		int result = GameControl.wheatEatenByRats(10, 25, 9, 6, 4, 2700);
+		assertEquals(162, result);
+	}
+
+	@Test
+	public void testWheatEatenByRats7() {
+		int result = GameControl.wheatEatenByRats(15, 1, 8, 5, 5, 2700);
+		assertEquals(135, result);
+	}
+
+	@Test
+	public void testWheatEatenByRats8() {
+		int result = GameControl.wheatEatenByRats(15, 100, 7, 4, 4, 2700);
+		assertEquals(0, result);
+	}
+	
+	
     /**
 	 * Test of testPopulationMortality method, of class GameControl.
 	 */
-        
-        
+           
 	@Test
 	public void testPopulationMortality1() {
 		System.out.println("testPopulationMortality1");
