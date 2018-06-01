@@ -41,7 +41,7 @@ public class GameControl {
 	 * @param acresToSell user input request of acres to sell
 	 * @param randomPrice random number between 17 and 27
 	 * @param totalAcres total acres owned
-	 * @return
+	 * @return profit from land sold
 	 */
 	public static int sellLand(int acresToSell, int randomPrice, int totalAcres) {
         if (acresToSell < 0) {
@@ -190,12 +190,12 @@ public class GameControl {
 	
 	/**
 	 * harvestWheat
-	 * @param acresToPlant
-	 * @param percentage
-	 * @param randomYieldLow
-	 * @param randomYieldMid
-	 * @param randomYieldHigh
-	 * @return
+	 * @param acresToPlant user input - acres planted
+	 * @param percentage tithing percentage paid
+	 * @param randomYieldLow random number between 1 and 3
+	 * @param randomYieldMid random number between 2 and 4
+	 * @param randomYieldHigh random number between 2 and 5
+	 * @return amount of wheat harvested
 	 */
 	public static int harvestWheat(int acresToPlant,
 			int percentage,
@@ -244,7 +244,7 @@ public class GameControl {
 	 * @param randomAmountMid random number between 3 and 7
 	 * @param randomAmountHigh random number between 3 and 5
 	 * @param totalWheat total wheat in storage
-	 * @return
+	 * @return amount of wheat eaten by rats
 	 */
 	public static int wheatEatenByRats (int percentage, 
 			int randomChance, 
