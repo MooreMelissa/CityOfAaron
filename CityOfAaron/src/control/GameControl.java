@@ -217,19 +217,14 @@ public class GameControl {
                 }
                
                 int noPeopleFed = bushelFed / 20;
-               
+                int starvedPeople = 0;
+                
                 if (noPeopleFed < totalPopulation) {
-                   int starvedPeople = totalPopulation - noPeopleFed;
+                   starvedPeople = totalPopulation - noPeopleFed;
+                }   
                    
-                   return starvedPeople;
+                return starvedPeople;
             
-                }
-               
-                else {
-                  int starvedPeople = 0;
-                   
-                  return starvedPeople;
-                }
                     
         }
 
