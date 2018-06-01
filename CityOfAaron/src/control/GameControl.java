@@ -138,7 +138,9 @@ public class GameControl {
 		totalWheat = totalWheat - totalTithe; 
                 
 		//wheatEatenRats() - H
-		//populationMortality() - M
+		//Beginning of populationMortality function
+                int popMortality = populationMortality(bushelsFed, totalPopulation);
+                totalPopulation = totalPopulation - popMortality;
                 
 		//Beginning of peopleMoveIn function
 		int populationGrowth = peopleMoveIn(randomGrowth, totalPopulation);

@@ -209,7 +209,60 @@ public class GameControlTest {
 	 * Test of testFeedPeople method, of class GameControl.
 	 */
         
+        @Test
+        public void testFeedPeople1() {
+                System.out.println("testFeedPeople1");
+                int result = GameControl.feedPeople(800, 2700);
+                assertEquals(800, result);
+                System.out.println(result);
+        }
         
+        @Test
+        public void testFeedPeople2() {
+                System.out.println("testFeedPeople2");
+                int result = GameControl.feedPeople(-100, 2700);
+                assertEquals(-1, result);
+                System.out.print(result);
+        }
+        
+        @Test
+        public void testFeedPeople3() {
+               System.out.println("testFeedPeople3");
+               int result = GameControl.feedPeople(2800, 2700);
+               assertEquals(-2, result);
+               System.out.println(result);
+        }
+        
+        @Test
+        public void testFeedPeople4() {
+               System.out.println("testFeedPeople4");
+               int result = GameControl.feedPeople(0, 2700);
+               assertEquals(0, result);
+               System.out.println(result);
+        }
+        
+        @Test
+        public void testFeedPeople5() {
+               System.out.println("testFeedPeople5");
+               int result = GameControl.feedPeople(0, 0);
+               assertEquals(0, result);
+               System.out.println(result);
+        }
+        
+        @Test
+        public void testFeedPeople6() {
+               System.out.println("testFeedPeople6");
+               int result = GameControl.feedPeople(50, 50);
+               assertEquals(50, result);
+               System.out.println(result);
+        }
+        
+        @Test
+        public void testFeedPeople7() {
+               System.out.println("testFeedPeople7");
+               int result = GameControl.feedPeople(3500, 4000);
+               assertEquals(3500, result);
+        }
         
     /**
 	 * Test of testPopulationMortality method, of class GameControl.
