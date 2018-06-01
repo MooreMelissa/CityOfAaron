@@ -213,7 +213,7 @@ public class GameControl {
 	 * starvedPeople = 0
 	 * RETURN starvedPeople
 	 * END
-	 * @param bushelFed
+	 * @param bushelsFed
 	 * @param totalPopulation
 	 * @return
 	 */
