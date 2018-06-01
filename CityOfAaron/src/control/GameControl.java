@@ -222,10 +222,10 @@ public class GameControl {
 
 
 	/**
-	 * wheatOfferings
-	 * @param percentage
-	 * @param totalHarvest 
-	 * @return
+	 * wheatOfferings - Calculate the number of bushels to pay in tithing
+	 * @param percentage User input tithing percentage
+	 * @param totalHarvest Total bushels harvested after live the year
+	 * @return Number of bushels to pay in tithing
 	 */
 	public static int wheatOfferings(int percentage, int totalHarvest) {
 		if (percentage < 0 || percentage > 100) {
@@ -307,10 +307,10 @@ public class GameControl {
 	
         
 	/**
-	 * peopleMoveIn
-	 * @param randomGrowth
-	 * @param totalPopulation
-	 * @return
+	 * peopleMoveIn - Calculate the number of people that moved in
+	 * @param randomGrowth random number generation between 1 and 5
+	 * @param totalPopulation population prior to live the year
+	 * @return number of people that moved in
 	 */
 	public static int peopleMoveIn(int randomGrowth, int totalPopulation) {
 		if (randomGrowth < 1 || randomGrowth > 5){ 
