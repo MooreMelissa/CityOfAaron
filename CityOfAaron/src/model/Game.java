@@ -17,8 +17,11 @@ public class Game implements Serializable {
 	private int wheatInStorage;
 	private int currentYear;
 	private int acresPlanted;
-	private int offeringsTithes;
-	private int feedPeopleWheat;
+	private int tithingPaidInBushels;
+	private int bushelsFedToPeople;
+	private int tithingPercentage;
+	private int landPrice;
+	
 
 	public Game() {
 		//Empty constructor for JavaBeans
@@ -88,23 +91,39 @@ public class Game implements Serializable {
 		this.acresPlanted = acresPlanted;
 	}
 
-	public int getOfferingsTithes() {
-		return offeringsTithes;
+	public int getTithingPaidInBushels() {
+		return tithingPaidInBushels;
 	}
 
-	public void setOfferingsTithes(int offeringsTithes) {
-		this.offeringsTithes = offeringsTithes;
+	public void setTithingPaidInBushels(int tithingPaidInBushels) {
+		this.tithingPaidInBushels = tithingPaidInBushels;
 	}
 
-	public int getFeedPeopleWheat() {
-		return feedPeopleWheat;
+	public int getBushelsFedToPeople() {
+		return bushelsFedToPeople;
 	}
 
-	public void setFeedPeopleWheat(int feedPeopleWheat) {
-		this.feedPeopleWheat = feedPeopleWheat;
+	public void setBushelsFedToPeople(int bushelsFedToPeople) {
+		this.bushelsFedToPeople = bushelsFedToPeople;
 	}
 
+	public int getTithingPercentage() {
+		return tithingPercentage;
+	}
 
+	public void setTithingPercentage(int tithingPercentage) {
+		this.tithingPercentage = tithingPercentage;
+	}
+
+	public int getLandPrice() {
+		return landPrice;
+	}
+
+	public void setLandPrice(int landPrice) {
+		this.landPrice = landPrice;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Game{"
@@ -116,8 +135,10 @@ public class Game implements Serializable {
 				+ ", wheatInStorage=" + wheatInStorage
 				+ ", currentYear=" + currentYear
 				+ ", acresPlanted=" + acresPlanted
-				+ ", offeringsTithes=" + offeringsTithes
-				+ ", feedPeopleWheat=" + feedPeopleWheat
+				+ ", tithingPaidInBushels=" + tithingPaidInBushels
+				+ ", bushelsFedToPeople=" + bushelsFedToPeople
+				+ ", tithingPercentage=" + tithingPercentage
+				+ ", landPrice=" + landPrice
 				+ '}';
 	}
 
