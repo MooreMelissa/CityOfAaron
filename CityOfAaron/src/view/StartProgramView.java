@@ -27,7 +27,6 @@ public class StartProgramView {
                 + "You have three tasks:\n"
                 + "1 - Replace this message text with the text that is specific to your view.\n"
                 + "2 - Replace this list with menu options that are specific to your view.\n"
-                + "\n"
                 + "3 - Prompt the user for what they are expected to enter.\n";
                 
     }
