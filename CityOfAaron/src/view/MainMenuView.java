@@ -22,7 +22,7 @@ public class MainMenuView {
      */
     public MainMenuView(){
         
-        message = "Main Menu\n"
+        message = "\n\nMain Menu\n"
                 + "-------------\n"
                 + "N - Start a New Game\n"
                 + "L - Load a Saved Game\n"
@@ -86,7 +86,7 @@ public class MainMenuView {
         // from the user.
         String[] inputs = new String[1];
         
-        inputs[0] = getUserInput("Please choose a menu option: \n");
+        inputs[0] = getUserInput("Please choose a menu option:");
         
         // Repeat for each input you need, putting it into its proper slot in the array.
         
@@ -140,18 +140,6 @@ public class MainMenuView {
     // Define your action handlers here. These are the methods that your doAction()
     // method will call based on the user's input. We don't want to do a lot of 
     // complex game stuff in our doAction() method. It will get messy very quickly.
-    
-    
-    private boolean someActionHandler(){
-        // Define whatever code you need here to accomplish the action.
-        // You can make this a void method if you want. Whatever you need 
-        // here, you are free to do.
-        //
-        // Generally, though, this is where you will call into your Control
-        // classes to do the work of the application.
-        
-        return true;
-    }
 	
 	private void startNewGame() {
 		StartNewGameView newGameView = new StartNewGameView();
@@ -159,7 +147,9 @@ public class MainMenuView {
 	}
 	
 	private void helpMenu() {
-		System.out.println("*** helpMenu() called. You must implement the HelpMenuView this week. ***");
+		//System.out.println("*** helpMenu() called. You must implement the HelpMenuView this week. ***");
+		HelpMenuView helpMenu = new HelpMenuView();
+		helpMenu.displayView();
 	}
 	
 	private void loadSavedGame() {
