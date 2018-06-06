@@ -26,7 +26,7 @@ public class StartNewGameView {
     public StartNewGameView(){
         
         message = "Starting a new game...\n\n"
-				+ "This is the message that is printed to the user by this view.\n"
+		+ "This is the message that is printed to the user by this view.\n"
                 + "You have three tasks:\n"
                 + "1 - Replace this message text with the text that is specific to your view.\n"
                 + "2 - Replace this list with menu options that are specific to your view.\n"
