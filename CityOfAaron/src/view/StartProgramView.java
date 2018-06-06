@@ -23,11 +23,18 @@ public class StartProgramView {
     public StartProgramView(){
         
         message = "Welcome to the City of Aaron!"
-		+ "This is the message that is printed to the user by this view.\n"
-                + "You have three tasks:\n"
-                + "1 - Replace this message text with the text that is specific to your view.\n"
-                + "2 - Replace this list with menu options that are specific to your view.\n"
-                + "3 - Prompt the user for what they are expected to enter.\n";
+		+ "You have been elected as the new ruler.\n"
+                + "\n"
+                + "You must keep your villagers alive and help them thrive by:\n"
+                + "1 - Managing the buying and selling of acres of land\n"
+                + "2 - Keeping your people from starvation\n"
+                + "3 - Planting and harvesting wheat\n"
+                + "4 - Electing to pay a religious tithes\n"
+                + "\n"
+                + "Your reign will last 10 years at which point your rule will\n"
+                + "end and the village judge will give you a score.\n"
+                + "\n"
+                + "Are you destined for greatness or failure? Play to know!\n";
                 
     }
     
