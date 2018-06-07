@@ -118,10 +118,10 @@ public class HelpMenuView {
 			case "1":
 				System.out.println("Goals of the Game\n"
                                         + "--------------\n"
-                                        + "1- Last as ruler for 10 years\n "
+                                        + "1- Last as ruler for 10 years\n"
                                         + "2- The City of Aaron is better off than when you took over\n"
                                         + "3- The people are fed\n"
-                                        + "4- The city has land to plant crops\n "
+                                        + "4- The city has land to plant crops\n"
                                         + "5- There is Wheat in Storage\n");
 				pause();
 				break;
@@ -142,13 +142,13 @@ public class HelpMenuView {
 				System.out.println("To Move to Another Location\n"
                                         + "--------------\n"
                                         + "Go to Game Menu and select Move Location\n"
-                                        + "You will be prompted to enter the coordinantes to a location on the map\n");
+                                        + "You will be prompted to enter the coordinates to a location on the map\n");
 				pause();
 				break;
 			case "5":
 				System.out.println("To Display list of Animals, Tools, and Provisions\n"
                                 + "---------------\n"
-                                + " Go to the Reports Menu and select what list you want to view\n");
+                                + "Go to the Reports Menu and select what list you want to view\n");
 				pause();
 				break;
 			case "R":

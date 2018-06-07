@@ -25,7 +25,7 @@ public class StartNewGameView {
      */
     public StartNewGameView(){
         
-        message = "Starting a new game:\n\n"
+        message = "\nStarting a new game...\n\n"
 				+ "So you've chosen to accept the position as ruler of Aaron!\n"
                 + "Rule with bravery and wit and your village will thrive.\n"
                 + "Good luck! And watch out for the rats...\n";

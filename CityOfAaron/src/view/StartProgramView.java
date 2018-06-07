@@ -34,7 +34,7 @@ public class StartProgramView {
                 + "Your reign will last 10 years at which point your rule will\n"
                 + "end and the village judge will give you a score.\n"
                 + "\n"
-                + "Are you destined for greatness or failure? Play to know!\n";
+                + "Are you destined for greatness or failure? Play to know!";
                 
     }
     
