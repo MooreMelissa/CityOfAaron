@@ -27,8 +27,8 @@ public class HelpMenuView {
                 + "1 - What are the goals of the game?\n"
                 + "2 - Where is the city of Aaron?\n"
                 + "3 - How do I view the map?\n"
-				+ "4 - How do I move to another location?\n"
-				+ "5 - How do I display a list of animals, provisions, and tools in the city storehouse?\n"
+		+ "4 - How do I move to another location?\n"
+		+ "5 - How do I display a list of animals, provisions, and tools in the city storehouse?\n"
                 + "R - Return to the Main Menu\n";
                 
     }
@@ -109,30 +109,46 @@ public class HelpMenuView {
                 + "1 - What are the goals of the game?\n"
                 + "2 - Where is the city of Aaron?\n"
                 + "3 - How do I view the map?\n"
-				+ "4 - How do I move to another location?\n"
-				+ "5 - How do I display a list of animals, provisions, and tools in the city storehouse?"
+		+ "4 - How do I move to another location?\n"
+		+ "5 - How do I display a list of animals, provisions, and tools in the city storehouse?"
                 + "R - Return to the Main Menu\n"; */
 		
 		
         switch (inputs[0].trim().toUpperCase()) {
 			case "1":
-				System.out.println("goals");
+				System.out.println("Goals of the Game\n"
+                                        + "--------------\n"
+                                        + "1- Last as ruler for 10 years\n "
+                                        + "2- The City of Aaron is better off than when you took over\n"
+                                        + "3- The people are fed\n"
+                                        + "4- The city has land to plant crops\n "
+                                        + "5- There is Wheat in Storage\n");
 				pause();
 				break;
 			case "2":
-				System.out.println("where");
+				System.out.println("The City of Aaron sits on a small hill overlooking the SkyFall River to the South.\n"
+                                        + "The temple is a beacon of light which shines from the center of the city\n"
+                                        + "Endless wheatfields circle the city as the staff of life\n"
+                                        + "It is a two days journey South to the City of Zarahemla\n");
 				pause();
 				break;
 			case "3":
-				System.out.println("map");
+				System.out.println("To View the Map\n"
+                                        + "--------------\n"
+                                        + "Go to Game Menu and select View the Map\n");
 				pause();
 				break;
 			case "4":
-				System.out.println("move");
+				System.out.println("To Move to Another Location\n"
+                                        + "--------------\n"
+                                        + "Go to Game Menu and select Move Location\n"
+                                        + "You will be prompted to enter the coordinantes location on the map\n");
 				pause();
 				break;
 			case "5":
-				System.out.println("reports");
+				System.out.println("To Display list of Animals, Tools, and Provisions\n"
+                                + "---------------\n"
+                                + " Go to the Reports Menu and select what list you want to view\n");
 				pause();
 				break;
 			case "R":
