@@ -142,7 +142,7 @@ public class HelpMenuView {
 				System.out.println("To Move to Another Location\n"
                                         + "--------------\n"
                                         + "Go to Game Menu and select Move Location\n"
-                                        + "You will be prompted to enter the coordinantes location on the map\n");
+                                        + "You will be prompted to enter the coordinantes to a location on the map\n");
 				pause();
 				break;
 			case "5":
