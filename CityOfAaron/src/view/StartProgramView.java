@@ -23,7 +23,7 @@ public class StartProgramView {
     public StartProgramView(){
         
         message = "Welcome to the City of Aaron!"
-		+ "You have been elected as the new ruler.\n"
+				+ "You have been elected as the new ruler.\n"
                 + "\n"
                 + "You must keep your villagers alive and help them thrive by:\n"
                 + "1 - Managing the buying and selling of acres of land\n"
