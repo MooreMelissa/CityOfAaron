@@ -4,31 +4,40 @@
  * and open the template in the editor.
  */
 package view;
-
-import cityofaaron.CityOfAaron;
 import java.util.Scanner;
-import model.Game;
-import model.Player;
+import model.Author;
+import model.InventoryItem;
+import model.Storehouse;
 
 /**
  *
  * @author heatherholt, kanderson
  */
-public class StartNewGameView {
+public class ReportsMenuView {
+	
+	
+	
 	/**
      * The message that will be displayed by this view.
      */
     protected String message;
     
+	
+	Storehouse storehouse = new Storehouse();
+	
+	
     /**
      * Constructor
      */
-    public StartNewGameView(){
+    public ReportsMenuView(){
         
-        message = "\nStarting a new game...\n\n"
-				+ "So you've chosen to accept the position as ruler of Aaron!\n"
-                + "Rule with bravery and wit and your village will thrive.\n"
-                + "Good luck! And watch out for the rats...\n";
+        message = "\n\nReports Menu\n"
+                + "-------------\n"
+                + "A - View Animals in Storehouse\n"
+                + "T - View Tools in Storehouse\n"
+                + "P - View Provisions in Storehouse\n"
+                + "V - View Authors of Game\n"
+				+ "Q - Return to Main Menu";
                 
     }
     
@@ -87,7 +96,7 @@ public class StartNewGameView {
         // from the user.
         String[] inputs = new String[1];
         
-        inputs[0] = getUserInput("Please enter your name, or press 'Enter' to return to the Main Menu:", true);
+        inputs[0] = getUserInput("Please choose a menu option:");
         
         // Repeat for each input you need, putting it into its proper slot in the array.
         
@@ -102,21 +111,33 @@ public class StartNewGameView {
      * should exit and return to the previous view.
      */
     public boolean doAction(String[] inputs){
-        // There is only one action here: Initialize the Game and
-		// set it in the main CityOfAaron class.
+        
+		/* "Reports Menu\n"
+                + "-------------\n"
+                + "A - View Animals in Storehouse\n"
+                + "T - View Tools in Storehouse\n"
+                + "P - View Provisions in Storehouse\n"
+                + "V - View Authors of Game\n"
+				+ "Q - Return to Main Menu" */
 		
-		// If the user just hits 'enter', bail out and don't do the action.
-		// Returning false will take us back to the Main Menu.
-        if (inputs[0] == null || inputs[0].equals("")) {
-			System.out.println("No player name was entered. Returning to the Main Menu...");
-			return false;
+		switch (inputs[0].trim().toUpperCase()) {
+			case "A":
+				viewAnimals();
+				break;
+			case "T":
+				viewTools();
+				break;
+			case "P":
+				viewProvisions();
+				break;
+			case "V":
+				viewAuthors();
+				break;
+			case "Q":
+				return false;
 		}
-		
-		String playerName = inputs[0];
-		createAndStartGame(playerName);
-		
-		// Return false to prevent loop.
-        return false;
+        
+        return true;
     }
     
     
@@ -131,7 +152,6 @@ public class StartNewGameView {
         while(keepGoing == true){
             
             System.out.println(message);
-			pause();
             String[] inputs = getInputs();
             keepGoing = doAction(inputs);
         }
@@ -141,8 +161,8 @@ public class StartNewGameView {
     // Define your action handlers here. These are the methods that your doAction()
     // method will call based on the user's input. We don't want to do a lot of 
     // complex game stuff in our doAction() method. It will get messy very quickly.
-	
-	private void pause(){
+    
+    private void pause(){
         // Pause for a few seconds
 		try {
 			// 2000 millisecond delay after the welcome message is displayed.
@@ -152,31 +172,40 @@ public class StartNewGameView {
 		}
     }
 	
-	/**
-	 * Create a new Game with the named Player and call the GameMenuView.
-	 */
-	private void createAndStartGame(String playerName) {
-		
-		// Eventually, we will do this:
-		// Game game = GameControl.createNewGame(playerName);
-		//
-		// But for this week, we'll do this:
-		
-		Player player = new Player();
-		player.setName(playerName);
-		
-		Game game = new Game();
-		game.setThePlayer(player);
-		
-		CityOfAaron.setCurrentGame(game);
-		
-		//System.out.println();
-		//System.out.println("Welcome to the game, " + CityOfAaron.getCurrentGame().getThePlayer().getName() + "!\n"
-		//		+ "Next week we will have a GameMenuView that you will see. But for now, \n"
-		//		+ "we're just going to send you back to the Main Menu.");
-		
-		// Once the GameMenuView is created, we will call it here.
-		GameMenuView gameMenu = new GameMenuView();
-		gameMenu.displayView();
+	private void viewAnimals() {
+		//System.out.println("* viewAnimals() called. Implementation coming soon. *");
+		InventoryItem[] animals = storehouse.getAnimals();
+		System.out.println(animals[0]);
+		System.out.println(animals[1]);
+		System.out.println(animals[2]);
+		pause();
 	}
+	
+	private void viewTools() {
+		//System.out.println("* viewTools() called. Implementation coming soon. *");
+		InventoryItem[] tools = storehouse.getTools();
+		System.out.println(tools[0]);
+		System.out.println(tools[1]);
+		System.out.println(tools[2]);
+		pause();
+	}
+	
+	private void viewProvisions() {
+		//System.out.println("* viewProvisions() called. Implementation coming soon. *");
+		InventoryItem[] provisions = storehouse.getProvisions();
+		System.out.println(provisions[0]);
+		System.out.println(provisions[1]);
+		System.out.println(provisions[2]);
+		pause();
+	}
+	
+	private void viewAuthors() {
+		//System.out.println("* viewAuthors() called. Implementation coming soon. *");
+		Author[] authors = storehouse.getAuthors();
+		System.out.println(authors[0]);
+		System.out.println(authors[1]);
+		System.out.println(authors[2]);
+		pause();
+	}
+	
 }

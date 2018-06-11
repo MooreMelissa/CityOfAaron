@@ -136,7 +136,7 @@ public class GameControl {
 		int randomAmountLow = RandomNumbers.getRandom(6, 10); // wheatEatenByRats
 		int randomAmountMid = RandomNumbers.getRandom(3, 7); // wheatEatenByRats
 		int randomAmountHigh = RandomNumbers.getRandom(3, 5); // wheatEatenByRats
-                int randomGrowth = RandomNumbers.getRandom(1, 5); //peopleMoveIn
+        int randomGrowth = RandomNumbers.getRandom(1, 5); //peopleMoveIn
 		
 		// Beginning of harvestWheat function
 		if (acresToPlant < 0) {

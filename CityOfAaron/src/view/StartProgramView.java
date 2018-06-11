@@ -29,7 +29,7 @@ public class StartProgramView {
                 + "1 - Managing the buying and selling of acres of land\n"
                 + "2 - Keeping your people from starvation\n"
                 + "3 - Planting and harvesting wheat\n"
-                + "4 - Electing to pay a religious tithes\n"
+                + "4 - Electing to pay a religious tithe\n"
                 + "\n"
                 + "Your reign will last 10 years at which point your rule will\n"
                 + "end and the village judge will give you a score.\n"

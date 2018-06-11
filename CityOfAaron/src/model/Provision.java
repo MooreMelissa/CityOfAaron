@@ -43,9 +43,7 @@ public class Provision extends InventoryItem implements Serializable {
 
 		String sup = super.toString();
 
-		return sup + "Provision{"
-				+ "perishable=" + perishable
-				+ '}';
+		return sup + ", perishable: " + perishable;
 	}
 
 }

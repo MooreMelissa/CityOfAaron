@@ -5,16 +5,15 @@
  */
 package view;
 
-import cityofaaron.CityOfAaron;
 import java.util.Scanner;
-import model.Game;
-import model.Player;
 
 /**
  *
  * @author heatherholt, kanderson
  */
-public class StartNewGameView {
+public class MoveLocationView {
+	
+	
 	/**
      * The message that will be displayed by this view.
      */
@@ -23,12 +22,14 @@ public class StartNewGameView {
     /**
      * Constructor
      */
-    public StartNewGameView(){
+    public MoveLocationView(){
         
-        message = "\nStarting a new game...\n\n"
-				+ "So you've chosen to accept the position as ruler of Aaron!\n"
-                + "Rule with bravery and wit and your village will thrive.\n"
-                + "Good luck! And watch out for the rats...\n";
+        message = "This is the message that is printed to the user by this view.\n"
+                + "You have three tasks:\n"
+                + "1 - Replace this message text with the text that is specific to your view.\n"
+                + "2 - Replace this list with menu options that are specific to your view.\n"
+                + "\n"
+                + "3 - Prompt the user for what they are expected to enter.\n";
                 
     }
     
@@ -87,7 +88,7 @@ public class StartNewGameView {
         // from the user.
         String[] inputs = new String[1];
         
-        inputs[0] = getUserInput("Please enter your name, or press 'Enter' to return to the Main Menu:", true);
+        inputs[0] = getUserInput("Change this text to prompt the user for the input.");
         
         // Repeat for each input you need, putting it into its proper slot in the array.
         
@@ -102,21 +103,16 @@ public class StartNewGameView {
      * should exit and return to the previous view.
      */
     public boolean doAction(String[] inputs){
-        // There is only one action here: Initialize the Game and
-		// set it in the main CityOfAaron class.
-		
-		// If the user just hits 'enter', bail out and don't do the action.
-		// Returning false will take us back to the Main Menu.
-        if (inputs[0] == null || inputs[0].equals("")) {
-			System.out.println("No player name was entered. Returning to the Main Menu...");
-			return false;
-		}
-		
-		String playerName = inputs[0];
-		createAndStartGame(playerName);
-		
-		// Return false to prevent loop.
-        return false;
+        // Act on the user's input.
+        // This is a "dispatch" function that decides what
+        // other functions to call. You can use an if-, if-else,
+        // or switch statement.
+        
+        // return false if you want this view to exit and return
+        // to the view that called it.
+        someActionHandler();
+        
+        return true;
     }
     
     
@@ -131,7 +127,6 @@ public class StartNewGameView {
         while(keepGoing == true){
             
             System.out.println(message);
-			pause();
             String[] inputs = getInputs();
             keepGoing = doAction(inputs);
         }
@@ -141,42 +136,20 @@ public class StartNewGameView {
     // Define your action handlers here. These are the methods that your doAction()
     // method will call based on the user's input. We don't want to do a lot of 
     // complex game stuff in our doAction() method. It will get messy very quickly.
-	
-	private void pause(){
-        // Pause for a few seconds
-		try {
-			// 2000 millisecond delay after the welcome message is displayed.
-			Thread.sleep(2000);
-		} catch(InterruptedException exception) {
-			// ignore this exception for now
-		}
+    
+    
+    private boolean someActionHandler(){
+        // Define whatever code you need here to accomplish the action.
+        // You can make this a void method if you want. Whatever you need 
+        // here, you are free to do.
+        //
+        // Generally, though, this is where you will call into your Control
+        // classes to do the work of the application.
+        
+        return true;
     }
 	
-	/**
-	 * Create a new Game with the named Player and call the GameMenuView.
-	 */
-	private void createAndStartGame(String playerName) {
-		
-		// Eventually, we will do this:
-		// Game game = GameControl.createNewGame(playerName);
-		//
-		// But for this week, we'll do this:
-		
-		Player player = new Player();
-		player.setName(playerName);
-		
-		Game game = new Game();
-		game.setThePlayer(player);
-		
-		CityOfAaron.setCurrentGame(game);
-		
-		//System.out.println();
-		//System.out.println("Welcome to the game, " + CityOfAaron.getCurrentGame().getThePlayer().getName() + "!\n"
-		//		+ "Next week we will have a GameMenuView that you will see. But for now, \n"
-		//		+ "we're just going to send you back to the Main Menu.");
-		
-		// Once the GameMenuView is created, we will call it here.
-		GameMenuView gameMenu = new GameMenuView();
-		gameMenu.displayView();
-	}
+	
+	
+	
 }
