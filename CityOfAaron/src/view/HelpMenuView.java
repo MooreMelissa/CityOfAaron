@@ -27,8 +27,8 @@ public class HelpMenuView {
                 + "1 - What are the goals of the game?\n"
                 + "2 - Where is the city of Aaron?\n"
                 + "3 - How do I view the map?\n"
-				+ "4 - How do I move to another location?\n"
-				+ "5 - How do I display a list of animals, provisions, and tools in the city storehouse?\n"
+		+ "4 - How do I move to another location?\n"
+		+ "5 - How do I display a list of animals, provisions, and tools in the city storehouse?\n"
                 + "Q - Return to the Main Menu\n";
                 
     }
@@ -109,9 +109,9 @@ public class HelpMenuView {
                 + "1 - What are the goals of the game?\n"
                 + "2 - Where is the city of Aaron?\n"
                 + "3 - How do I view the map?\n"
-				+ "4 - How do I move to another location?\n"
-				+ "5 - How do I display a list of animals, provisions, and tools in the city storehouse?"
-                + "R - Return to the Main Menu\n"; */
+		+ "4 - How do I move to another location?\n"
+		+ "5 - How do I display a list of animals, provisions, and tools in the city storehouse?"
+                + "Q - Return to the Main Menu\n"; */
 		
 		
         switch (inputs[0].trim().toUpperCase()) {

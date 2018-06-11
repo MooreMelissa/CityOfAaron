@@ -13,9 +13,7 @@ import java.util.Scanner;
  */
 public class ManageCropsMenuView {
 	
-	
-	
-	/**
+    /**
      * The message that will be displayed by this view.
      */
     protected String message;
@@ -25,12 +23,14 @@ public class ManageCropsMenuView {
      */
     public ManageCropsMenuView(){
         
-        message = "This is the message that is printed to the user by this view.\n"
-                + "You have three tasks:\n"
-                + "1 - Replace this message text with the text that is specific to your view.\n"
-                + "2 - Replace this list with menu options that are specific to your view.\n"
-                + "\n"
-                + "3 - Prompt the user for what they are expected to enter.\n";
+        message = "Manage the Crops Menu.\n"
+                + "-------------------\n"
+                + "B Buy Land\n"
+                + "S Sell Land\n"
+                + "F Feed the People\n"
+                + "P Plant Crops\n"
+                + "T Pay Tithes and Offerings "
+                + "Q Return to Game Menu\n";
                 
     }
     
@@ -89,7 +89,7 @@ public class ManageCropsMenuView {
         // from the user.
         String[] inputs = new String[1];
         
-        inputs[0] = getUserInput("Change this text to prompt the user for the input.");
+        inputs[0] = getUserInput("Please Choose a Menu Option:");
         
         // Repeat for each input you need, putting it into its proper slot in the array.
         
@@ -104,17 +104,38 @@ public class ManageCropsMenuView {
      * should exit and return to the previous view.
      */
     public boolean doAction(String[] inputs){
-        // Act on the user's input.
-        // This is a "dispatch" function that decides what
-        // other functions to call. You can use an if-, if-else,
-        // or switch statement.
+        /* "Manage the Crops Menu.\n"
+                + "-------------------\n"
+                + "B Buy Land\n"
+                + "S Sell Land\n"
+                + "F Feed the People\n"
+                + "P Plant Crops\n"
+                + "T Pay Tithes and Offerings "
+                + "Q Return to Game Menu\n";*/
         
-        // return false if you want this view to exit and return
-        // to the view that called it.
-        someActionHandler();
+        switch (inputs[0].trim().toUpperCase()) {
+			case "B":
+				buyLand();
+				break;
+			case "S":
+				sellLand();
+				break;
+			case "F":
+				feedPeople();
+				break;
+			case "P":
+				plantCrops();
+				break;
+			case "T":
+                                payTithing();
+                                break;
+			case "Q":
+				return false;
+		}
         
         return true;
     }
+    
     
     
     /**
@@ -134,21 +155,35 @@ public class ManageCropsMenuView {
     }
     
     
-    // Define your action handlers here. These are the methods that your doAction()
+	
+ // Define your action handlers here. These are the methods that your doAction()
     // method will call based on the user's input. We don't want to do a lot of 
     // complex game stuff in our doAction() method. It will get messy very quickly.
-    
-    
-    private boolean someActionHandler(){
-        // Define whatever code you need here to accomplish the action.
-        // You can make this a void method if you want. Whatever you need 
-        // here, you are free to do.
-        //
-        // Generally, though, this is where you will call into your Control
-        // classes to do the work of the application.
+	
+	private void buyLand() {
+		BuyLandView buyLand = new BuyLandView();
+		buyLand.displayView();
+	}
+	
+	private void sellLand() {
+		SellLandView sellLand = new SellLandView();
+		sellLand.displayView();
+	}
+	
+	private void feedPeople() {
+		FeedPeopleView feedPeople = new FeedPeopleView();
+                feedPeople.displayView();
+	}
         
-        return true;
-    }
+	private void plantCrops() {
+		PlantCropsView plantCrops = new PlantCropsView();
+		plantCrops.displayView();
+	}
+	
+	private void payTithing() {
+		PayTithingView payTithing = new PayTithingView();
+		payTithing.displayView();
+	}
 	
 	
 	

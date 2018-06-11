@@ -164,8 +164,12 @@ public class GameMenuView {
 	}
 
 	private void manageCropsMenu() {
-		System.out.println("* manageCropsMenu() called. Implementation coming soon. *");
+		//System.out.println("* manageCropsMenu() called. Implementation coming soon. *");
+		ManageCropsMenuView manageCrops = new ManageCropsMenuView();
+		manageCrops.displayView();
+               
 	}
+	
 	
 	private void liveTheYear() {
 		System.out.println("* liveTheYear() called. Implementation coming soon. *");
