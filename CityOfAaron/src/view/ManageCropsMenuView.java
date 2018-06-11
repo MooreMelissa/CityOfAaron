@@ -23,13 +23,13 @@ public class ManageCropsMenuView {
      */
     public ManageCropsMenuView(){
         
-        message = "Manage the Crops Menu.\n"
+        message = "\n\nManage the Crops Menu\n"
                 + "-------------------\n"
                 + "B - Buy Land\n"
                 + "S - Sell Land\n"
                 + "F - Feed the People\n"
                 + "P - Plant Crops\n"
-                + "T - Pay Tithes and Offerings\n "
+                + "T - Pay Tithes and Offerings\n"
                 + "Q - Return to Game Menu\n";
                 
     }
@@ -127,8 +127,8 @@ public class ManageCropsMenuView {
 				plantCrops();
 				break;
 			case "T":
-                                payTithing();
-                                break;
+				payTithing();
+				break;
 			case "Q":
 				return false;
 		}

@@ -170,10 +170,13 @@ public class StartNewGameView {
 		
 		CityOfAaron.setCurrentGame(game);
 		
-		//System.out.println();
-		//System.out.println("Welcome to the game, " + CityOfAaron.getCurrentGame().getThePlayer().getName() + "!\n"
-		//		+ "Next week we will have a GameMenuView that you will see. But for now, \n"
-		//		+ "we're just going to send you back to the Main Menu.");
+		Game currentGame = CityOfAaron.getCurrentGame();
+		currentGame.setCurrentYear(1);
+		currentGame.setCurrentPopulation(100);
+		currentGame.setAcresOwned(1000);
+		currentGame.setTithingPaidInBushels(300);
+		currentGame.setTithingPercentage(10);
+		currentGame.setWheatInStorage(2700);
 		
 		// Once the GameMenuView is created, we will call it here.
 		GameMenuView gameMenu = new GameMenuView();

@@ -17,6 +17,8 @@ import model.Game;
  */
 public class BuyLandView {
 	
+	//Game game = CityOfAaron.getCurrentGame();
+	//game.setLandPrice(RandomNumber.getRandom(17, 27));
 	int randomPrice = RandomNumbers.getRandom(17, 27);
 	
 	/**
@@ -30,7 +32,7 @@ public class BuyLandView {
     public BuyLandView(){
         
         message = "Welcome to the market! You can buy land here, or press 'Enter' to return to the previous menu.\n"
-				+ "The current price of land is " + randomPrice + "bushels per acre.";
+				+ "The current price of land is " + randomPrice + " bushels per acre.";
                 
     }
     
@@ -89,7 +91,7 @@ public class BuyLandView {
         // from the user.
         String[] inputs = new String[1];
         
-        inputs[0] = getUserInput("How many acres of new land do you want to buy?", true);
+        inputs[0] = getUserInput("How many acres of land do you want to buy?", true);
         
         // Repeat for each input you need, putting it into its proper slot in the array.
         
@@ -110,12 +112,11 @@ public class BuyLandView {
         if (inputs[0] == null || inputs[0].equals("")) {
 			System.out.println("No amount was entered. Returning to the Game Menu...");
 			pause();
-			return false;
+			return true;
+		} else {		
+			buyLandTransaction(inputs);
+	        return false;
 		}
-		
-		buyLandTransaction(inputs);
-        
-        return true;
     }
     
     
@@ -139,22 +140,9 @@ public class BuyLandView {
     // Define your action handlers here. These are the methods that your doAction()
     // method will call based on the user's input. We don't want to do a lot of 
     // complex game stuff in our doAction() method. It will get messy very quickly.
-    
-    
-    private boolean someActionHandler(){
-        // Define whatever code you need here to accomplish the action.
-        // You can make this a void method if you want. Whatever you need 
-        // here, you are free to do.
-        //
-        // Generally, though, this is where you will call into your Control
-        // classes to do the work of the application.
-        
-        return true;
-    }
 	
 	private boolean buyLandTransaction(String[] inputs) {
 		
-		//Game game = new Game();
 		Game game = CityOfAaron.getCurrentGame();
 		
 		int acresToBuy = Integer.parseInt(inputs[0]);
@@ -170,7 +158,7 @@ public class BuyLandView {
 			game.setAcresOwned(game.getAcresOwned()+acresToBuy);
 			System.out.println("You have successfully purchased " + acresToBuy + " acres of land.\n"
 					+ "You now own " + game.getAcresOwned() + " total acres.\n"
-					+ "You have " + game.getWheatInStorage() + " bushels of wheat in storage.\n");
+					+ "You have " + game.getWheatInStorage() + " bushels of wheat in storage.");
 			pause();
 			return false;
 		}
