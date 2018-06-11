@@ -25,12 +25,12 @@ public class ManageCropsMenuView {
         
         message = "Manage the Crops Menu.\n"
                 + "-------------------\n"
-                + "B Buy Land\n"
-                + "S Sell Land\n"
-                + "F Feed the People\n"
-                + "P Plant Crops\n"
-                + "T Pay Tithes and Offerings "
-                + "Q Return to Game Menu\n";
+                + "B - Buy Land\n"
+                + "S - Sell Land\n"
+                + "F - Feed the People\n"
+                + "P - Plant Crops\n"
+                + "T - Pay Tithes and Offerings\n "
+                + "Q - Return to Game Menu\n";
                 
     }
     
