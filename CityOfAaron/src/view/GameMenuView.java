@@ -170,8 +170,7 @@ public class GameMenuView {
 	private void liveTheYear() {
 		System.out.println("* liveTheYear() called. Implementation coming soon. *");
 		// I'm not positive how to do this yet, just experimenting.
-		// GameControl gameControl = new GameControl();
-		// gameControl.liveTheYear(CityOfAaron.getCurrentGame());
+		// GameControl.liveTheYear(CityOfAaron.getCurrentGame());
 	}
 	
 	private void reportsMenu() {
