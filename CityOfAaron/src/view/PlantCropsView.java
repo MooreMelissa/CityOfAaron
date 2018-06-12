@@ -28,7 +28,9 @@ public class PlantCropsView {
      */
     public PlantCropsView(){
         
-        message = "Welcome to the market!.\n";
+        message = "Welcome to the Granary and Storehouse!.\n "
+                + "You can get seed for your fields here.\n"
+                + "Press Enter to return to Manage the Crops Menu\n";
                 
     }
     
@@ -120,7 +122,7 @@ public class PlantCropsView {
                         check = true;
                     } catch (NumberFormatException nfe) {
 
-                        System.out.println("This was not a number");
+                        System.out.println("Not a valid input. Please enter a number");
                         inputs = getInputs();
                         
 

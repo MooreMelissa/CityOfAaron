@@ -27,7 +27,10 @@ public class FeedPeopleView {
      */
     public FeedPeopleView(){
         
-        message = "Welcome to the Market! \n";
+        message = "Welcome to the Granary and Storehouse.\n"
+                 + "We have ample storage for your needs.\n"
+                 + "Store the people's food here for the coming year.\n"
+                 + "Press Enter to return to Manage the Crop Menu";
                 
     }
     
@@ -119,7 +122,7 @@ public class FeedPeopleView {
                         check = true;
                     } catch (NumberFormatException nfe) {
 
-                        System.out.println("This was not a number");
+                        System.out.println("Not a valid input. Please enter a number");
                         inputs = getInputs();
                         
 
