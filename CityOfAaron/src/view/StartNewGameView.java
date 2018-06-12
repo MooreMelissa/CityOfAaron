@@ -178,6 +178,24 @@ public class StartNewGameView {
 		currentGame.setTithingPercentage(10);
 		currentGame.setWheatInStorage(2700);
 		
+		
+		System.out.println("\n\nWelcome to your new domain, " + playerName + "!"
+				+ "\nHere's what you need to know before you start:"
+				+ "\n\n- Year: " + currentGame.getCurrentYear()
+				+ "\n- 0 people starved"
+				+ "\n- 5 people came to the city"
+				+ "\n- The current population is " + currentGame.getCurrentPopulation()
+				+ "\n- The city owns " + currentGame.getAcresOwned() + " acres of crop land"
+				+ "\n- 3 bushels per acre were harvested"
+				+ "\n- The total harvest was 3000 bushels of wheat"
+				+ "\n- The total tithe paid was " + currentGame.getTithingPaidInBushels() + " bushels of wheat"
+				+ "\n- 0 bushels of wheat were eaten by rats"
+				+ "\n- The total amount of wheat in storage is " + currentGame.getWheatInStorage() + " bushels"
+				+ "\n\n ** Please be sure to complete all the tasks in the"
+				+ "\n'Manage Crops Menu' before choosing to 'Live The Year' **");
+		
+		pause();
+		
 		// Once the GameMenuView is created, we will call it here.
 		GameMenuView gameMenu = new GameMenuView();
 		gameMenu.displayView();
