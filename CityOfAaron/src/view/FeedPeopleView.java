@@ -5,6 +5,9 @@
  */
 package view;
 
+import cityofaaron.CityOfAaron;
+import control.GameControl;
+import model.Game;
 import java.util.Scanner;
 
 /**
@@ -13,8 +16,8 @@ import java.util.Scanner;
  */
 public class FeedPeopleView {
 	
-	
-	/**
+    Game game = CityOfAaron.getCurrentGame();
+    /**
      * The message that will be displayed by this view.
      */
     protected String message;
@@ -24,12 +27,7 @@ public class FeedPeopleView {
      */
     public FeedPeopleView(){
         
-        message = "This is the message that is printed to the user by this view.\n"
-                + "You have three tasks:\n"
-                + "1 - Replace this message text with the text that is specific to your view.\n"
-                + "2 - Replace this list with menu options that are specific to your view.\n"
-                + "\n"
-                + "3 - Prompt the user for what they are expected to enter.\n";
+        message = "Welcome to the Market! \n";
                 
     }
     
@@ -88,7 +86,7 @@ public class FeedPeopleView {
         // from the user.
         String[] inputs = new String[1];
         
-        inputs[0] = getUserInput("Change this text to prompt the user for the input.");
+        inputs[0] = getUserInput("How many bushels of grain do you want to give to the people?", true);
         
         // Repeat for each input you need, putting it into its proper slot in the array.
         
@@ -103,16 +101,36 @@ public class FeedPeopleView {
      * should exit and return to the previous view.
      */
     public boolean doAction(String[] inputs){
-        // Act on the user's input.
-        // This is a "dispatch" function that decides what
-        // other functions to call. You can use an if-, if-else,
-        // or switch statement.
-        
-        // return false if you want this view to exit and return
-        // to the view that called it.
-        someActionHandler();
-        
-        return true;
+         // If the user just hits 'enter', bail out and don't do the action.
+	    // Returning false will take us back to the Manage Crops Menu.
+            // check input from user can be converted to int call method here
+            if (inputs[0] == null || inputs[0].equals("")) {
+			System.out.println("\nNo amount was entered. Returning to the Manage the Crops Menu...");
+			pause();
+			return false;
+		} 
+            
+            else {
+                
+                boolean check = false;
+                while (check == false) {
+                    try {
+                        Integer.parseInt(inputs[0]);
+                        check = true;
+                    } catch (NumberFormatException nfe) {
+
+                        System.out.println("This was not a number");
+                        inputs = getInputs();
+                        
+
+                    }
+                }
+
+                boolean result = feedPeopleTransaction(inputs);
+                return result;
+                
+            }
+           
     }
     
     
@@ -138,17 +156,48 @@ public class FeedPeopleView {
     // complex game stuff in our doAction() method. It will get messy very quickly.
     
     
-    private boolean someActionHandler(){
-        // Define whatever code you need here to accomplish the action.
-        // You can make this a void method if you want. Whatever you need 
-        // here, you are free to do.
-        //
-        // Generally, though, this is where you will call into your Control
-        // classes to do the work of the application.
-        
-        return true;
-    }
+    private boolean feedPeopleTransaction(String[] inputs) {
+		
+        Game game = CityOfAaron.getCurrentGame();
+		 
+	    int bushelsFed = Integer.parseInt(inputs[0]);
+	    int totalWheat = game.getWheatInStorage();
+		
+	    int bushels  = GameControl.feedPeople(bushelsFed, totalWheat);
+                
+            if (bushels == -1) {
+                System.out.println("\n** Invalid input, please try again. **");
+		return true;
+                }
+            
+            if (bushels == -2) {
+                    System.out.println("\n** Invalid input **"
+                                       + "\nThe amount of bushels entered is exceeded "
+                                       + "the wheat in storage"
+                                       + "\nPlease try again");
+                    return true;
+                }
+                
+            else {
+                    game.setWheatInStorage(totalWheat - bushels);
+                    game.setBushelsFedToPeople(bushels);
+                    System.out.println("\nYou have " + game.getWheatInStorage() + " bushels of wheat in storage.");
+		    pause();
+		    return false;
+                }
+	}
 	
+    private void pause(){
+        // Pause for a few seconds
+	try {
+	    // 2000 millisecond delay after the welcome message is displayed.
+	    Thread.sleep(2000);
+	    } 
+        
+        catch(InterruptedException exception) {
+			// ignore this exception for now
+		}
+    }
 	
 	
 }

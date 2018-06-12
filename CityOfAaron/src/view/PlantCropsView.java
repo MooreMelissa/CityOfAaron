@@ -172,20 +172,20 @@ public class PlantCropsView {
                     System.out.println("\n** Invalid input, please try again. **");
 			return true;
                 }
-                else if (crops == -2) {
+                if (crops == -2) {
                     System.out.println("\n ** Invalid input **"
                                        + "\nThe amount of acres entered is more than acres owned"
                                        + "\nPlease try again");
                         return true;
                 }
-                else if (crops == -3) {
+                if (crops == -3) {
                     System.out.println("\n** Invalid input **"
                                        + "\nThe amount of acres entered is more than the"
                                        + "current population can take care of"
                                        + "Please try again");
                         return true;
                 }
-                else if (crops == -4) {
+                if (crops == -4) {
                     System.out.println("\n** Invalid input **"
                                        + "\nThe amount of acres entered is exceeded"
                                        + "the wheat in storage"
