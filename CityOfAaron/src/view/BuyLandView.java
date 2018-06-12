@@ -17,10 +17,6 @@ import model.Game;
  */
 public class BuyLandView {
 	
-	//Game game = CityOfAaron.getCurrentGame();
-	//game.setLandPrice(RandomNumber.getRandom(17, 27));
-	int randomPrice = RandomNumbers.getRandom(17, 27);
-	
 	/**
      * The message that will be displayed by this view.
      */
@@ -31,8 +27,10 @@ public class BuyLandView {
      */
     public BuyLandView(){
         
+		Game game = CityOfAaron.getCurrentGame();
+		
         message = "\n\nWelcome to the market! You can buy land here, or press 'Enter' to return to the previous menu.\n"
-				+ "The current price of land is " + randomPrice + " bushels per acre.";
+				+ "The current price of land is " + game.getLandPrice() + " bushels per acre.";
                 
     }
     
@@ -110,7 +108,7 @@ public class BuyLandView {
 		// If the user just hits 'enter', bail out and don't do the action.
 		// Returning false will take us back to the Game Menu.
         if (inputs[0] == null || inputs[0].equals("")) {
-			System.out.println("No amount was entered. Returning to the Manage the Crops Menu...");
+			System.out.println("\nNo amount was entered. Returning to the Manage the Crops Menu...");
 			pause();
 			return false;
 		} else {		
@@ -148,15 +146,15 @@ public class BuyLandView {
 		int acresToBuy = Integer.parseInt(inputs[0]);
 		int totalWheat = game.getWheatInStorage();
 		
-		int cost = GameControl.buyLand(acresToBuy, randomPrice, totalWheat);
+		int cost = GameControl.buyLand(acresToBuy, game.getLandPrice(), totalWheat);
 		
 		if (cost < 0) {
-			System.out.println("Invalid input, please try again.");
+			System.out.println("\n** Invalid input, please try again. **");
 			return true;
 		} else {
 			game.setWheatInStorage(totalWheat-cost);
 			game.setAcresOwned(game.getAcresOwned()+acresToBuy);
-			System.out.println("You have successfully purchased " + acresToBuy + " acres of land.\n"
+			System.out.println("\nYou have successfully purchased " + acresToBuy + " acres of land.\n"
 					+ "You now own " + game.getAcresOwned() + " total acres.\n"
 					+ "You have " + game.getWheatInStorage() + " bushels of wheat in storage.");
 			pause();

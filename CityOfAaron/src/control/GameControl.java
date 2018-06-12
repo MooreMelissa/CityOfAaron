@@ -181,6 +181,7 @@ public class GameControl {
 		game.setTithingPaidInBushels(totalTithe);
 		game.setCurrentPopulation(totalPopulation);
 		game.setWheatInStorage(totalWheat);
+		game.setLandPrice(RandomNumbers.getRandom(17, 27));
 		return true; 
 	}
 

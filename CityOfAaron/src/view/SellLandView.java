@@ -5,7 +5,11 @@
  */
 package view;
 
+import cityofaaron.CityOfAaron;
+import control.GameControl;
+import control.RandomNumbers;
 import java.util.Scanner;
+import model.Game;
 
 /**
  *
@@ -24,13 +28,11 @@ public class SellLandView {
      * Constructor
      */
     public SellLandView(){
+		
+		Game game = CityOfAaron.getCurrentGame();
         
-        message = "This is the message that is printed to the user by this view.\n"
-                + "You have three tasks:\n"
-                + "1 - Replace this message text with the text that is specific to your view.\n"
-                + "2 - Replace this list with menu options that are specific to your view.\n"
-                + "\n"
-                + "3 - Prompt the user for what they are expected to enter.\n";
+        message = "\n\nWelcome to the market! You can sell land here, or press 'Enter' to return to the previous menu.\n"
+				+ "The current price of land is " + game.getLandPrice() + " bushels per acre.";
                 
     }
     
@@ -89,7 +91,7 @@ public class SellLandView {
         // from the user.
         String[] inputs = new String[1];
         
-        inputs[0] = getUserInput("Change this text to prompt the user for the input.");
+        inputs[0] = getUserInput("\nHow many acres of land do you want to sell?", true);
         
         // Repeat for each input you need, putting it into its proper slot in the array.
         
@@ -104,16 +106,17 @@ public class SellLandView {
      * should exit and return to the previous view.
      */
     public boolean doAction(String[] inputs){
-        // Act on the user's input.
-        // This is a "dispatch" function that decides what
-        // other functions to call. You can use an if-, if-else,
-        // or switch statement.
         
-        // return false if you want this view to exit and return
-        // to the view that called it.
-        someActionHandler();
-        
-        return true;
+		// If the user just hits 'enter', bail out and don't do the action.
+		// Returning false will take us back to the Game Menu.
+        if (inputs[0] == null || inputs[0].equals("")) {
+			System.out.println("\nNo amount was entered. Returning to the Manage the Crops Menu...");
+			pause();
+			return false;
+		} else {		
+			boolean result = sellLandTransaction(inputs);
+			return result;
+		}
     }
     
     
@@ -137,19 +140,38 @@ public class SellLandView {
     // Define your action handlers here. These are the methods that your doAction()
     // method will call based on the user's input. We don't want to do a lot of 
     // complex game stuff in our doAction() method. It will get messy very quickly.
-    
-    
-    private boolean someActionHandler(){
-        // Define whatever code you need here to accomplish the action.
-        // You can make this a void method if you want. Whatever you need 
-        // here, you are free to do.
-        //
-        // Generally, though, this is where you will call into your Control
-        // classes to do the work of the application.
-        
-        return true;
+	
+	private boolean sellLandTransaction(String[] inputs){
+		
+		Game game = CityOfAaron.getCurrentGame();
+		
+		int acresToSell = Integer.parseInt(inputs[0]);
+		int totalWheat = game.getWheatInStorage();
+		int totalAcres = game.getAcresOwned();
+		
+		int profit = GameControl.sellLand(acresToSell, game.getLandPrice(), totalAcres);
+		
+		if (profit < 0) {
+			System.out.println("\n** Invalid input, please try again. **");
+			return true;
+		} else {
+			game.setWheatInStorage(totalWheat + profit);
+			game.setAcresOwned(totalAcres - acresToSell);
+			System.out.println("\nYou have successfully sold " + acresToSell + " acres of land.\n"
+					+ "You now own " + game.getAcresOwned() + " total acres.\n"
+					+ "You have " + game.getWheatInStorage() + " bushels of wheat in storage.");
+			pause();
+			return false;
+		}
+	}
+	
+	private void pause(){
+        // Pause for a few seconds
+		try {
+			// 2000 millisecond delay after the welcome message is displayed.
+			Thread.sleep(2000);
+		} catch(InterruptedException exception) {
+			// ignore this exception for now
+		}
     }
-	
-	
-	
 }

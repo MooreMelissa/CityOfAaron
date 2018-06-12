@@ -6,6 +6,7 @@
 package view;
 
 import cityofaaron.CityOfAaron;
+import control.RandomNumbers;
 import java.util.Scanner;
 import model.Game;
 import model.Player;
@@ -177,6 +178,7 @@ public class StartNewGameView {
 		currentGame.setTithingPaidInBushels(300);
 		currentGame.setTithingPercentage(10);
 		currentGame.setWheatInStorage(2700);
+		currentGame.setLandPrice(RandomNumbers.getRandom(17, 27));
 		
 		
 		System.out.println("\n\nWelcome to your new domain, " + playerName + "!"
