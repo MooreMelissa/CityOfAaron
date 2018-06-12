@@ -37,7 +37,7 @@ public class ReportsMenuView {
                 + "T - View Tools in Storehouse\n"
                 + "P - View Provisions in Storehouse\n"
                 + "V - View Authors of Game\n"
-				+ "Q - Return to Main Menu";
+		+ "Q - Return to Game Menu";
                 
     }
     
