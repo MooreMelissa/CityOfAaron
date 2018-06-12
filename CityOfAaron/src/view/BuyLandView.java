@@ -31,7 +31,7 @@ public class BuyLandView {
      */
     public BuyLandView(){
         
-        message = "Welcome to the market! You can buy land here, or press 'Enter' to return to the previous menu.\n"
+        message = "\n\nWelcome to the market! You can buy land here, or press 'Enter' to return to the previous menu.\n"
 				+ "The current price of land is " + randomPrice + " bushels per acre.";
                 
     }
@@ -110,12 +110,12 @@ public class BuyLandView {
 		// If the user just hits 'enter', bail out and don't do the action.
 		// Returning false will take us back to the Game Menu.
         if (inputs[0] == null || inputs[0].equals("")) {
-			System.out.println("No amount was entered. Returning to the Game Menu...");
+			System.out.println("No amount was entered. Returning to the Manage the Crops Menu...");
 			pause();
-			return true;
+			return false;
 		} else {		
-			buyLandTransaction(inputs);
-	        return false;
+			boolean result = buyLandTransaction(inputs);
+			return result;
 		}
     }
     
