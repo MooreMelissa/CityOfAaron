@@ -109,11 +109,21 @@ public class SellLandView {
         
 		// If the user just hits 'enter', bail out and don't do the action.
 		// Returning false will take us back to the Game Menu.
-        if (inputs[0] == null || inputs[0].equals("")) {
-			System.out.println("\nNo amount was entered. Returning to the Manage the Crops Menu...");
+        if (inputs[0] == null || inputs[0].equals("") || inputs[0].equals("\n")) {
+			System.out.println("No amount was entered. Returning to the Manage the Crops Menu...");
 			pause();
 			return false;
-		} else {		
+		} else {
+			boolean check = false;
+			while (check == false) {
+				try {
+					Integer.parseInt(inputs[0]);
+					check = true;
+				} catch (NumberFormatException nfe) {
+					System.out.println("That was not a valid input. Please enter a number.");
+					inputs = getInputs();
+				}
+			}
 			boolean result = sellLandTransaction(inputs);
 			return result;
 		}

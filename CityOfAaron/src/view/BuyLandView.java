@@ -7,7 +7,6 @@ package view;
 
 import cityofaaron.CityOfAaron;
 import control.GameControl;
-import control.RandomNumbers;
 import java.util.Scanner;
 import model.Game;
 
@@ -89,7 +88,7 @@ public class BuyLandView {
         // from the user.
         String[] inputs = new String[1];
         
-        inputs[0] = getUserInput("How many acres of land do you want to buy?", true);
+        inputs[0] = getUserInput("\nHow many acres of land do you want to buy?", true);
         
         // Repeat for each input you need, putting it into its proper slot in the array.
         
@@ -108,10 +107,20 @@ public class BuyLandView {
 		// If the user just hits 'enter', bail out and don't do the action.
 		// Returning false will take us back to the Game Menu.
         if (inputs[0] == null || inputs[0].equals("")) {
-			System.out.println("\nNo amount was entered. Returning to the Manage the Crops Menu...");
+			System.out.println("No amount was entered. Returning to the Manage the Crops Menu...");
 			pause();
 			return false;
-		} else {		
+		} else {                
+			boolean check = false;
+			while (check == false) {
+				try {
+					Integer.parseInt(inputs[0]);
+					check = true;
+				} catch (NumberFormatException nfe) {
+					System.out.println("That was not a valid input. Please enter a number.");
+					inputs = getInputs();
+				}
+			}
 			boolean result = buyLandTransaction(inputs);
 			return result;
 		}

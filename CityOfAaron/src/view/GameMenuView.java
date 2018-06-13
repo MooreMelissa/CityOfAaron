@@ -6,7 +6,9 @@
 package view;
 import cityofaaron.CityOfAaron;
 import control.GameControl;
+import control.RandomNumbers;
 import java.util.Scanner;
+import model.Game;
 
 /**
  *
@@ -164,7 +166,6 @@ public class GameMenuView {
 	}
 
 	private void manageCropsMenu() {
-		//System.out.println("* manageCropsMenu() called. Implementation coming soon. *");
 		ManageCropsMenuView manageCrops = new ManageCropsMenuView();
 		manageCrops.displayView();
                
@@ -173,8 +174,29 @@ public class GameMenuView {
 	
 	private void liveTheYear() {
 		System.out.println("* liveTheYear() called. Implementation coming soon. *");
+		
 		// I'm not positive how to do this yet, just experimenting.
-		// GameControl.liveTheYear(CityOfAaron.getCurrentGame());
+		
+		/* Game currentGame = CityOfAaron.getCurrentGame();
+		boolean errorResult = GameControl.liveTheYear(CityOfAaron.getCurrentGame());
+		if (errorResult == false) {
+			System.out.println("There has been an error. Please check the values"
+					+ " in the Manage The Crops Menu and try again.");
+		} else {
+			System.out.println("\n\n- Year: " + currentGame.getCurrentYear()
+				+ "\n- 0 people starved" // ** How do we get this value for display?
+				+ "\n- 5 people came to the city" // ** How do we get this value for display?
+				+ "\n- The current population is " + currentGame.getCurrentPopulation()
+				+ "\n- The city owns " + currentGame.getAcresOwned() + " acres of crop land"
+				+ "\n- 3 bushels per acre were harvested" // ** How do we get this value for display?
+				+ "\n- The total harvest was " + GameControl.harvestWheat(currentGame.getAcresPlanted(), 
+					currentGame.getTithingPercentage(), RandomNumbers.getRandom(1, 3), 
+					RandomNumbers.getRandom(2, 4), RandomNumbers.getRandom(2, 5)) + " bushels of wheat" 
+					// ** How do we get this value for display?
+				+ "\n- The total tithe paid was " + currentGame.getTithingPaidInBushels() + " bushels of wheat"
+				+ "\n- 0 bushels of wheat were eaten by rats" // ** How do we get this value for display?
+				+ "\n- The total amount of wheat in storage is " + currentGame.getWheatInStorage() + " bushels");
+		} */
 	}
 	
 	private void reportsMenu() {

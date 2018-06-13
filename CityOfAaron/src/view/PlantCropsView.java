@@ -28,7 +28,7 @@ public class PlantCropsView {
      */
     public PlantCropsView(){
         
-        message = "\n\nWelcome to the Granary and Storehouse!\n "
+        message = "\n\nWelcome to the Granary and Storehouse!\n"
                 + "You can get seed for your fields here.\n"
                 + "To return to Manage the Crops Menu press Enter\n\n";
                 
@@ -182,14 +182,14 @@ public class PlantCropsView {
                 }
                 if (crops == -3) {
                     System.out.println("\n** Invalid input **"
-                                       + "\nThe amount of acres entered is more than the"
+                                       + "\nThe amount of acres entered is more than the "
                                        + "current population can take care of"
-                                       + "Please try again");
+                                       + "\nPlease try again");
                         return true;
                 }
                 if (crops == -4) {
                     System.out.println("\n** Invalid input **"
-                                       + "\nThe amount of acres entered is exceeded"
+                                       + "\nThe amount of acres entered is exceeded "
                                        + "the wheat in storage"
                                        + "\nPlease try again");
                         return true;

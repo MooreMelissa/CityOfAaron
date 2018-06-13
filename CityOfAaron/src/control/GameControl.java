@@ -120,7 +120,7 @@ public class GameControl {
 	
 
 
-	public boolean liveTheYear(Game game) {
+	public static boolean liveTheYear(Game game) {
 
 		int totalWheat = game.getWheatInStorage();
 		int totalPopulation = game.getCurrentPopulation();
@@ -181,6 +181,7 @@ public class GameControl {
 		game.setTithingPaidInBushels(totalTithe);
 		game.setCurrentPopulation(totalPopulation);
 		game.setWheatInStorage(totalWheat);
+		game.setCurrentYear(game.getCurrentYear() + 1);
 		game.setLandPrice(RandomNumbers.getRandom(17, 27));
 		return true; 
 	}
