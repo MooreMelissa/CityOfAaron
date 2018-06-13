@@ -194,7 +194,7 @@ public class StartNewGameView {
 				+ "\n- 0 bushels of wheat were eaten by rats"
 				+ "\n- The total amount of wheat in storage is " + currentGame.getWheatInStorage() + " bushels"
 				+ "\n\n ** Please be sure to complete all the tasks in the"
-				+ "\n'Manage Crops Menu' before choosing to 'Live The Year' **");
+				+ "\n'Manage Crops' menu before choosing to 'Live The Year' **");
 		
 		pause();
 		

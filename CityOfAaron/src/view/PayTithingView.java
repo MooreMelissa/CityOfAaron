@@ -6,8 +6,6 @@
 package view;
 
 import cityofaaron.CityOfAaron;
-import control.GameControl;
-import control.RandomNumbers;
 import java.util.Scanner;
 import model.Game;
 
@@ -118,7 +116,7 @@ public class PayTithingView {
                    check = true;
                } 
                catch (NumberFormatException nfe) {
-                   System.out.println("That was in invalid entry. Enter a number between 1 and 100.");
+                   System.out.println("That was an invalid entry. Enter a number between 1 and 100.");
                    inputs = getInputs();
                }
            }
