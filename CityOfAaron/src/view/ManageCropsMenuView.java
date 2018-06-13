@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author heatherholt, kanderson
+ * @author melissamoore, heatherholt, kanderson
  */
 public class ManageCropsMenuView {
 	
