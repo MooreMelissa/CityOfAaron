@@ -27,10 +27,10 @@ public class FeedPeopleView {
      */
     public FeedPeopleView(){
         
-        message = "Welcome to the Granary and Storehouse.\n"
-                 + "We have ample storage for your needs.\n"
-                 + "Store the people's food here for the coming year.\n"
-                 + "Press Enter to return to Manage the Crop Menu";
+        message = "\n\nWelcome to the Granary and Storehouse.\n"
+                + "We have ample storage for your needs.\n"
+                + "Store the people's food here for the coming year.\n"
+                + "To return to Manage the Crop Menu press Enter\n\n";
                 
     }
     

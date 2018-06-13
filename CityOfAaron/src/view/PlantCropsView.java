@@ -28,9 +28,9 @@ public class PlantCropsView {
      */
     public PlantCropsView(){
         
-        message = "Welcome to the Granary and Storehouse!.\n "
+        message = "\n\nWelcome to the Granary and Storehouse!\n "
                 + "You can get seed for your fields here.\n"
-                + "Press Enter to return to Manage the Crops Menu\n";
+                + "To return to Manage the Crops Menu press Enter\n\n";
                 
     }
     
