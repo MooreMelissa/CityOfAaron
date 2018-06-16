@@ -9,7 +9,9 @@ import cityofaaron.CityOfAaron;
 import control.RandomNumbers;
 import java.util.Scanner;
 import model.Game;
+import model.Map;
 import model.Player;
+import model.Storehouse;
 
 /**
  *
@@ -179,6 +181,7 @@ public class StartNewGameView {
 		currentGame.setTithingPercentage(10);
 		currentGame.setWheatInStorage(2700);
 		currentGame.setLandPrice(RandomNumbers.getRandom(17, 27));
+		currentGame.setTheStorehouse(new Storehouse());
 		
 		
 		System.out.println("\n\nWelcome to your new domain, " + playerName + "!"

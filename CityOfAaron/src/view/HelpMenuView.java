@@ -153,6 +153,9 @@ public class HelpMenuView {
 				break;
 			case "Q":
 				return false;
+				
+			default: 
+				System.out.println("Please enter one of the above menu options.");
 		}
         
         return true;

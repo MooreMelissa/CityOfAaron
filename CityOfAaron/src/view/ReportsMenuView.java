@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package view;
+import cityofaaron.CityOfAaron;
 import java.util.Scanner;
 import model.Author;
+import model.Game;
 import model.InventoryItem;
 import model.Storehouse;
 
@@ -22,8 +24,8 @@ public class ReportsMenuView {
      */
     protected String message;
     
-	
-	Storehouse storehouse = new Storehouse();
+	Game game = CityOfAaron.getCurrentGame();
+	Storehouse storehouse = game.getTheStorehouse();
 	
 	
     /**
