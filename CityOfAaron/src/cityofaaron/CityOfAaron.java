@@ -6,6 +6,7 @@ package cityofaaron;
  * and open the template in the editor.
  */
 import model.Game;
+import view.View;
 import view.StartProgramView;
 
 /**
@@ -32,7 +33,7 @@ public class CityOfAaron {
 	 */
 	public static void main(String[] args) {
 
-		StartProgramView startProgramView = new StartProgramView();
+		View startProgramView = new StartProgramView();
 		startProgramView.displayView();
 
 
