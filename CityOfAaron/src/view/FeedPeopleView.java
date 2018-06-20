@@ -115,9 +115,10 @@ public class FeedPeopleView {
         } else {
 
             boolean check = false;
+            int bushelsFed = 0;
             while (check == false) {
                 try {
-                    Integer.parseInt(inputs[0]);
+                    bushelsFed = Integer.parseInt(inputs[0]);
                     check = true;
                 } catch (NumberFormatException nfe) {
 
@@ -127,7 +128,7 @@ public class FeedPeopleView {
                 }
             }
 
-            boolean result = feedPeopleTransaction(inputs);
+            boolean result = feedPeopleTransaction(bushelsFed);
             return result;
 
         }
@@ -153,11 +154,10 @@ public class FeedPeopleView {
     // Define your action handlers here. These are the methods that your doAction()
     // method will call based on the user's input. We don't want to do a lot of 
     // complex game stuff in our doAction() method. It will get messy very quickly.
-    private boolean feedPeopleTransaction(String[] inputs) {
+    private boolean feedPeopleTransaction(int bushelsFed) {
 
         Game game = CityOfAaron.getCurrentGame();
 
-        int bushelsFed = Integer.parseInt(inputs[0]);
         int totalWheat = game.getWheatInStorage();
 
         int bushels = GameControl.feedPeople(bushelsFed, totalWheat);

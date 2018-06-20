@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @author heatherholt, kanderson
  */
 public class StartProgramView {
-	/**
+    /**
      * The message that will be displayed by this view.
      */
     protected String message;
