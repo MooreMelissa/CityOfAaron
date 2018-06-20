@@ -77,14 +77,7 @@ public class StartProgramView extends ViewBase {
     
     
     private void startMainMenuView() {
-		// Pause for a few seconds
-		try {
-			// 2000 millisecond delay after the welcome message is displayed.
-			Thread.sleep(2000);
-		} catch(InterruptedException exception) {
-			// ignore this exception for now
-		}
-		
+		pause(2000);
 		View mainMenu = new MainMenuView();
 		mainMenu.displayView();
 	}
