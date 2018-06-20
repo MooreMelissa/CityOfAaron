@@ -158,11 +158,13 @@ public class GameMenuView {
     // complex game stuff in our doAction() method. It will get messy very quickly.
     				
 	private void viewMap() {
-		System.out.println("* viewMap() called. Implementation coming soon. *");
+		MapView mapView = new MapView();
+		mapView.displayView();
 	}
 	
 	private void moveLocation() {
-		System.out.println("* moveLocation() called. Implementation coming soon. *");
+		MoveLocationsView moveView = new MoveLocationsView();
+		moveView.displayView();;
 	}
 
 	private void manageCropsMenu() {
@@ -205,7 +207,8 @@ public class GameMenuView {
 	}
 	
 	private void saveGame() {
-		System.out.println("* saveGame() called. Implementation coming soon. *");
+		SaveGameView saveGame = new SaveGameView();
+		saveGame.displayView();
 	}
 	
 	private void pause(){

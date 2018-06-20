@@ -7,40 +7,34 @@ package view;
 
 /**
  *
- * @author heatherholt, kanderson
+ * @author heatherholt
  */
-public class MainMenuView extends ViewBase {
-    
-    /**
+public class MoveLocationsView extends ViewBase {
+	
+	/**
      * Constructor
      */
-    public MainMenuView(){
-             
+    public MoveLocationsView() {
+                
     }
     
-    @Override
-    protected String getMessage(){
-        return "\n\nMain Menu\n"
-                + "-------------\n"
-                + "N - Start a New Game\n"
-                + "L - Load a Saved Game\n"
-                + "H - Help Menu\n"
-                + "Q - Quit\n";
-    }
-
-
+	@Override
+	protected String getMessage() {
+		return "\n\nMove Locations View Coming Soon";
+	}
+    
     /**
      * Get the set of inputs from the user.
      * @return 
      */
-    @Override
+	@Override
     public String[] getInputs() {
         
         // Declare the array to have the number of elements you intend to get 
         // from the user.
         String[] inputs = new String[1];
         
-        inputs[0] = getUserInput("Please choose a menu option:");
+        inputs[0] = getUserInput("Press Q to return to the previous menu.");
         
         // Repeat for each input you need, putting it into its proper slot in the array.
         
@@ -54,43 +48,33 @@ public class MainMenuView extends ViewBase {
      * @return true if the view should repeat itself, and false if the view
      * should exit and return to the previous view.
      */
-    @Override
+	@Override
     public boolean doAction(String[] inputs){
         switch (inputs[0].trim().toUpperCase()) {
-			case "N":
-				startNewGame();
-				break;
-			case "L":
-				loadSavedGame();
-				break;
-			case "H":
-				helpMenu();
-				break;
 			case "Q":
-				System.out.println("Thank you for playing. Goodbye.");
 				return false;
 		}
-        
+       
         return true;
     }
     
+	
     // Define your action handlers here. These are the methods that your doAction()
     // method will call based on the user's input. We don't want to do a lot of 
     // complex game stuff in our doAction() method. It will get messy very quickly.
-	
-	private void startNewGame() {
-		StartNewGameView newGameView = new StartNewGameView();
-		newGameView.displayView();
+    
+    
+    private boolean someActionHandler(){
+        // Define whatever code you need here to accomplish the action.
+        // You can make this a void method if you want. Whatever you need 
+        // here, you are free to do.
+        //
+        // Generally, though, this is where you will call into your Control
+        // classes to do the work of the application.
+        
+        return true;
 	}
 	
-	private void helpMenu() {
-		//System.out.println("*** helpMenu() called. You must implement the HelpMenuView this week. ***");
-		HelpMenuView helpMenu = new HelpMenuView();
-		helpMenu.displayView();
-	}
 	
-	private void loadSavedGame() {
-		LoadSavedGameView loadGame = new LoadSavedGameView();
-		loadGame.displayView();
-	}
+	
 }
