@@ -6,82 +6,33 @@
 package view;
 
 import cityofaaron.CityOfAaron;
-import java.util.Scanner;
 import model.Game;
 
 /**
  *
  * @author heatherholt, kanderson
  */
-public class PayTithingView {
-	
-	
-	/**
-     * The message that will be displayed by this view.
-     */
-    protected String message;
-    
+public class PayTithingView extends ViewBase {
     /**
      * Constructor
      */
     public PayTithingView(){
-        
-        message = "\n\nWelcome to the temple. Here you can pay your tithes and offerings.\n"
+    }
+    
+    @Override
+    protected String getMessage() {
+        return "\n\nWelcome to the temple. Here you can pay your tithes and offerings.\n"
                 + "Tithing is a percentage of your previous years' total harvest.\n"
                 + "The Lord has promised us blessings for paying our tithing.\n"
                 + "Press 'Enter' to return to the previous menu.\n";
-                
     }
     
-    
-    /**
-     * Get the user's input. Keep prompting them until they enter a value.
-     * @param prompt
-     * @param allowEmpty - determine whether the user can enter no value (just a return key)
-     * @return 
-     */
-    protected String getUserInput(String prompt, boolean allowEmpty){
-        
-        Scanner keyboard = new Scanner(System.in);
-        String input = "";
-        boolean inputReceived = false;
-        
-        while(inputReceived == false){
-            
-            System.out.println(prompt);
-            input = keyboard.nextLine();
-            
-            // Make sure we avoid a null-pointer error.
-            if (input == null){
-                input = "";
-            }
-            
-            // Trim any trailing whitespace, including the carriage return.
-            input = input.trim();
-            
-            if (input.equals("") == false || allowEmpty == true){
-                inputReceived = true;
-            }
-        }
-        
-        return input;
-    }
-    
-    
-    /**
-     * An overloaded version of getUserInput that sets allowEmpty to false so we don't have 
-     * to type it ourselves.
-     * @param prompt
-     * @return 
-     */
-    protected String getUserInput(String prompt){
-        return getUserInput(prompt, false);
-    }
     
     /**
      * Get the set of inputs from the user.
      * @return 
      */
+    @Override
     public String[] getInputs() {
         
         // Declare the array to have the number of elements you intend to get 
@@ -102,10 +53,11 @@ public class PayTithingView {
      * @return true if the view should repeat itself, and false if the view
      * should exit and return to the previous view.
      */
+    @Override
     public boolean doAction(String[] inputs){
        if (inputs[0] == null || inputs[0].equals("")) {
            System.out.println("\nNo amount was entered. Returning to the Manage the Crops Menu...");
-            pause();
+            pause(2000);
             return false;
        } 
        else {
@@ -126,23 +78,6 @@ public class PayTithingView {
     }
     
     
-    /**
-     * Control this view's display/prompt/action loop until the user
-     * chooses and action that causes this view to close.
-     */
-    public void displayView(){
-        
-        boolean keepGoing = true;
-        
-        while(keepGoing == true){
-            
-            System.out.println(message);
-            String[] inputs = getInputs();
-            keepGoing = doAction(inputs);
-        }
-    }
-    
-    
     // Define your action handlers here. These are the methods that your doAction()
     // method will call based on the user's input. We don't want to do a lot of 
     // complex game stuff in our doAction() method. It will get messy very quickly.
@@ -160,20 +95,10 @@ public class PayTithingView {
         else {
             game.setTithingPercentage(percentage);
             System.out.println("\nYou have chosen to pay " + percentage + "% of your harvested wheat to tithing.\n");
-            pause();
+            pause(2000);
             return false;
         }
+    }
+    
 
-        }
-
-	
-private void pause(){
-// Pause for a few seconds
-    try {
-// 2000 millisecond delay after the welcome message is displayed.
-    Thread.sleep(2000);
-    } catch(InterruptedException exception) {
-// ignore this exception for now
-}
-}
 }
