@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package view;
+
 import cityofaaron.CityOfAaron;
 import model.Author;
 import model.Game;
@@ -15,55 +16,54 @@ import model.Storehouse;
  * @author heatherholt, kanderson
  */
 public class ReportsMenuView extends ViewBase {
-    
+
 	Game game = CityOfAaron.getCurrentGame();
 	Storehouse storehouse = game.getTheStorehouse();
-	
+
 	/**
-     * Constructor
-     */
-    public ReportsMenuView(){
-                
-    }
-	
+	 * Constructor
+	 */
+	public ReportsMenuView() {
+
+	}
+
 	@Override
 	protected String getMessage() {
 		return "\n\nReports Menu\n"
-                + "-------------\n"
-                + "A - View Animals in Storehouse\n"
-                + "T - View Tools in Storehouse\n"
-                + "P - View Provisions in Storehouse\n"
-                + "V - View Authors of Game\n"
+				+ "-------------\n"
+				+ "A - View Animals in Storehouse\n"
+				+ "T - View Tools in Storehouse\n"
+				+ "P - View Provisions in Storehouse\n"
+				+ "V - View Authors of Game\n"
 				+ "Q - Return to Game Menu";
 	}
-    
-    /**
-     * Get the set of inputs from the user.
-     * @return 
-     */
+
+	/**
+	 * Get the set of inputs from the user.
+	 * @return
+	 */
 	@Override
-    public String[] getInputs() {
-        
-        // Declare the array to have the number of elements you intend to get 
-        // from the user.
-        String[] inputs = new String[1];
-        
-        inputs[0] = getUserInput("Please choose a menu option:");
-        
-        // Repeat for each input you need, putting it into its proper slot in the array.
-        
-        return inputs;
-    }
-    
-    /**
-     * Perform the action indicated by the user's input.
-     * @param inputs
-     * @return true if the view should repeat itself, and false if the view
-     * should exit and return to the previous view.
-     */
+	public String[] getInputs() {
+
+		// Declare the array to have the number of elements you intend to get 
+		// from the user.
+		String[] inputs = new String[1];
+
+		inputs[0] = getUserInput("Please choose a menu option:");
+
+		// Repeat for each input you need, putting it into its proper slot in the array.
+		return inputs;
+	}
+
+	/**
+	 * Perform the action indicated by the user's input.
+	 * @param inputs
+	 * @return true if the view should repeat itself, and false if the view
+	 * should exit and return to the previous view.
+	 */
 	@Override
-    public boolean doAction(String[] inputs){
-		
+	public boolean doAction(String[] inputs) {
+
 		switch (inputs[0].trim().toUpperCase()) {
 			case "A":
 				viewAnimals();
@@ -80,51 +80,50 @@ public class ReportsMenuView extends ViewBase {
 			case "Q":
 				return false;
 		}
-        
-        return true;
-    }    
-    
-    // Define your action handlers here. These are the methods that your doAction()
-    // method will call based on the user's input. We don't want to do a lot of 
-    // complex game stuff in our doAction() method. It will get messy very quickly.
-    	
+
+		return true;
+	}
+
+	// Define your action handlers here. These are the methods that your doAction()
+	// method will call based on the user's input. We don't want to do a lot of 
+	// complex game stuff in our doAction() method. It will get messy very quickly.
 	private void viewAnimals() {
 		//System.out.println("* viewAnimals() called. Implementation coming soon. *");
 		InventoryItem[] animals = storehouse.getAnimals();
 		int arrayLength = animals.length;
-		for (int i=0; i < arrayLength; i++) {
-		    System.out.print(animals[i]);
+		for (int i = 0; i < arrayLength; i++) {
+			System.out.print(animals[i]);
 		}
 		pause(2000);
 	}
-	
+
 	private void viewTools() {
 		InventoryItem[] tools = storehouse.getTools();
 		int arrayLength = tools.length;
-		for (int i=0; i < arrayLength; i++) {
-		    System.out.print(tools[i]);
+		for (int i = 0; i < arrayLength; i++) {
+			System.out.print(tools[i]);
 		}
 		pause(2000);
 	}
-	
+
 	private void viewProvisions() {
 		//System.out.println("* viewProvisions() called. Implementation coming soon. *");
 		InventoryItem[] provisions = storehouse.getProvisions();
 		int arrayLength = provisions.length;
-		for (int i=0; i < arrayLength; i++) {
-		    System.out.print(provisions[i]);
+		for (int i = 0; i < arrayLength; i++) {
+			System.out.print(provisions[i]);
 		}
 		pause(2000);
 	}
-	
+
 	private void viewAuthors() {
 		//System.out.println("* viewAuthors() called. Implementation coming soon. *");
 		Author[] authors = storehouse.getAuthors();
 		int arrayLength = authors.length;
-		for (int i=0; i < arrayLength; i++) {
-		    System.out.print(authors[i]);
+		for (int i = 0; i < arrayLength; i++) {
+			System.out.print(authors[i]);
 		}
 		pause(2000);
 	}
-	
+
 }

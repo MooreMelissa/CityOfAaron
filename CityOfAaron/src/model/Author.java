@@ -44,7 +44,7 @@ public class Author implements Serializable {
 
 	@Override
 	public String toString() {
-		return "\n" + name +" - "
+		return "\n" + name + " - "
 				+ title;
 	}
 

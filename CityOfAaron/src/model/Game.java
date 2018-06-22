@@ -21,7 +21,6 @@ public class Game implements Serializable {
 	private int bushelsFedToPeople;
 	private int tithingPercentage;
 	private int landPrice;
-	
 
 	public Game() {
 		//Empty constructor for JavaBeans
@@ -82,7 +81,7 @@ public class Game implements Serializable {
 	public void setCurrentYear(int currentYear) {
 		this.currentYear = currentYear;
 	}
-	
+
 	public int getAcresPlanted() {
 		return acresPlanted;
 	}
@@ -122,8 +121,7 @@ public class Game implements Serializable {
 	public void setLandPrice(int landPrice) {
 		this.landPrice = landPrice;
 	}
-	
-	
+
 	@Override
 	public String toString() {
 		return "Game{"

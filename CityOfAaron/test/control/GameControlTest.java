@@ -13,120 +13,113 @@ import static org.junit.Assert.*;
  * @author heatherholt
  */
 public class GameControlTest {
-	
+
 	public GameControlTest() {
 	}
 
 	/**
 	 * Test of liveTheYear method, of class GameControl.
 	 */
-
-
 	/**
 	 * Test of harvestWheat method, of class GameControl.
 	 */
-	
 	@Test
 	public void testHarvestWheat1() {
 		int result = GameControl.harvestWheat(900, 15, 1, 2, 4);
 		assertEquals(3600, result);
 	}
-	
+
 	@Test
 	public void testHarvestWheat2() {
 		int result = GameControl.harvestWheat(-500, 15, 1, 2, 4);
 		assertEquals(-1, result);
 	}
-	
+
 	@Test
 	public void testHarvestWheat3() {
 		int result = GameControl.harvestWheat(900, -5, 1, 2, 4);
 		assertEquals(-1, result);
 	}
-	
+
 	@Test
 	public void testHarvestWheat4() {
 		int result = GameControl.harvestWheat(900, 115, 1, 2, 4);
 		assertEquals(-1, result);
 	}
-	
+
 	@Test
 	public void testHarvestWheat5() {
 		int result = GameControl.harvestWheat(0, 15, 1, 2, 2);
 		assertEquals(0, result);
 	}
-	
+
 	@Test
 	public void testHarvestWheat6() {
 		int result = GameControl.harvestWheat(900, 0, 2, 3, 3);
 		assertEquals(1800, result);
 	}
-	
+
 	@Test
 	public void testHarvestWheat7() {
 		int result = GameControl.harvestWheat(900, 100, 3, 4, 5);
 		assertEquals(4500, result);
 	}
-	
+
 	@Test
 	public void testHarvestWheat8() {
 		int result = GameControl.harvestWheat(900, 7, 1, 2, 2);
 		assertEquals(900, result);
 	}
-	
+
 	@Test
 	public void testHarvestWheat9() {
 		int result = GameControl.harvestWheat(900, 13, 3, 4, 5);
 		assertEquals(4500, result);
 	}
-	
-	
+
 	/**
 	 * Test of buyLand method, of class GameControl.
 	 */
-	
 	@Test
 	public void testBuyLand1() {
 		int result = GameControl.buyLand(10, 20, 2700);
 		assertEquals(200, result);
 	}
-	
+
 	@Test
 	public void testBuyLand2() {
 		int result = GameControl.buyLand(-5, 20, 2700);
 		assertEquals(-1, result);
 	}
-	
+
 	@Test
 	public void testBuyLand3() {
 		int result = GameControl.buyLand(200, 20, 2700);
 		assertEquals(-1, result);
 	}
-	
+
 	@Test
 	public void testBuyLand4() {
 		int result = GameControl.buyLand(0, 17, 2700);
 		assertEquals(0, result);
 	}
-	
+
 	@Test
 	public void testBuyLand5() {
 		int result = GameControl.buyLand(30, 17, 2700);
 		assertEquals(510, result);
 	}
-	
+
 	@Test
 	public void testBuyLand6() {
 		int result = GameControl.buyLand(100, 27, 2700);
 		assertEquals(2700, result);
 	}
-	
-	
+
 	/**
 	 * Test of sellLand method, of class GameControl.
 	 */
-    
-    @Test
+	@Test
 	public void testSellLand1() {
 		int result = GameControl.sellLand(50, 22, 1000);
 		assertEquals(1100, result);
@@ -167,20 +160,18 @@ public class GameControlTest {
 		int result = GameControl.sellLand(1000, 27, 1000);
 		assertEquals(27000, result);
 	}
-	
-        
-    /**
+
+	/**
 	 * Test of plantCrops method, of class GameControl.
 	 */
-	
-    @Test
+	@Test
 	public void testPlantCrops1() {
 		System.out.println("testPlantCrops1");
 		int result = GameControl.plantCrops(800, 1000, 100, 2700);
 		assertEquals(400, result);
 		System.out.println(result);
 	}
-        
+
 	@Test
 	public void testPlantCrops2() {
 		System.out.println("testPlantCrops2");
@@ -188,7 +179,7 @@ public class GameControlTest {
 		assertEquals(-1, result);
 		System.out.println(result);
 	}
-        
+
 	@Test
 	public void testPlantCrops3() {
 		System.out.println("testPlantCrops3");
@@ -196,7 +187,7 @@ public class GameControlTest {
 		assertEquals(-2, result);
 		System.out.println(result);
 	}
-        
+
 	@Test
 	public void testPlantCrops4() {
 		System.out.println("testPlantCrops4");
@@ -204,7 +195,7 @@ public class GameControlTest {
 		assertEquals(-3, result);
 		System.out.println(result);
 	}
-        
+
 	@Test
 	public void testPlantCrops5() {
 		System.out.println("testPlantCrops5");
@@ -212,7 +203,7 @@ public class GameControlTest {
 		assertEquals(-4, result);
 		System.out.println(result);
 	}
-        
+
 	@Test
 	public void testPlantCrops6() {
 		System.out.println("testPlantCrops6");
@@ -220,7 +211,7 @@ public class GameControlTest {
 		assertEquals(0, result);
 		System.out.println(result);
 	}
-        
+
 	@Test
 	public void testPlantCrops7() {
 		System.out.println("testPlantCrops7");
@@ -228,7 +219,7 @@ public class GameControlTest {
 		assertEquals(500, result);
 		System.out.println(result);
 	}
-        
+
 	@Test
 	public void testPlantCrops8() {
 		System.out.println("testPlantCrops8");
@@ -236,7 +227,7 @@ public class GameControlTest {
 		assertEquals(250, result);
 		System.out.println(result);
 	}
-        
+
 	@Test
 	public void testPlantCrops9() {
 		System.out.println("testPlantCrops9");
@@ -244,7 +235,7 @@ public class GameControlTest {
 		assertEquals(500, result);
 		System.out.println(result);
 	}
-        
+
 	@Test
 	public void testPlantCrops10() {
 		System.out.println("testPlantCrops10");
@@ -252,11 +243,10 @@ public class GameControlTest {
 		assertEquals(5, result);
 		System.out.println(result);
 	}
-        
+
 	/**
 	 * Test of testFeedPeople method, of class GameControl.
 	 */
-        
 	@Test
 	public void testFeedPeople1() {
 		System.out.println("testFeedPeople1");
@@ -312,13 +302,11 @@ public class GameControlTest {
 		assertEquals(3500, result);
 		System.out.println(result);
 	}
-     
-	
+
 	/**
 	 * Test of wheatEatenByRats method, of class GameControl.
 	 */
-    
-    @Test
+	@Test
 	public void testWheatEatenByRats1() {
 		int result = GameControl.wheatEatenByRats(15, 25, 8, 5, 4, 2700);
 		assertEquals(108, result);
@@ -365,12 +353,10 @@ public class GameControlTest {
 		int result = GameControl.wheatEatenByRats(15, 100, 7, 4, 4, 2700);
 		assertEquals(0, result);
 	}
-	
-	
-    /**
+
+	/**
 	 * Test of testPopulationMortality method, of class GameControl.
 	 */
-           
 	@Test
 	public void testPopulationMortality1() {
 		System.out.println("testPopulationMortality1");
@@ -414,7 +400,6 @@ public class GameControlTest {
 	/**
 	 * Test of wheatOfferings method, of class GameControl
 	 */
-
 	@Test
 	public void testWheatOfferings1() {
 		int result = GameControl.wheatOfferings(10, 2000);
@@ -446,15 +431,13 @@ public class GameControlTest {
 	}
 
 	/**
-	 * Test of peopleMoveIn method, of class GameControl
-	 * Because the only validation is on a random number, only one validity test is needed.
+	 * Test of peopleMoveIn method, of class GameControl Because the only
+	 * validation is on a random number, only one validity test is needed.
 	 */
-	
 	@Test
-	public void testPeopleMoveIn1(){
+	public void testPeopleMoveIn1() {
 		int result = GameControl.peopleMoveIn(5, 150);
 		assertEquals(7, result); // Because of the explicit typecasting, any decimal is rounded DOWN to the nearest whole number.
 	}
 
-	
 }

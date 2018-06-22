@@ -14,19 +14,17 @@ import view.StartProgramView;
  * @author heatherholt
  */
 public class CityOfAaron {
-	
+
 	// Keep a copy of the current Game object in the main class.
 	public static Game currentGame = null;
-	
+
 	public static Game getCurrentGame() {
 		return currentGame;
 	}
-	
-	public static void setCurrentGame (Game game) {
+
+	public static void setCurrentGame(Game game) {
 		currentGame = game;
 	}
-	
-	
 
 	/**
 	 * @param args the command line arguments
@@ -35,7 +33,6 @@ public class CityOfAaron {
 
 		View startProgramView = new StartProgramView();
 		startProgramView.displayView();
-
 
 	}
 

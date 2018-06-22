@@ -6,15 +6,15 @@
 package control;
 
 import java.util.Random;
+
 /**
  *
  * @author heatherholt
  */
 
-
 public class RandomNumbers {
 
-    /* public static void main(String[] args) {
+	/* public static void main(String[] args) {
         Random random = new Random();
         int origin = 17;
         int bound = 28;
@@ -26,18 +26,15 @@ public class RandomNumbers {
 
         System.out.println (r);
     }  */
-	
-	
 	private static Random random = new Random();
-	
-	protected static void setRandom (Random newRandom) {
+
+	protected static void setRandom(Random newRandom) {
 		random = newRandom;
 	}
 
-      
-        public static int getRandom (int origin, int bound) {
-            return random.nextInt((bound + 1)-origin) + origin;
-            
-        }
-        
+	public static int getRandom(int origin, int bound) {
+		return random.nextInt((bound + 1) - origin) + origin;
+
+	}
+
 }

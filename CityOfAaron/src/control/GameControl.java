@@ -13,8 +13,7 @@ import java.util.Random;
  * @author heatherholt
  */
 public class GameControl {
-	
-	
+
 	/**
 	 * Transaction to buy land, calculate cost of acres to buy
 	 * @param acresToBuy user input request of acres to buy
@@ -34,34 +33,32 @@ public class GameControl {
 		}
 		return cost;
 	}
-	
-	
+
 	/**
 	 * Transaction to sell land, calculate profit of acres sold
+	 *
 	 * @param acresToSell user input request of acres to sell
 	 * @param randomPrice random number between 17 and 27
 	 * @param totalAcres total acres owned
 	 * @return profit from land sold
 	 */
 	public static int sellLand(int acresToSell, int randomPrice, int totalAcres) {
-        if (acresToSell < 0) {
-            return -1;
-        }
-        if (acresToSell > totalAcres) {
-            return -1;
-        }
-        int profit = acresToSell * randomPrice;
+		if (acresToSell < 0) {
+			return -1;
+		}
+		if (acresToSell > totalAcres) {
+			return -1;
+		}
+		int profit = acresToSell * randomPrice;
 
-        return profit;
-    }
+		return profit;
+	}
 
-
-	/**  
-	 * public int feedPeople(int bushelsFed, int totalWheat) BEGIN
-	 * IF (bushelsFed < 0) THEN RETURN -1
-	 * IF (bushelsFed > totalWheat) THEN RETURN -2
-	 * RETURN buselsFed
-	 * END
+	/**
+	 * public int feedPeople(int bushelsFed, int totalWheat) BEGIN IF
+	 * (bushelsFed < 0) THEN RETURN -1
+	 * IF (bushelsFed > totalWheat) THEN RETURN -2 RETURN buselsFed END
+	 *
 	 * @param bushelsFed
 	 * @param totalWheat
 	 * @return
@@ -69,17 +66,16 @@ public class GameControl {
 	public static int feedPeople(int bushelsFed, int totalWheat) {
 
 		if (bushelsFed < 0) {
-			   return -1;
+			return -1;
 		}
 
 		if (bushelsFed > totalWheat) {
-			   return -2;
+			return -2;
 		}
 
 		return bushelsFed; // validates users amount
 	}
-	
-	
+
 	/**
 	 * public void plantCrops(int acresToPlant, int getAcresOwned, int
 	 * getWheatInStorage, int getCurrent Population) BEGIN IF (acresToPlant  <  0)  THEN  RETURN -1
@@ -93,9 +89,9 @@ public class GameControl {
 	 * @param currentPopulation
 	 * @return
 	 */
-	public static int plantCrops(int acresToPlant, 
-			int acresOwned, 
-			int currentPopulation, 
+	public static int plantCrops(int acresToPlant,
+			int acresOwned,
+			int currentPopulation,
 			int wheatInStorage) {
 
 		if (acresToPlant < 0) {
@@ -117,8 +113,6 @@ public class GameControl {
 		int bushelsUsed = acresToPlant / 2;
 		return bushelsUsed;
 	}
-	
-
 
 	public static boolean liveTheYear(Game game) {
 
@@ -132,12 +126,12 @@ public class GameControl {
 		int randomYieldLow = RandomNumbers.getRandom(1, 3); // harvestWheat
 		int randomYieldMid = RandomNumbers.getRandom(2, 4); // harvestWheat
 		int randomYieldHigh = RandomNumbers.getRandom(2, 5); // harvestWheat
-		int randomChance = RandomNumbers.getRandom (1, 100); // wheatEatenByRats
+		int randomChance = RandomNumbers.getRandom(1, 100); // wheatEatenByRats
 		int randomAmountLow = RandomNumbers.getRandom(6, 10); // wheatEatenByRats
 		int randomAmountMid = RandomNumbers.getRandom(3, 7); // wheatEatenByRats
 		int randomAmountHigh = RandomNumbers.getRandom(3, 5); // wheatEatenByRats
-        int randomGrowth = RandomNumbers.getRandom(1, 5); //peopleMoveIn
-		
+		int randomGrowth = RandomNumbers.getRandom(1, 5); //peopleMoveIn
+
 		// Beginning of harvestWheat function
 		if (acresToPlant < 0) {
 			return false;
@@ -154,41 +148,36 @@ public class GameControl {
 
 		//Beginning of wheatOfferings function
 		int totalTithe = wheatOfferings(percentage, totalHarvest);
-		totalWheat = totalWheat - totalTithe; 
-                
+		totalWheat = totalWheat - totalTithe;
+
 		// Beginning of wheatEatenByRats function
-		int wheatRatsAte = wheatEatenByRats(percentage, 
-				randomChance, 
-				randomAmountLow, 
-				randomAmountMid, 
-				randomAmountHigh, 
+		int wheatRatsAte = wheatEatenByRats(percentage,
+				randomChance,
+				randomAmountLow,
+				randomAmountMid,
+				randomAmountHigh,
 				totalWheat);
 		if (wheatRatsAte < 0) {
 			return false;
 		}
 		totalWheat = totalWheat - wheatRatsAte;
-		
+
 		//Beginning of populationMortality function
 		int popMortality = populationMortality(bushelsFed, totalPopulation);
 		totalPopulation = totalPopulation - popMortality;
-                
+
 		//Beginning of peopleMoveIn function
 		int populationGrowth = peopleMoveIn(randomGrowth, totalPopulation);
 		totalPopulation = totalPopulation + populationGrowth;
-                
-		
-		
+
 		game.setTithingPaidInBushels(totalTithe);
 		game.setCurrentPopulation(totalPopulation);
 		game.setWheatInStorage(totalWheat);
 		game.setCurrentYear(game.getCurrentYear() + 1);
 		game.setLandPrice(RandomNumbers.getRandom(17, 27));
-		return true; 
+		return true;
 	}
 
-	
-	
-	
 	/**
 	 * harvestWheat
 	 * @param acresToPlant user input - acres planted
@@ -221,7 +210,6 @@ public class GameControl {
 		return wheatHarvested;
 	}
 
-
 	/**
 	 * wheatOfferings - Calculate the number of bushels to pay in tithing
 	 * @param percentage User input tithing percentage
@@ -232,11 +220,10 @@ public class GameControl {
 		if (percentage < 0 || percentage > 100) {
 			return -1;
 		}
-		int offeringsTithes = (int) (totalHarvest * (percentage * 0.01)); 
+		int offeringsTithes = (int) (totalHarvest * (percentage * 0.01));
 		return offeringsTithes;
 	}
-	
-	
+
 	/**
 	 * Calculate the amount of wheat eaten by rats
 	 * @param percentage percentage of tithing paid
@@ -247,50 +234,41 @@ public class GameControl {
 	 * @param totalWheat total wheat in storage
 	 * @return amount of wheat eaten by rats
 	 */
-	public static int wheatEatenByRats (int percentage, 
-			int randomChance, 
-			int randomAmountLow, 
-			int randomAmountMid, 
-			int randomAmountHigh, 
+	public static int wheatEatenByRats(int percentage,
+			int randomChance,
+			int randomAmountLow,
+			int randomAmountMid,
+			int randomAmountHigh,
 			int totalWheat) {
-        if (percentage < 0 || percentage > 100) {
-            return -1;
-        }
-        int randomAmount = 0;
-        int wheatEaten = 0;
-        if (randomChance < 30) {
-            if (percentage < 8) {
-                randomAmount = randomAmountLow;
-            }
-            else if (percentage >= 8 && percentage <= 12) {
-                randomAmount = randomAmountMid;
-            }
-            else if (percentage > 12) {
-                randomAmount = randomAmountHigh;
-            }
-            wheatEaten = (int) (totalWheat * (randomAmount * 0.01));
-        }
-        return wheatEaten;
-    }
-	    
-    
-	/** public int populationMortality (int bushelFed, int totalPopulation) BEGIN
-	 * IF (bushelFed < 0 ) THEN RETURN -1
-	 * int noPeopleFed = bushelFed / 20
-         * int starvedPeople = 0
-	 * IF (noPeopleFed < totalPopulation) THEN
-	 * starvedPeople = totalPopulation – noPeopleFed
-	 * RETURN starvedPeople
-	 * END
-	 * @param bushelsFed
-	 * @param totalPopulation
-	 * @return
-	 */
+		if (percentage < 0 || percentage > 100) {
+			return -1;
+		}
+		int randomAmount = 0;
+		int wheatEaten = 0;
+		if (randomChance < 30) {
+			if (percentage < 8) {
+				randomAmount = randomAmountLow;
+			} else if (percentage >= 8 && percentage <= 12) {
+				randomAmount = randomAmountMid;
+			} else if (percentage > 12) {
+				randomAmount = randomAmountHigh;
+			}
+			wheatEaten = (int) (totalWheat * (randomAmount * 0.01));
+		}
+		return wheatEaten;
+	}
 
+	/**
+	 * public int populationMortality (int bushelFed, int totalPopulation) BEGIN
+	 * IF (bushelFed < 0 ) THEN RETURN -1 int noPeopleFed = bushelFed / 20 int
+	 * starvedPeople = 0 IF (noPeopleFed < totalPopulation) THEN starvedPeople =
+	 * totalPopulation – noPeopleFed RETURN starvedPeople END @param bushelsFed
+	 * @param totalPopulation @return
+	 */
 	public static int populationMortality(int bushelsFed, int totalPopulation) {
 
 		if (bushelsFed < 0) {
-			   return -1;
+			return -1;
 		}
 
 		int noPeopleFed = bushelsFed / 20;
@@ -302,9 +280,8 @@ public class GameControl {
 
 		return starvedPeople;
 
-	} 
-	
-        
+	}
+
 	/**
 	 * peopleMoveIn - Calculate the number of people that moved in
 	 * @param randomGrowth random number generation between 1 and 5
@@ -312,14 +289,11 @@ public class GameControl {
 	 * @return number of people that moved in
 	 */
 	public static int peopleMoveIn(int randomGrowth, int totalPopulation) {
-		if (randomGrowth < 1 || randomGrowth > 5){ 
-			return -1; 
+		if (randomGrowth < 1 || randomGrowth > 5) {
+			return -1;
 		}
-		int growPopulation = (int) (totalPopulation * (randomGrowth * 0.01)); 
+		int growPopulation = (int) (totalPopulation * (randomGrowth * 0.01));
 		return growPopulation;
 	}
 
-	
-	
-	
 }

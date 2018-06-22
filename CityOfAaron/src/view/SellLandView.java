@@ -14,14 +14,14 @@ import model.Game;
  * @author heatherholt
  */
 public class SellLandView extends ViewBase {
-    
-    /**
-     * Constructor
-     */
-    public SellLandView() {
-	
+
+	/**
+	 * Constructor
+	 */
+	public SellLandView() {
+
 	}
-    
+
 	@Override
 	protected String getMessage() {
 		Game game = CityOfAaron.getCurrentGame();
@@ -29,37 +29,36 @@ public class SellLandView extends ViewBase {
 				+ "'Enter' to return to the previous menu.\n"
 				+ "The current price of land is " + game.getLandPrice() + " bushels per acre.";
 	}
-    
-    /**
-     * Get the set of inputs from the user.
-     * @return 
-     */
+
+	/**
+	 * Get the set of inputs from the user.
+	 * @return
+	 */
 	@Override
-    public String[] getInputs() {
-        
-        // Declare the array to have the number of elements you intend to get 
-        // from the user.
-        String[] inputs = new String[1];
-        
-        inputs[0] = getUserInput("\nHow many acres of land do you want to sell?", true);
-        
-        // Repeat for each input you need, putting it into its proper slot in the array.
-        
-        return inputs;
-    }
-    
-    /**
-     * Perform the action indicated by the user's input.
-     * @param inputs
-     * @return true if the view should repeat itself, and false if the view
-     * should exit and return to the previous view.
-     */
+	public String[] getInputs() {
+
+		// Declare the array to have the number of elements you intend to get 
+		// from the user.
+		String[] inputs = new String[1];
+
+		inputs[0] = getUserInput("\nHow many acres of land do you want to sell?", true);
+
+		// Repeat for each input you need, putting it into its proper slot in the array.
+		return inputs;
+	}
+
+	/**
+	 * Perform the action indicated by the user's input.
+	 * @param inputs
+	 * @return true if the view should repeat itself, and false if the view
+	 * should exit and return to the previous view.
+	 */
 	@Override
-    public boolean doAction(String[] inputs){
-        
+	public boolean doAction(String[] inputs) {
+
 		// If the user just hits 'enter', bail out and don't do the action.
 		// Returning false will take us back to the Game Menu.
-        if (inputs[0] == null || inputs[0].equals("") || inputs[0].equals("\n")) {
+		if (inputs[0] == null || inputs[0].equals("") || inputs[0].equals("\n")) {
 			System.out.println("No amount was entered. Returning to the Manage the Crops Menu...");
 			pause(2000);
 			return false;
@@ -77,22 +76,21 @@ public class SellLandView extends ViewBase {
 			boolean result = sellLandTransaction(inputs);
 			return result;
 		}
-    }
-	
-    // Define your action handlers here. These are the methods that your doAction()
-    // method will call based on the user's input. We don't want to do a lot of 
-    // complex game stuff in our doAction() method. It will get messy very quickly.
-	
-	private boolean sellLandTransaction(String[] inputs){
-		
+	}
+
+	// Define your action handlers here. These are the methods that your doAction()
+	// method will call based on the user's input. We don't want to do a lot of 
+	// complex game stuff in our doAction() method. It will get messy very quickly.
+	private boolean sellLandTransaction(String[] inputs) {
+
 		Game game = CityOfAaron.getCurrentGame();
-		
+
 		int acresToSell = Integer.parseInt(inputs[0]);
 		int totalWheat = game.getWheatInStorage();
 		int totalAcres = game.getAcresOwned();
-		
+
 		int profit = GameControl.sellLand(acresToSell, game.getLandPrice(), totalAcres);
-		
+
 		if (profit < 0) {
 			System.out.println("\n** Invalid input, please try again. **");
 			return true;
@@ -106,5 +104,5 @@ public class SellLandView extends ViewBase {
 			return false;
 		}
 	}
-	
+
 }
