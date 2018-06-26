@@ -5,6 +5,11 @@
  */
 package view;
 
+import cityofaaron.CityOfAaron;
+import model.Game;
+import model.Location;
+import model.Map;
+
 /**
  *
  * @author heatherholt
@@ -20,7 +25,7 @@ public class MapView extends ViewBase {
 
 	@Override
 	protected String getMessage() {
-		return "\n\nMap View Coming Soon";
+		return "\n\n";
 	}
 
 	/**
@@ -30,14 +35,7 @@ public class MapView extends ViewBase {
 	@Override
 	public String[] getInputs() {
 
-		// Declare the array to have the number of elements you intend to get 
-		// from the user.
-		String[] inputs = new String[1];
-
-		inputs[0] = getUserInput("Press Q to return to the previous menu.");
-
-		// Repeat for each input you need, putting it into its proper slot in the array.
-		return inputs;
+		return null;
 	}
 
 	/**
@@ -48,26 +46,32 @@ public class MapView extends ViewBase {
 	 */
 	@Override
 	public boolean doAction(String[] inputs) {
-		switch (inputs[0].trim().toUpperCase()) {
-			case "Q":
-				return false;
-		}
+		displayMap();
+		pause(2000);
 
-		return true;
+		return false;
 	}
 
 	// Define your action handlers here. These are the methods that your doAction()
 	// method will call based on the user's input. We don't want to do a lot of 
 	// complex game stuff in our doAction() method. It will get messy very quickly.
-	private boolean someActionHandler() {
-		// Define whatever code you need here to accomplish the action.
-		// You can make this a void method if you want. Whatever you need 
-		// here, you are free to do.
-		//
-		// Generally, though, this is where you will call into your Control
-		// classes to do the work of the application.
-
-		return true;
+	public void displayMap() {
+		Game currentGame = CityOfAaron.getCurrentGame();
+		Map map = currentGame.getTheMap();
+		Location[][] locations = map.getLocations();
+		
+		System.out.println("      City Of Aaron          \n"
+				+ "\n    1   2   3   4   5   "
+				+ "\n------------------------");
+		for (int i=0; i < locations.length; i++) {
+			System.out.print(i+1 + " | ");
+			for (int j=0; j < locations[i].length; j++) {
+				Location location = locations[i][j];
+				System.out.print(location.getMapSymbol() + " | ");
+			}
+			System.out.print("\n------------------------\n");
+		}
+		
 	}
 
 }

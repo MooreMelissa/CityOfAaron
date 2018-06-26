@@ -6,6 +6,7 @@
 package view;
 
 import cityofaaron.CityOfAaron;
+import control.GameControl;
 import control.RandomNumbers;
 import model.Game;
 import model.Map;
@@ -84,27 +85,7 @@ public class StartNewGameView extends ViewBase {
 	 */
 	private void createAndStartGame(String playerName) {
 
-		// Eventually, we will do this:
-		// Game game = GameControl.createNewGame(playerName);
-		//
-		// But for this week, we'll do this:
-		Player player = new Player();
-		player.setName(playerName);
-
-		Game game = new Game();
-		game.setThePlayer(player);
-
-		CityOfAaron.setCurrentGame(game);
-
-		Game currentGame = CityOfAaron.getCurrentGame();
-		currentGame.setCurrentYear(1);
-		currentGame.setCurrentPopulation(100);
-		currentGame.setAcresOwned(1000);
-		currentGame.setTithingPaidInBushels(300);
-		currentGame.setTithingPercentage(10);
-		currentGame.setWheatInStorage(2700);
-		currentGame.setLandPrice(RandomNumbers.getRandom(17, 27));
-		currentGame.setTheStorehouse(new Storehouse());
+		Game currentGame = GameControl.createNewGame(playerName);
 
 		System.out.println("\n\nWelcome to your new domain, " + playerName + "!"
 				+ "\nHere's what you need to know before you start:"

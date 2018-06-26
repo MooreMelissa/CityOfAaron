@@ -5,14 +5,46 @@
  */
 package control;
 
+import cityofaaron.CityOfAaron;
 import model.Game;
 import java.util.Random;
+import model.Map;
+import model.Player;
+import model.Storehouse;
 
 /**
  *
  * @author heatherholt
  */
 public class GameControl {
+	
+	public static Game createNewGame(String playerName) {
+				
+		Player player = new Player();
+		player.setName(playerName);
+
+		Game game = new Game();
+		game.setThePlayer(player);
+		
+		Map map = MapControl.createMap(5, 5);
+		game.setTheMap(map);
+
+		CityOfAaron.setCurrentGame(game);
+
+		Game currentGame = CityOfAaron.getCurrentGame();
+		currentGame.setCurrentYear(1);
+		currentGame.setCurrentPopulation(100);
+		currentGame.setAcresOwned(1000);
+		currentGame.setTithingPaidInBushels(300);
+		currentGame.setTithingPercentage(10);
+		currentGame.setWheatInStorage(2700);
+		currentGame.setLandPrice(RandomNumbers.getRandom(17, 27));
+		currentGame.setTheStorehouse(new Storehouse());
+		
+		return game;
+	}
+	
+	
 
 	/**
 	 * Transaction to buy land, calculate cost of acres to buy
