@@ -6,6 +6,7 @@
 package view;
 
 import cityofaaron.CityOfAaron;
+import java.util.Arrays;
 import model.Author;
 import model.Game;
 import model.InventoryItem;
@@ -88,11 +89,10 @@ public class ReportsMenuView extends ViewBase {
 	// method will call based on the user's input. We don't want to do a lot of 
 	// complex game stuff in our doAction() method. It will get messy very quickly.
 	private void viewAnimals() {
-		//System.out.println("* viewAnimals() called. Implementation coming soon. *");
 		InventoryItem[] animals = storehouse.getAnimals();
-		int arrayLength = animals.length;
-		for (int i = 0; i < arrayLength; i++) {
-			System.out.print(animals[i]);
+		Arrays.sort(animals, (a,b) -> a.getName().compareTo(b.getName()));
+		for (int i=0; i < animals.length; i++) {
+			System.out.println(animals[i]);
 		}
 		pause(2000);
 	}

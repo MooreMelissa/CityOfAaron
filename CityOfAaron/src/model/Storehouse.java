@@ -18,7 +18,9 @@ public class Storehouse implements Serializable {
 		new Author("Heather Holt", "Lady of Asgard")};
 	private InventoryItem[] animals = {new Animal("Tiger", ItemType.Animal, 2, Condition.Good, 10),
 		new Animal("Emu", ItemType.Animal, 5, Condition.Good, 7),
-		new Animal("Llama", ItemType.Animal, 3, Condition.Good, 1)};
+		new Animal("Zebra", ItemType.Animal, 13, Condition.Good, 5),
+		new Animal("Llama", ItemType.Animal, 3, Condition.Good, 1),
+		new Animal("Badger", ItemType.Animal, 8, Condition.Good, 3)};
 	private InventoryItem[] tools = {new InventoryItem("Hammer", ItemType.Tool, 2, Condition.Fair),
 		new InventoryItem("Jig Saw", ItemType.Tool, 1, Condition.Good),
 		new InventoryItem("Axe", ItemType.Tool, 4, Condition.Poor)};
