@@ -18,7 +18,7 @@ public class Location implements Serializable {
 	private String mapSymbol;
 	private String[] gameTips = {"One person can't care for more than 10 acres of wheat.",
 		"Each person consumes about 20 bushels of wheat per year.",
-		"Each acres requires one bushel for planting."};
+		"Each acre requires one bushel for planting."};
 
 	public Location() {
 		//Empty Constructor
