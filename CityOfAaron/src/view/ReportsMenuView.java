@@ -99,8 +99,8 @@ public class ReportsMenuView extends ViewBase {
 
 	private void viewTools() {
 		InventoryItem[] tools = storehouse.getTools();
-		int arrayLength = tools.length;
-		for (int i = 0; i < arrayLength; i++) {
+		Arrays.sort(tools, (a,b) -> a.getName().compareTo(b.getName()));
+		for (int i = 0; i < tools.length; i++) {
 			System.out.print(tools[i]);
 		}
 		pause(2000);
