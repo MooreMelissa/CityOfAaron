@@ -26,13 +26,25 @@ public class StorehouseControl {
         return animals;
     }
 
+    public static InventoryItem[] sortTools(InventoryItem[] tools) {
+        for (int i = 0; i < tools.length - 1; i++) {
+            for (int j = i + 1; j < tools.length; j++) {
+                if (tools[i].getName().compareTo(tools[j].getName()) > 0) {
+                    InventoryItem temp = tools[i];
+                    tools[i] = tools[j];
+                    tools[j] = temp;
+                }
+            }
+        }
+        return tools;
+    }
+
     public static InventoryItem[] sortProvisions(InventoryItem[] provisions) {
         for (int i = 0; i < provisions.length - 1; i++) {
 
             for (int j = i + 1; j < provisions.length; j++) {
 
                 if (provisions[i].getCondition().compareTo(provisions[j].getCondition()) > 0) {
-                //if (provisions[i].getQuantity()> provisions[j].getQuantity()) {
                     InventoryItem temp = provisions[i];
                     provisions[i] = provisions[j];
                     provisions[j] = temp;
