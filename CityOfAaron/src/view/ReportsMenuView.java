@@ -100,20 +100,34 @@ public class ReportsMenuView extends ViewBase {
 	private void viewTools() {
 		InventoryItem[] tools = storehouse.getTools();
 		Arrays.sort(tools, (a,b) -> a.getName().compareTo(b.getName()));
-		for (int i = 0; i < tools.length; i++) {
-			System.out.print(tools[i]);
-		}
+            for (InventoryItem tool : tools) {
+                System.out.print(tool);
+            }
 		pause(2000);
 	}
 
 	private void viewProvisions() {
-		//System.out.println("* viewProvisions() called. Implementation coming soon. *");
 		InventoryItem[] provisions = storehouse.getProvisions();
-		int arrayLength = provisions.length;
-		for (int i = 0; i < arrayLength; i++) {
-			System.out.print(provisions[i]);
-		}
-		pause(2000);
+		for (int i=0; i < provisions.length-1; i++) {
+                    
+                    for(int j = i + 1; j < provisions.length; j++) {
+                     
+                        if (provisions[i].getCondition().compareTo(provisions[j].getCondition()) > 0) {
+                            InventoryItem temp = provisions[i];
+                            provisions[i] = provisions[j];
+                            provisions[j] = temp;
+                           
+                        } 
+                    }
+                }
+                //Arrays.sort(provisions, (a,b) -> a.getCondition().compareTo(b.getCondition())); 
+               // for (InventoryItem provision : provisions) {
+                       // System.out.print(provision)
+		
+                for(InventoryItem provision: provisions){
+                    System.out.print(provision);
+                }
+                pause(2000);
 	}
 
 	private void viewAuthors() {
