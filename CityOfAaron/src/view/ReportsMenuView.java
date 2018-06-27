@@ -6,6 +6,7 @@
 package view;
 
 import cityofaaron.CityOfAaron;
+import control.StorehouseControl;
 import java.util.Arrays;
 import model.Author;
 import model.Game;
@@ -89,10 +90,9 @@ public class ReportsMenuView extends ViewBase {
 	// method will call based on the user's input. We don't want to do a lot of 
 	// complex game stuff in our doAction() method. It will get messy very quickly.
 	private void viewAnimals() {
-		InventoryItem[] animals = storehouse.getAnimals();
-		Arrays.sort(animals, (a,b) -> a.getName().compareTo(b.getName()));
-		for (int i=0; i < animals.length; i++) {
-			System.out.println(animals[i]);
+		InventoryItem[] animals = StorehouseControl.sortAnimals(storehouse.getAnimals());	
+		for (InventoryItem animal : animals) {
+			System.out.println(animal);
 		}
 		pause(2000);
 	}
@@ -107,28 +107,12 @@ public class ReportsMenuView extends ViewBase {
 	}
 
 	private void viewProvisions() {
-		InventoryItem[] provisions = storehouse.getProvisions();
-		for (int i=0; i < provisions.length-1; i++) {
-                    
-                    for(int j = i + 1; j < provisions.length; j++) {
-                     
-                        if (provisions[i].getCondition().compareTo(provisions[j].getCondition()) > 0) {
-                            InventoryItem temp = provisions[i];
-                            provisions[i] = provisions[j];
-                            provisions[j] = temp;
-                           
-                        } 
-                    }
-                }
-                //Arrays.sort(provisions, (a,b) -> a.getCondition().compareTo(b.getCondition())); 
-               // for (InventoryItem provision : provisions) {
-                       // System.out.print(provision)
-		
-                for(InventoryItem provision: provisions){
-                    System.out.print(provision);
-                }
-                pause(2000);
-	}
+		InventoryItem[] provisions = StorehouseControl.sortProvisions(storehouse.getProvisions());
+		for(InventoryItem provision: provisions){
+			System.out.print(provision);
+		}
+		pause(2000);
+	} 
 
 	private void viewAuthors() {
 		//System.out.println("* viewAuthors() called. Implementation coming soon. *");
