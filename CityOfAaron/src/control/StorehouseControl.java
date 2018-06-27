@@ -32,6 +32,7 @@ public class StorehouseControl {
             for (int j = i + 1; j < provisions.length; j++) {
 
                 if (provisions[i].getCondition().compareTo(provisions[j].getCondition()) > 0) {
+                //if (provisions[i].getQuantity()> provisions[j].getQuantity()) {
                     InventoryItem temp = provisions[i];
                     provisions[i] = provisions[j];
                     provisions[j] = temp;
