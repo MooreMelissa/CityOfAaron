@@ -28,12 +28,12 @@ public class Storehouse implements Serializable {
         new InventoryItem("Screw Driver", ItemType.Tool, 6, Condition.Good)};
     private InventoryItem[] provisions = {new Provision("Apples", ItemType.Provisions, 5, Condition.Good, true),
         new Provision("Crates", ItemType.Provisions, 20, Condition.Fair, false),
-        new Provision("Rope", ItemType.Provisions, 8, Condition.Poor, false),
+        new Provision("Blankets", ItemType.Provisions, 8, Condition.Poor, false),
         new Provision("Carts", ItemType.Provisions, 7, Condition.Good, false),
         new Provision("Tents", ItemType.Provisions, 35, Condition.Fair, false),
         new Provision("Nuts", ItemType.Provisions, 25, Condition.Good, true),
         new Provision("Potatoes", ItemType.Provisions, 50, Condition.Good, true),
-        new Provision("Blankets", ItemType.Provisions, 10, Condition.Poor, false)};
+        new Provision("Ropes", ItemType.Provisions, 10, Condition.Poor, false)};
 
     public Storehouse() {
         //Empty constructor for JavaBeans   
