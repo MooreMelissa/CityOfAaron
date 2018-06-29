@@ -30,6 +30,7 @@ public class MainMenuView extends ViewBase {
 
 	/**
 	 * Get the set of inputs from the user.
+	 *
 	 * @return
 	 */
 	@Override

@@ -11,7 +11,6 @@ import java.util.Random;
  *
  * @author heatherholt
  */
-
 public class RandomNumbers {
 
 	/* public static void main(String[] args) {

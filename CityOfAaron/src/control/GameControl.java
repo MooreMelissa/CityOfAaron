@@ -17,15 +17,15 @@ import model.Storehouse;
  * @author heatherholt
  */
 public class GameControl {
-	
+
 	public static Game createNewGame(String playerName) {
-				
+
 		Player player = new Player();
 		player.setName(playerName);
 
 		Game game = new Game();
 		game.setThePlayer(player);
-		
+
 		Map map = MapControl.createMap(5, 5);
 		game.setTheMap(map);
 
@@ -40,14 +40,13 @@ public class GameControl {
 		currentGame.setWheatInStorage(2700);
 		currentGame.setLandPrice(RandomNumbers.getRandom(17, 27));
 		currentGame.setTheStorehouse(new Storehouse());
-		
+
 		return game;
 	}
-	
-	
 
 	/**
 	 * Transaction to buy land, calculate cost of acres to buy
+	 *
 	 * @param acresToBuy user input request of acres to buy
 	 * @param randomPrice random number between 17 and 27
 	 * @param totalWheat total wheat in storage
@@ -115,6 +114,7 @@ public class GameControl {
 	 * getCurrentPopulation * 10) THEN RETURN -3 IF (acresToPlant / 2 >
 	 * getWheatInStorage) THEN RETURN -4 setWheatInStorage = getWheatInStorage -
 	 * (acresToPlant / 2) setAcresPlanted = acresToPlant END
+	 *
 	 * @param acresToPlant
 	 * @param acresOwned
 	 * @param wheatInStorage
@@ -212,6 +212,7 @@ public class GameControl {
 
 	/**
 	 * harvestWheat
+	 *
 	 * @param acresToPlant user input - acres planted
 	 * @param percentage tithing percentage paid
 	 * @param randomYieldLow random number between 1 and 3
@@ -244,6 +245,7 @@ public class GameControl {
 
 	/**
 	 * wheatOfferings - Calculate the number of bushels to pay in tithing
+	 *
 	 * @param percentage User input tithing percentage
 	 * @param totalHarvest Total bushels harvested after live the year
 	 * @return Number of bushels to pay in tithing
@@ -258,6 +260,7 @@ public class GameControl {
 
 	/**
 	 * Calculate the amount of wheat eaten by rats
+	 *
 	 * @param percentage percentage of tithing paid
 	 * @param randomChance random number between 1 and 100
 	 * @param randomAmountLow random number between 6 and 10
@@ -295,9 +298,7 @@ public class GameControl {
 	 * IF (bushelFed < 0 ) THEN RETURN -1 int noPeopleFed = bushelFed / 20 int
 	 * starvedPeople = 0 IF (noPeopleFed < totalPopulation) THEN starvedPeople =
 	 * totalPopulation – noPeopleFed RETURN starvedPeople END @param bushelsFed
-	 * @param totalPopulation
-         * @param bushelsFed
-         * @return
+	 * @param totalPopulation @param bushelsFed @return
 	 */
 	public static int populationMortality(int bushelsFed, int totalPopulation) {
 
@@ -318,6 +319,7 @@ public class GameControl {
 
 	/**
 	 * peopleMoveIn - Calculate the number of people that moved in
+	 *
 	 * @param randomGrowth random number generation between 1 and 5
 	 * @param totalPopulation population prior to live the year
 	 * @return number of people that moved in

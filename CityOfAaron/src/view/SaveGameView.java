@@ -25,6 +25,7 @@ public class SaveGameView extends ViewBase {
 
 	/**
 	 * Get the set of inputs from the user.
+	 *
 	 * @return
 	 */
 	@Override
@@ -42,6 +43,7 @@ public class SaveGameView extends ViewBase {
 
 	/**
 	 * Perform the action indicated by the user's input.
+	 *
 	 * @param inputs
 	 * @return true if the view should repeat itself, and false if the view
 	 * should exit and return to the previous view.

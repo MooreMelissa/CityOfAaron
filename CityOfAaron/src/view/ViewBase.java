@@ -1,5 +1,3 @@
-
-
 package view;
 
 import java.util.Scanner;
@@ -31,6 +29,7 @@ public abstract class ViewBase implements View {
 
 	/**
 	 * Perform the action indicated by the user's input.
+	 *
 	 * @param inputs
 	 * @return true if the view should repeat itself, and false if the view
 	 * should exit and return to the previous view.
@@ -61,6 +60,7 @@ public abstract class ViewBase implements View {
 
 	/**
 	 * Get the user's input. Keep prompting them until they enter a value.
+	 *
 	 * @param prompt
 	 * @param allowEmpty - determine whether the user can enter no value (just a
 	 * return key)
@@ -96,6 +96,7 @@ public abstract class ViewBase implements View {
 	/**
 	 * An overloaded version of getUserInput that sets allowEmpty to false so we
 	 * don't have to type it ourselves.
+	 *
 	 * @param prompt
 	 * @return
 	 */

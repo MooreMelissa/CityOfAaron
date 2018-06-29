@@ -34,6 +34,7 @@ public class GameMenuView extends ViewBase {
 
 	/**
 	 * Get the set of inputs from the user.
+	 *
 	 * @return
 	 */
 	@Override
@@ -51,6 +52,7 @@ public class GameMenuView extends ViewBase {
 
 	/**
 	 * Perform the action indicated by the user's input.
+	 *
 	 * @param inputs
 	 * @return true if the view should repeat itself, and false if the view
 	 * should exit and return to the previous view.
@@ -106,7 +108,6 @@ public class GameMenuView extends ViewBase {
 		System.out.println("* liveTheYear() called. Implementation coming soon. *");
 
 		// I'm not positive how to do this yet, just experimenting.
-		
 		/* Game currentGame = CityOfAaron.getCurrentGame();
 		boolean errorResult = GameControl.liveTheYear(CityOfAaron.getCurrentGame());
 		if (errorResult == false) {
