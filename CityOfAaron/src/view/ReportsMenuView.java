@@ -108,8 +108,11 @@ public class ReportsMenuView extends ViewBase {
 
 	private void viewProvisions() {
 		InventoryItem[] provisions = StorehouseControl.sortProvisions(storehouse.getProvisions());
-		for (InventoryItem provision : provisions) {
-			System.out.print(provision);
+		System.out.println("             Provisions Report          \n"
+				+ "\nName    Quantity     Condition       Perishable  "
+				+ "\n-------------------------------------------------  ");
+                for (InventoryItem provision : provisions) {
+			System.out.println(provision);
 		}
 		pause(2000);
 	}
