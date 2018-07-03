@@ -68,9 +68,16 @@ public class SellLandView extends ViewBase {
 		} else {
 			boolean check = false;
 			while (check == false) {
-				try {
-					Integer.parseInt(inputs[0]);
+				
+                                try {
+                                        if (inputs[0] == null || inputs[0].equals("") || inputs[0].equals("\n")) {
+			                System.out.println("No amount was entered. Returning to the Manage the Crops Menu...");
+			                pause(2000);
+                                        }
+                                        
+                                        Integer.parseInt(inputs[0]);
 					check = true;
+                                        
 				} catch (NumberFormatException nfe) {
 					System.out.println("That was not a valid input. Please enter a number.");
 					inputs = getInputs();
