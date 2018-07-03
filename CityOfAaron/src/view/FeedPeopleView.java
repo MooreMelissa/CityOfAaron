@@ -7,6 +7,7 @@ package view;
 
 import cityofaaron.CityOfAaron;
 import control.GameControl;
+import exception.GameControlException;
 import model.Game;
 
 /**
@@ -72,8 +73,17 @@ public class FeedPeopleView extends ViewBase {
 			int bushelsFed = 0;
 			while (check == false) {
 				try {
-					bushelsFed = Integer.parseInt(inputs[0]);
-					check = true;
+					if (inputs[0] == null || inputs[0].equals("")) {
+                                                  
+                                                System.out.println("\nNo amount was entered. "
+                                                        + "Returning to the Manage the Crops Menu...");
+                                                pause(2000);
+			
+                                        } else {
+                                                bushelsFed = Integer.parseInt(inputs[0]);
+                                                check = true;
+                                        }
+                                        
 				} catch (NumberFormatException nfe) {
 
 					System.out.println("Not a valid input. Please enter a number");
@@ -98,26 +108,20 @@ public class FeedPeopleView extends ViewBase {
 
 		int totalWheat = game.getWheatInStorage();
 
-		int bushels = GameControl.feedPeople(bushelsFed, totalWheat);
-
-		if (bushels == -1) {
-			System.out.println("\n** Invalid input, please try again. **");
-			return true;
-		}
-
-		if (bushels == -2) {
-			System.out.println("\n** Invalid input **"
-					+ "\nThe amount of bushels entered is exceeded "
-					+ "the wheat in storage"
-					+ "\nPlease try again");
-			return true;
-		} else {
-			game.setWheatInStorage(totalWheat - bushels);
+		try {
+                    
+                        int bushels = GameControl.feedPeople(bushelsFed, totalWheat);
+                        game.setWheatInStorage(totalWheat - bushels);
 			game.setBushelsFedToPeople(bushels);
 			System.out.println("\nYou have " + game.getWheatInStorage() + " bushels of wheat in storage.");
 			pause(2000);
 			return false;
-		}
+                        
+		} catch (GameControlException gce) {
+                        
+                        System.out.println(gce.getMessage());
+                        return true;
+                }
 	}
 
 }

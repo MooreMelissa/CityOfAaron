@@ -57,36 +57,38 @@ public class SellLandView extends ViewBase {
 	 * should exit and return to the previous view.
 	 */
 	@Override
-	public boolean doAction(String[] inputs) {
+	   public boolean doAction(String[] inputs) {
 
-		// If the user just hits 'enter', bail out and don't do the action.
-		// Returning false will take us back to the Game Menu.
-		if (inputs[0] == null || inputs[0].equals("") || inputs[0].equals("\n")) {
-			System.out.println("No amount was entered. Returning to the Manage the Crops Menu...");
-			pause(2000);
-			return false;
-		} else {
-			boolean check = false;
-			while (check == false) {
-				
+        // If the user just hits 'enter', bail out and don't do the action.
+        // Returning false will take us back to the Game Menu.
+                if (inputs[0] == null || inputs[0].equals("") || inputs[0].equals("\n")) {
+                        System.out.println("No amount was entered. Returning to the Manage the Crops Menu...");
+                        pause(2000);
+                        return false;
+                } else {
+                        boolean check = false;
+                        while (check == false) {
+
                                 try {
                                         if (inputs[0] == null || inputs[0].equals("") || inputs[0].equals("\n")) {
-			                System.out.println("No amount was entered. Returning to the Manage the Crops Menu...");
-			                pause(2000);
-                                        }
-                                        
+                                        System.out.println("No amount was entered. Returning to the Manage the Crops Menu...");
+                                        pause(2000);
+
+                                        } else {
                                         Integer.parseInt(inputs[0]);
-					check = true;
-                                        
-				} catch (NumberFormatException nfe) {
-					System.out.println("That was not a valid input. Please enter a number.");
-					inputs = getInputs();
-				}
-			}
-			boolean result = sellLandTransaction(inputs);
-			return result;
-		}
-	}
+                                        check = true;
+                                        }
+
+                                } catch (NumberFormatException nfe) {
+                                        System.out.println("That was not a valid input. Please enter a number.");
+                                        inputs = getInputs();
+                                }
+                        }
+                        
+                        boolean result = sellLandTransaction(inputs);
+                        return result;
+                }
+            }   
 
 	// Define your action handlers here. These are the methods that your doAction()
 	// method will call based on the user's input. We don't want to do a lot of 

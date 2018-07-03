@@ -56,6 +56,7 @@ public class GameControl {
 	 * @param acresToBuy user input request of acres to buy
 	 * @param randomPrice random number between 17 and 27
 	 * @param totalWheat total wheat in storage
+         * @throws exception.GameControlException
 	 * @return
 	 */
 	public static int buyLand(int acresToBuy,
@@ -78,6 +79,7 @@ public class GameControl {
 	 * @param acresToSell user input request of acres to sell
 	 * @param randomPrice random number between 17 and 27
 	 * @param totalAcres total acres owned
+         * @throws exception.GameControlException
 	 * @return profit from land sold
 	 */
 	public static int sellLand(int acresToSell, int randomPrice, int totalAcres) 
@@ -101,16 +103,24 @@ public class GameControl {
 	 *
 	 * @param bushelsFed
 	 * @param totalWheat
+         * @throws exception.GameControlException
 	 * @return
 	 */
-	public static int feedPeople(int bushelsFed, int totalWheat) {
+	public static int feedPeople(int bushelsFed, int totalWheat) 
+                       throws GameControlException{
 
 		if (bushelsFed < 0) {
-			return -1;
+			throw new GameControlException("\n** Invalid Input **\n"
+                                                        + "Number of bushels to feed people"
+                                                        + " cannot be a negative number."
+                                                        + "\nPlease try again");
 		}
 
 		if (bushelsFed > totalWheat) {
-			return -2;
+			throw new GameControlException("\n** Invalid input **\n" 
+					                + "The amount of bushels entered is exceeded" 
+					                + " the wheat in storage."
+                                                        + "\nPlease try again ");
 		}
 
 		return bushelsFed; // validates users amount
@@ -128,27 +138,39 @@ public class GameControl {
 	 * @param acresOwned
 	 * @param wheatInStorage
 	 * @param currentPopulation
+         * @throws exception.GameControlException
 	 * @return
 	 */
 	public static int plantCrops(int acresToPlant,
 			int acresOwned,
 			int currentPopulation,
-			int wheatInStorage) {
+			int wheatInStorage) throws GameControlException {
 
 		if (acresToPlant < 0) {
-			return -1;
+			throw new GameControlException("\n** Invalid Input **\n"
+                                                       + "Number of acres of land to plant"
+                                                       + " cannot be a negative number."
+                                                       + "\nPlease try again");
 		}
 
 		if (acresToPlant > acresOwned) {
-			return -2;
+			throw new GameControlException("\n ** Invalid input **"
+					               + "\nThe amount of acres entered is more than acres owned"
+					               + "\nPlease try again") ;
 		}
 
 		if (acresToPlant > currentPopulation * 10) {
-			return -3;
+			throw new GameControlException("\n** Invalid input **"
+					               + "\nThe amount of acres entered is more than the "
+					               + "current population can take care of"
+					               + "\nPlease try again");
 		}
 
 		if (acresToPlant / 2 > wheatInStorage) {
-			return -4;
+			throw new GameControlException("\n** Invalid input **"
+					               + "\nThe amount of acres entered is exceeded "
+					               + "the wheat in storage"
+					               + "\nPlease try again");
 		}
 
 		int bushelsUsed = acresToPlant / 2;
@@ -204,8 +226,12 @@ public class GameControl {
 		totalWheat = totalWheat - wheatRatsAte;
 
 		//Beginning of populationMortality function
-		int popMortality = populationMortality(bushelsFed, totalPopulation);
-		totalPopulation = totalPopulation - popMortality;
+		try {
+                    int popMortality = populationMortality(bushelsFed, totalPopulation);
+		    totalPopulation = totalPopulation - popMortality;
+                } catch (GameControlException gce) {
+                    System.out.println(gce.getMessage());
+                }
 
 		//Beginning of peopleMoveIn function
 		int populationGrowth = peopleMoveIn(randomGrowth, totalPopulation);
@@ -307,12 +333,19 @@ public class GameControl {
 	 * IF (bushelFed < 0 ) THEN RETURN -1 int noPeopleFed = bushelFed / 20 int
 	 * starvedPeople = 0 IF (noPeopleFed < totalPopulation) THEN starvedPeople =
 	 * totalPopulation – noPeopleFed RETURN starvedPeople END @param bushelsFed
-	 * @param totalPopulation @param bushelsFed @return
+	 * @param totalPopulation 
+         * @param bushelsFed
+         * @throws exception.GameControlException
+         * @return
 	 */
-	public static int populationMortality(int bushelsFed, int totalPopulation) {
+	public static int populationMortality(int bushelsFed, int totalPopulation) 
+                        throws GameControlException {
 
 		if (bushelsFed < 0) {
-			return -1;
+			throw new GameControlException("\n** Invalid Input **\n"
+                                                        + "Number of bushels to feed people"
+                                                        + " cannot be a negative number."
+                                                        + "\nPlease try again") ;
 		}
 
 		int noPeopleFed = bushelsFed / 20;

@@ -7,6 +7,7 @@ package view;
 
 import cityofaaron.CityOfAaron;
 import control.GameControl;
+import exception.GameControlException;
 import model.Game;
 
 /**
@@ -71,8 +72,16 @@ public class PlantCropsView extends ViewBase {
 			int acresToPlant = 0;
 			while (check == false) {
 				try {
-					acresToPlant = Integer.parseInt(inputs[0]);
-					check = true;
+                                        if (inputs[0] == null || inputs[0].equals("")) {
+                                                System.out.println("\nNo amount was entered."
+                                                                  + " Returning to the Manage the Crops Menu...");
+                                                pause(2000);
+                                                
+                                        } else {
+                                                acresToPlant = Integer.parseInt(inputs[0]);
+                                                check = true;
+                                        }
+                                        
 				} catch (NumberFormatException nfe) {
 
 					System.out.println("Not a valid input. Please enter a number");
@@ -99,38 +108,18 @@ public class PlantCropsView extends ViewBase {
 		int currentPopulation = game.getCurrentPopulation();
 		int totalWheat = game.getWheatInStorage();
 
-		int crops = GameControl.plantCrops(acresToPlant, acresOwned, currentPopulation, totalWheat);
-
-		if (crops == -1) {
-			System.out.println("\n** Invalid input, please try again. **");
-			return true;
-		}
-		if (crops == -2) {
-			System.out.println("\n ** Invalid input **"
-					+ "\nThe amount of acres entered is more than acres owned"
-					+ "\nPlease try again");
-			return true;
-		}
-		if (crops == -3) {
-			System.out.println("\n** Invalid input **"
-					+ "\nThe amount of acres entered is more than the "
-					+ "current population can take care of"
-					+ "\nPlease try again");
-			return true;
-		}
-		if (crops == -4) {
-			System.out.println("\n** Invalid input **"
-					+ "\nThe amount of acres entered is exceeded "
-					+ "the wheat in storage"
-					+ "\nPlease try again");
-			return true;
-		} else {
-			game.setWheatInStorage(totalWheat - crops);
+		try {
+                        int crops = GameControl.plantCrops(acresToPlant, acresOwned, currentPopulation, totalWheat);
+                        game.setWheatInStorage(totalWheat - crops);
 			game.setAcresPlanted(acresToPlant);
 			System.out.println("\nYou have " + game.getWheatInStorage() + " bushels of wheat in storage.");
 			pause(2000);
 			return false;
-		}
+		} catch (GameControlException gce) {
+                    
+                        System.out.println(gce.getMessage());
+                        return true;
+                }
 	}
 
 }
