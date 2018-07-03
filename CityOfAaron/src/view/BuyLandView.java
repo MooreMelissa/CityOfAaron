@@ -7,6 +7,7 @@ package view;
 
 import cityofaaron.CityOfAaron;
 import control.GameControl;
+import exception.GameControlException;
 import model.Game;
 
 /**
@@ -89,13 +90,9 @@ public class BuyLandView extends ViewBase {
 
 		int acresToBuy = Integer.parseInt(inputs[0]);
 		int totalWheat = game.getWheatInStorage();
-
-		int cost = GameControl.buyLand(acresToBuy, game.getLandPrice(), totalWheat);
-
-		if (cost < 0) {
-			System.out.println("\n** Invalid input, please try again. **");
-			return true;
-		} else {
+		
+		try {
+			int cost = GameControl.buyLand(acresToBuy, game.getLandPrice(), totalWheat);
 			game.setWheatInStorage(totalWheat - cost);
 			game.setAcresOwned(game.getAcresOwned() + acresToBuy);
 			System.out.println("\nYou have successfully purchased " + acresToBuy + " acres of land.\n"
@@ -103,7 +100,12 @@ public class BuyLandView extends ViewBase {
 					+ "You have " + game.getWheatInStorage() + " bushels of wheat in storage.");
 			pause(2000);
 			return false;
+			
+		} catch (GameControlException gce) {
+			System.out.println(gce.getMessage());
+			return true;
 		}
+
 	}
 
 }

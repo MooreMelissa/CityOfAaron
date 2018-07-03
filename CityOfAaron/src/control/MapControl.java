@@ -2,6 +2,8 @@ package control;
 
 import model.Location;
 import model.Map;
+import exception.MapControlException;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,20 +16,21 @@ import model.Map;
  */
 public class MapControl {
 
-	public static Map createMap(int noOfRows, int noOfColumns) {
+	public static Map createMap(int noOfRows, int noOfColumns) throws MapControlException {
 
 		if (noOfRows < 0 || noOfColumns < 0) {
-			return null;
+			// return null;
+			throw new MapControlException("\nMap is empty");
 		}
 
 		Map map = new Map();
 
-		Location[][] locations = createLocations(noOfRows, noOfColumns, map);
+		//Location[][] locations = map.getLocations();
 
 		return map;
 	}
 
-	private static Location[][] createLocations(int rows, int columns, Map map) {
+	/* private static Location[][] createLocations(int rows, int columns, Map map) {
 
 		if (rows < 1 || columns < 1) {
 			return null;
@@ -36,5 +39,5 @@ public class MapControl {
 		Location[][] locations = map.getLocations();
 
 		return locations;
-	}
+	} */
 }

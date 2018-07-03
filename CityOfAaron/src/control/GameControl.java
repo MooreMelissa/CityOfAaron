@@ -6,8 +6,9 @@
 package control;
 
 import cityofaaron.CityOfAaron;
+import exception.GameControlException;
+import exception.MapControlException;
 import model.Game;
-import java.util.Random;
 import model.Map;
 import model.Player;
 import model.Storehouse;
@@ -18,16 +19,21 @@ import model.Storehouse;
  */
 public class GameControl {
 
-	public static Game createNewGame(String playerName) {
+	public static Game createNewGame(String playerName) throws GameControlException {
 
-		Player player = new Player();
-		player.setName(playerName);
+			Player player = new Player();
+			player.setName(playerName);
 
-		Game game = new Game();
-		game.setThePlayer(player);
-
-		Map map = MapControl.createMap(5, 5);
-		game.setTheMap(map);
+			Game game = new Game();
+			game.setThePlayer(player);
+			
+		try {
+			Map map = MapControl.createMap(5, 5);
+			game.setTheMap(map);
+		} catch (MapControlException mce) {
+			System.out.println(mce.getMessage());
+		}
+		
 
 		CityOfAaron.setCurrentGame(game);
 
@@ -54,13 +60,14 @@ public class GameControl {
 	 */
 	public static int buyLand(int acresToBuy,
 			int randomPrice,
-			int totalWheat) {
+			int totalWheat) throws GameControlException {
 		if (acresToBuy < 0) {
-			return -1;
+			throw new GameControlException("\nNumber of acres to buy cannot be a negative number.");
 		}
 		int cost = (acresToBuy * randomPrice);
 		if (cost > totalWheat) {
-			return -1;
+			throw new GameControlException("\nThe cost of the number of acres you"
+					+" want to buy is more than the total wheat in storage.");
 		}
 		return cost;
 	}
@@ -73,12 +80,14 @@ public class GameControl {
 	 * @param totalAcres total acres owned
 	 * @return profit from land sold
 	 */
-	public static int sellLand(int acresToSell, int randomPrice, int totalAcres) {
+	public static int sellLand(int acresToSell, int randomPrice, int totalAcres) 
+			throws GameControlException {
 		if (acresToSell < 0) {
-			return -1;
+			throw new GameControlException("\nNumber of acres to sell cannot be a negative number.");
 		}
 		if (acresToSell > totalAcres) {
-			return -1;
+			throw new GameControlException("\nThe number of acres you want to sell"
+					+ " cannot be more than the number of acres you own.");
 		}
 		int profit = acresToSell * randomPrice;
 
