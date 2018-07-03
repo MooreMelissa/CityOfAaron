@@ -292,6 +292,7 @@ public class GameControl {
      *
      * @param percentage User input tithing percentage
      * @param totalHarvest Total bushels harvested after live the year
+     * @throws exception.GameControlException
      * @return Number of bushels to pay in tithing
      */
     public static int wheatOfferings(int percentage, int totalHarvest)
@@ -343,13 +344,11 @@ public class GameControl {
      * IF (bushelFed < 0 ) THEN RETURN -1 int noPeopleFed = bushelFed / 20 int
      * starvedPeople = 0 IF (noPeopleFed < totalPopulation) THEN starvedPeople =
      * totalPopulation – noPeopleFed RETURN starvedPeople END @param bushelsFed
-     * @param totalPopulation @param bushelsFed @throws
-     * exception.GameControlException
+     * @param totalPopulation 
+     * @param bushelsFed 
+     * @throws exception.GameControlException
      *
-     * @
-     * r
-     * e
-     * turn
+     * @return
      */
     public static int populationMortality(int bushelsFed, int totalPopulation)
             throws GameControlException {
@@ -377,6 +376,7 @@ public class GameControl {
      *
      * @param randomGrowth random number generation between 1 and 5
      * @param totalPopulation population prior to live the year
+     * @throws exception.GameControlException
      * @return number of people that moved in
      */
     public static int peopleMoveIn(int randomGrowth, int totalPopulation) 
