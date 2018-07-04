@@ -176,7 +176,7 @@ public class GameControl {
         return bushelsUsed;
     }
 
-    public static boolean liveTheYear(Game game) {
+    public static boolean liveTheYear(Game game) throws GameControlException {
 
         int totalWheat = game.getWheatInStorage();
         int totalPopulation = game.getCurrentPopulation();
@@ -195,62 +195,59 @@ public class GameControl {
         int randomAmountHigh = RandomNumbers.getRandom(3, 5); // wheatEatenByRats
         int randomGrowth = RandomNumbers.getRandom(1, 5); //peopleMoveIn
 
-        // Beginning of harvestWheat function
-        if (acresToPlant < 0) {
-            return false;
-        }
-        int totalHarvest = harvestWheat(acresToPlant,
-                percentage,
-                randomYieldLow,
-                randomYieldMid,
-                randomYieldHigh);
-        if (totalHarvest < 0) {
-            return false;
-        }
-        totalWheat = totalWheat + totalHarvest;
+		try {
+			// Beginning of harvestWheat function
+			if (acresToPlant < 0) {
+				throw new GameControlException("Acres to plant cannot be a negative number");
+			}
+			int totalHarvest = harvestWheat(acresToPlant,
+					percentage,
+					randomYieldLow,
+					randomYieldMid,
+					randomYieldHigh);
+			if (totalHarvest < 0) {
+				throw new GameControlException("Wheat harvested cannot be a negative number");
+			}
+			totalWheat = totalWheat + totalHarvest;
 
-        //Beginning of wheatOfferings function
+			//Beginning of wheatOfferings function
+			totalTithe = wheatOfferings(percentage, totalHarvest);
+			totalWheat = totalWheat - totalTithe;
         
-        try {
-            totalTithe = wheatOfferings(percentage, totalHarvest);   
-        } catch (GameControlException gce) {
-            System.out.println(gce.getMessage());
-        }
-        totalWheat = totalWheat - totalTithe;
-        
-        // Beginning of wheatEatenByRats function
-        int wheatRatsAte = wheatEatenByRats(percentage,
-                randomChance,
-                randomAmountLow,
-                randomAmountMid,
-                randomAmountHigh,
-                totalWheat);
-        if (wheatRatsAte < 0) {
-            return false;
-        }
-        totalWheat = totalWheat - wheatRatsAte;
+			// Beginning of wheatEatenByRats function
+			int wheatRatsAte = wheatEatenByRats(percentage,
+					randomChance,
+					randomAmountLow,
+					randomAmountMid,
+					randomAmountHigh,
+					totalWheat);
+			if (wheatRatsAte < 0) {
+				throw new GameControlException("Wheat eaten by rats cannot be a negative number");
+			}
+			totalWheat = totalWheat - wheatRatsAte;
 
-        //Beginning of populationMortality function
-        try {
+			//Beginning of populationMortality function
             int popMortality = populationMortality(bushelsFed, totalPopulation);
             totalPopulation = totalPopulation - popMortality;
-        } catch (GameControlException gce) {
+
+			//Beginning of peopleMoveIn function
+            int populationGrowth = peopleMoveIn(randomGrowth, totalPopulation);
+            totalPopulation = totalPopulation + populationGrowth;
+			
+			game.setTotalWheatHarvested(totalHarvest);
+			game.setTithingPaidInBushels(totalTithe);
+			game.setTotalWheatRatsAte(wheatRatsAte);
+			game.setPopulationDecrease(popMortality);
+			game.setPopulationIncrease(populationGrowth);
+			game.setCurrentPopulation(totalPopulation);
+			game.setWheatInStorage(totalWheat);
+			game.setCurrentYear(game.getCurrentYear() + 1);
+			game.setLandPrice(RandomNumbers.getRandom(17, 27));
+
+        } catch (GameControlException gce){
             System.out.println(gce.getMessage());
         }
 
-        //Beginning of peopleMoveIn function
-        try {
-            int populationGrowth = peopleMoveIn(randomGrowth, totalPopulation);
-            totalPopulation = totalPopulation + populationGrowth;
-        } catch (GameControlException gce){
-            System.err.println(gce.getMessage());
-        }
-
-        game.setTithingPaidInBushels(totalTithe);
-        game.setCurrentPopulation(totalPopulation);
-        game.setWheatInStorage(totalWheat);
-        game.setCurrentYear(game.getCurrentYear() + 1);
-        game.setLandPrice(RandomNumbers.getRandom(17, 27));
         return true;
     }
 
@@ -268,12 +265,12 @@ public class GameControl {
             int percentage,
             int randomYieldLow,
             int randomYieldMid,
-            int randomYieldHigh) {
+            int randomYieldHigh) throws GameControlException {
         if (percentage < 0 || percentage > 100) {
-            return -1;
+            throw new GameControlException("\nThe percentage of tithing paid must be between 0 and 100.");
         }
         if (acresToPlant < 0) {
-            return -1;
+            throw new GameControlException("\nAcres to plant cannot be a negative number.");
         }
         int randomYield = 0;
         if (percentage < 8) {
@@ -320,9 +317,9 @@ public class GameControl {
             int randomAmountLow,
             int randomAmountMid,
             int randomAmountHigh,
-            int totalWheat) {
+            int totalWheat) throws GameControlException {
         if (percentage < 0 || percentage > 100) {
-            return -1;
+            throw new GameControlException("\nThe percentage of tithing paid must be between 0 and 100.");
         }
         int randomAmount = 0;
         int wheatEaten = 0;

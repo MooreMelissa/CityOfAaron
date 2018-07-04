@@ -21,6 +21,10 @@ public class Game implements Serializable {
 	private int bushelsFedToPeople;
 	private int tithingPercentage;
 	private int landPrice;
+	private int populationIncrease;
+	private int populationDecrease;
+	private int totalWheatHarvested;
+	private int totalWheatRatsAte;
 
 	public Game() {
 		//Empty constructor for JavaBeans
@@ -121,6 +125,40 @@ public class Game implements Serializable {
 	public void setLandPrice(int landPrice) {
 		this.landPrice = landPrice;
 	}
+
+	public int getPopulationIncrease() {
+		return populationIncrease;
+	}
+
+	public void setPopulationIncrease(int populationIncrease) {
+		this.populationIncrease = populationIncrease;
+	}
+
+	public int getPopulationDecrease() {
+		return populationDecrease;
+	}
+
+	public void setPopulationDecrease(int populationDecrease) {
+		this.populationDecrease = populationDecrease;
+	}
+
+	public int getTotalWheatHarvested() {
+		return totalWheatHarvested;
+	}
+
+	public void setTotalWheatHarvested(int totalWheatHarvested) {
+		this.totalWheatHarvested = totalWheatHarvested;
+	}
+
+	public int getTotalWheatRatsAte() {
+		return totalWheatRatsAte;
+	}
+
+	public void setTotalWheatRatsAte(int totalWheatRatsAte) {
+		this.totalWheatRatsAte = totalWheatRatsAte;
+	}
+	
+	
 
 	@Override
 	public String toString() {

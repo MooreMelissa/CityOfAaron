@@ -5,6 +5,11 @@
  */
 package view;
 
+import cityofaaron.CityOfAaron;
+import control.GameControl;
+import exception.GameControlException;
+import model.Game;
+
 /**
  *
  * @author heatherholt, kanderson
@@ -105,29 +110,44 @@ public class GameMenuView extends ViewBase {
 	}
 
 	private void liveTheYear() {
-		System.out.println("* liveTheYear() called. Implementation coming soon. *");
+		// System.out.println("* liveTheYear() called. Implementation coming soon. *");
 
 		// I'm not positive how to do this yet, just experimenting.
-		/* Game currentGame = CityOfAaron.getCurrentGame();
-		boolean errorResult = GameControl.liveTheYear(CityOfAaron.getCurrentGame());
-		if (errorResult == false) {
-			System.out.println("There has been an error. Please check the values"
-					+ " in the Manage The Crops Menu and try again.");
-		} else {
+		try {
+			Game currentGame = CityOfAaron.getCurrentGame();
+			GameControl.liveTheYear(CityOfAaron.getCurrentGame());
+			int cropYield = currentGame.getTotalWheatHarvested()/currentGame.getAcresPlanted();
 			System.out.println("\n\n- Year: " + currentGame.getCurrentYear()
-				+ "\n- 0 people starved" // ** How do we get this value for display?
-				+ "\n- 5 people came to the city" // ** How do we get this value for display?
+				+ "\n- " + currentGame.getPopulationDecrease() + " people starved"
+				+ "\n- " + currentGame.getPopulationIncrease() + " people came to the city"
 				+ "\n- The current population is " + currentGame.getCurrentPopulation()
 				+ "\n- The city owns " + currentGame.getAcresOwned() + " acres of crop land"
-				+ "\n- 3 bushels per acre were harvested" // ** How do we get this value for display?
-				+ "\n- The total harvest was " + GameControl.harvestWheat(currentGame.getAcresPlanted(), 
-					currentGame.getTithingPercentage(), RandomNumbers.getRandom(1, 3), 
-					RandomNumbers.getRandom(2, 4), RandomNumbers.getRandom(2, 5)) + " bushels of wheat" 
-					// ** How do we get this value for display?
+				+ "\n- " +  cropYield + " bushels per acre were harvested"
+				+ "\n- The total harvest was " + currentGame.getTotalWheatHarvested() + " bushels of wheat"
 				+ "\n- The total tithe paid was " + currentGame.getTithingPaidInBushels() + " bushels of wheat"
-				+ "\n- 0 bushels of wheat were eaten by rats" // ** How do we get this value for display?
+				+ "\n- " + currentGame.getTotalWheatRatsAte() + " bushels of wheat were eaten by rats"
 				+ "\n- The total amount of wheat in storage is " + currentGame.getWheatInStorage() + " bushels");
-		} */
+		} catch (GameControlException gce) {
+			System.out.println(gce.getMessage());
+		}
+		
+		/* if (errorResult == false) {
+				System.out.println("There has been an error. Please check the values"
+						+ " in the Manage The Crops Menu and try again.");
+			} else {
+				System.out.println("\n\n- Year: " + currentGame.getCurrentYear()
+					+ "\n- 0 people starved" // ** How do we get this value for display?
+					+ "\n- 5 people came to the city" // ** How do we get this value for display?
+					+ "\n- The current population is " + currentGame.getCurrentPopulation()
+					+ "\n- The city owns " + currentGame.getAcresOwned() + " acres of crop land"
+					+ "\n- 3 bushels per acre were harvested" // ** How do we get this value for display?
+					+ "\n- The total harvest was " + " bushels of wheat" 
+						// ** How do we get this value for display?
+					+ "\n- The total tithe paid was " + currentGame.getTithingPaidInBushels() + " bushels of wheat"
+					+ "\n- 0 bushels of wheat were eaten by rats" // ** How do we get this value for display?
+					+ "\n- The total amount of wheat in storage is " + currentGame.getWheatInStorage() + " bushels");
+			} */
+		
 	}
 
 	private void reportsMenu() {
