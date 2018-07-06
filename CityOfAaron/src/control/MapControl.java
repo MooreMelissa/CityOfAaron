@@ -26,7 +26,6 @@ public class MapControl {
 		Map map = new Map();
 
 		//Location[][] locations = map.getLocations();
-
 		return map;
 	}
 

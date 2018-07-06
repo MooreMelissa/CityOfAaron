@@ -82,7 +82,7 @@ public class StartNewGameView extends ViewBase {
 	 * Create a new Game with the named Player and call the GameMenuView.
 	 */
 	private void createAndStartGame(String playerName) {
-		
+
 		try {
 			Game currentGame = GameControl.createNewGame(playerName);
 			System.out.println("\n\nWelcome to your new domain, " + playerName + "!"

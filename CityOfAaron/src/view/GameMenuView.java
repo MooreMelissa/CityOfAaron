@@ -116,21 +116,26 @@ public class GameMenuView extends ViewBase {
 		try {
 			Game currentGame = CityOfAaron.getCurrentGame();
 			GameControl.liveTheYear(CityOfAaron.getCurrentGame());
-			int cropYield = currentGame.getTotalWheatHarvested()/currentGame.getAcresPlanted();
+			int cropYield = 0;
+			if (currentGame.getAcresPlanted() == 0) {
+				cropYield = 0;
+			} else {
+				cropYield = currentGame.getTotalWheatHarvested() / currentGame.getAcresPlanted();
+			}
 			System.out.println("\n\n- Year: " + currentGame.getCurrentYear()
-				+ "\n- " + currentGame.getPopulationDecrease() + " people starved"
-				+ "\n- " + currentGame.getPopulationIncrease() + " people came to the city"
-				+ "\n- The current population is " + currentGame.getCurrentPopulation()
-				+ "\n- The city owns " + currentGame.getAcresOwned() + " acres of crop land"
-				+ "\n- " +  cropYield + " bushels per acre were harvested"
-				+ "\n- The total harvest was " + currentGame.getTotalWheatHarvested() + " bushels of wheat"
-				+ "\n- The total tithe paid was " + currentGame.getTithingPaidInBushels() + " bushels of wheat"
-				+ "\n- " + currentGame.getTotalWheatRatsAte() + " bushels of wheat were eaten by rats"
-				+ "\n- The total amount of wheat in storage is " + currentGame.getWheatInStorage() + " bushels");
+					+ "\n- " + currentGame.getPopulationDecrease() + " people starved"
+					+ "\n- " + currentGame.getPopulationIncrease() + " people came to the city"
+					+ "\n- The current population is " + currentGame.getCurrentPopulation()
+					+ "\n- The city owns " + currentGame.getAcresOwned() + " acres of crop land"
+					+ "\n- " + cropYield + " bushels per acre were harvested"
+					+ "\n- The total harvest was " + currentGame.getTotalWheatHarvested() + " bushels of wheat"
+					+ "\n- The total tithe paid was " + currentGame.getTithingPaidInBushels() + " bushels of wheat"
+					+ "\n- " + currentGame.getTotalWheatRatsAte() + " bushels of wheat were eaten by rats"
+					+ "\n- The total amount of wheat in storage is " + currentGame.getWheatInStorage() + " bushels");
 		} catch (GameControlException gce) {
 			System.out.println(gce.getMessage());
 		}
-		
+
 		/* if (errorResult == false) {
 				System.out.println("There has been an error. Please check the values"
 						+ " in the Manage The Crops Menu and try again.");
@@ -147,7 +152,6 @@ public class GameMenuView extends ViewBase {
 					+ "\n- 0 bushels of wheat were eaten by rats" // ** How do we get this value for display?
 					+ "\n- The total amount of wheat in storage is " + currentGame.getWheatInStorage() + " bushels");
 			} */
-		
 	}
 
 	private void reportsMenu() {

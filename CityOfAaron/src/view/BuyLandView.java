@@ -68,19 +68,19 @@ public class BuyLandView extends ViewBase {
 		} else {
 			boolean check = false;
 			while (check == false) {
-                try {
-                    if (inputs[0] == null || inputs[0].equals("") || inputs[0].equals("\n")) {
-                        System.out.println("No amount was entered. Returning to the Manage the Crops Menu...");
-                        pause(2000);
-                    } else {
-                        Integer.parseInt(inputs[0]);
-                        check = true;
-                    }
-                } catch (NumberFormatException nfe) {
-                    System.out.println("That was not a valid input. Please enter a number.");
-                    inputs = getInputs();
-                }
-            }
+				try {
+					if (inputs[0] == null || inputs[0].equals("") || inputs[0].equals("\n")) {
+						System.out.println("No amount was entered. Returning to the Manage the Crops Menu...");
+						pause(2000);
+					} else {
+						Integer.parseInt(inputs[0]);
+						check = true;
+					}
+				} catch (NumberFormatException nfe) {
+					System.out.println("That was not a valid input. Please enter a number.");
+					inputs = getInputs();
+				}
+			}
 			boolean result = buyLandTransaction(inputs);
 			return result;
 		}
@@ -95,7 +95,7 @@ public class BuyLandView extends ViewBase {
 
 		int acresToBuy = Integer.parseInt(inputs[0]);
 		int totalWheat = game.getWheatInStorage();
-		
+
 		try {
 			int cost = GameControl.buyLand(acresToBuy, game.getLandPrice(), totalWheat);
 			game.setWheatInStorage(totalWheat - cost);
@@ -105,7 +105,7 @@ public class BuyLandView extends ViewBase {
 					+ "You have " + game.getWheatInStorage() + " bushels of wheat in storage.");
 			pause(2000);
 			return false;
-			
+
 		} catch (GameControlException gce) {
 			System.out.println(gce.getMessage());
 			return true;

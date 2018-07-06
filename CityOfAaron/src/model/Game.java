@@ -157,8 +157,6 @@ public class Game implements Serializable {
 	public void setTotalWheatRatsAte(int totalWheatRatsAte) {
 		this.totalWheatRatsAte = totalWheatRatsAte;
 	}
-	
-	
 
 	@Override
 	public String toString() {
