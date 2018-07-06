@@ -116,7 +116,7 @@ public class GameMenuView extends ViewBase {
 		try {
 			Game currentGame = CityOfAaron.getCurrentGame();
 			GameControl.liveTheYear(CityOfAaron.getCurrentGame());
-			int cropYield = 0;
+			int cropYield;
 			if (currentGame.getAcresPlanted() == 0) {
 				cropYield = 0;
 			} else {

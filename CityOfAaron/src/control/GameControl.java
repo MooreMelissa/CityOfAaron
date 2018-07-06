@@ -341,15 +341,12 @@ public class GameControl {
 	 * IF (bushelFed < 0 ) THEN RETURN -1 int noPeopleFed = bushelFed / 20 int
 	 * starvedPeople = 0 IF (noPeopleFed < totalPopulation) THEN starvedPeople =
 	 * totalPopulation – noPeopleFed RETURN starvedPeople END @param bushelsFed
-	 * @param totalPopulation @param bushelsFed @throws
-	 * exception.GameControlException
-	 *
-	 * @
-	 *
-	 * r
-	 * e
-	 * turn
+	 * @param totalPopulation 
+         * @param bushelsFed 
+         * @throws exception.GameControlException
+	 * @return
 	 */
+        
 	public static int populationMortality(int bushelsFed, int totalPopulation)
 			throws GameControlException {
 
