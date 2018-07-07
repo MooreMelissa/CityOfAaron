@@ -35,7 +35,9 @@ public class CityOfAaron {
 			View startProgramView = new StartProgramView();
 			startProgramView.displayView();
 		} catch (Throwable te) {
-			System.out.println(te.getMessage());
+			System.out.println("** " + te.getMessage() + " **"
+					+ "\nDue to the above error, the program will now quit. "
+					+ "Please restart the program.\n\n");
 			te.printStackTrace();
 			return;
 		}
