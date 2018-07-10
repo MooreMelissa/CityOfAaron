@@ -70,7 +70,7 @@ public class MapView extends ViewBase {
 			for (int j = 0; j < locations[i].length; j++) {
 				Location location = locations[i][j];
                                 this.console.print(location.getMapSymbol() + " | ");
-				//System.out.print(location.getMapSymbol() + " | ");
+				
 			}
 			this.console.print("\n------------------------\n");
 		}

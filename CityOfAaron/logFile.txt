@@ -1,0 +1,21 @@
+
+
+view.PlantCropsView - 
+** Invalid Input **
+Number of acres of land to plant cannot be a negative number.
+Please try again
+
+view.PlantCropsView - 
+ ** Invalid input **
+The amount of acres entered is more than acres owned
+Please try again
+
+view.FeedPeopleView - 
+** Invalid Input **
+Number of bushels to feed people cannot be a negative number.
+Please try again
+
+view.FeedPeopleView - 
+** Invalid input **
+The amount of bushels entered is exceeded the wheat in storage.
+Please try again 
