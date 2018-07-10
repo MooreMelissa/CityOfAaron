@@ -62,16 +62,16 @@ public class MapView extends ViewBase {
 		Map map = currentGame.getTheMap();
 		Location[][] locations = map.getLocations();
 
-		System.out.println("      City Of Aaron          \n"
+		this.console.println("      City Of Aaron          \n"
 				+ "\n    1   2   3   4   5   "
 				+ "\n------------------------");
 		for (int i = 0; i < locations.length; i++) {
-			System.out.print(i + 1 + " | ");
+			this.console.print(i + 1 + " | ");
 			for (int j = 0; j < locations[i].length; j++) {
 				Location location = locations[i][j];
 				System.out.print(location.getMapSymbol() + " | ");
 			}
-			System.out.print("\n------------------------\n");
+			this.console.print("\n------------------------\n");
 		}
 
 	}

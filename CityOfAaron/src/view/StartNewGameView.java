@@ -64,7 +64,7 @@ public class StartNewGameView extends ViewBase {
 		// If the user just hits 'enter', bail out and don't do the action.
 		// Returning false will take us back to the Main Menu.
 		if (inputs[0] == null || inputs[0].equals("")) {
-			System.out.println("No player name was entered. Returning to the Main Menu...");
+			this.console.println("No player name was entered. Returning to the Main Menu...");
 			return false;
 		}
 
@@ -85,7 +85,7 @@ public class StartNewGameView extends ViewBase {
 
 		try {
 			Game currentGame = GameControl.createNewGame(playerName);
-			System.out.println("\n\nWelcome to your new domain, " + playerName + "!"
+			this.console.println("\n\nWelcome to your new domain, " + playerName + "!"
 					+ "\nHere's what you need to know before you start:"
 					+ "\n\n- Year: " + currentGame.getCurrentYear()
 					+ "\n- 0 people starved"
@@ -101,7 +101,7 @@ public class StartNewGameView extends ViewBase {
 					+ "\n'Manage Crops' menu before choosing to 'Live The Year' **");
 			pause(2000);
 		} catch (GameControlException gce) {
-			System.out.println(gce.getMessage());
+			ErrorView.display(this.getClass().getName(), gce.getMessage());
 		}
 
 		// Once the GameMenuView is created, we will call it here.

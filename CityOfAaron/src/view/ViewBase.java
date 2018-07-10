@@ -1,5 +1,8 @@
 package view;
 
+import cityofaaron.CityOfAaron;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
@@ -7,6 +10,11 @@ import java.util.Scanner;
  * @author JK
  */
 public abstract class ViewBase implements View {
+	
+	
+	protected final BufferedReader keyboard = CityOfAaron.getInput();
+	protected final PrintWriter console = CityOfAaron.getOutput();
+	
 
 	/**
 	 * Constructor
@@ -50,7 +58,7 @@ public abstract class ViewBase implements View {
 			// Only print it if it is non-null
 			String message = getMessage();
 			if (message != null) {
-				System.out.println(getMessage());
+				this.console.println(getMessage());
 			}
 
 			String[] inputs = getInputs();
@@ -68,26 +76,31 @@ public abstract class ViewBase implements View {
 	 */
 	protected String getUserInput(String prompt, boolean allowEmpty) {
 
-		Scanner keyboard = new Scanner(System.in);
 		String input = "";
 		boolean inputReceived = false;
+		
+		try {
+			while (inputReceived == false) {
 
-		while (inputReceived == false) {
+				this.console.println(prompt);
+				input = this.keyboard.readLine();
 
-			System.out.println(prompt);
-			input = keyboard.nextLine();
+				// Make sure we avoid a null-pointer error.
+				if (input == null) {
+					input = "";
+				}
 
-			// Make sure we avoid a null-pointer error.
-			if (input == null) {
-				input = "";
+				// Trim any trailing whitespace, including the carriage return.
+				input = input.trim();
+
+				if (input.equals("") == false || allowEmpty == true) {
+					inputReceived = true;
+				}
 			}
-
-			// Trim any trailing whitespace, including the carriage return.
-			input = input.trim();
-
-			if (input.equals("") == false || allowEmpty == true) {
-				inputReceived = true;
-			}
+		} catch (Exception e) {
+			ErrorView.display(this.getClass().getName(),
+					"Error reading input: " + e.getMessage());
+			return null;
 		}
 
 		return input;

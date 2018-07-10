@@ -122,7 +122,7 @@ public class GameMenuView extends ViewBase {
 			} else {
 				cropYield = currentGame.getTotalWheatHarvested() / currentGame.getAcresPlanted();
 			}
-			System.out.println("\n\n- Year: " + currentGame.getCurrentYear()
+			this.console.println("\n\n- Year: " + currentGame.getCurrentYear()
 					+ "\n- " + currentGame.getPopulationDecrease() + " people starved"
 					+ "\n- " + currentGame.getPopulationIncrease() + " people came to the city"
 					+ "\n- The current population is " + currentGame.getCurrentPopulation()
@@ -132,8 +132,9 @@ public class GameMenuView extends ViewBase {
 					+ "\n- The total tithe paid was " + currentGame.getTithingPaidInBushels() + " bushels of wheat"
 					+ "\n- " + currentGame.getTotalWheatRatsAte() + " bushels of wheat were eaten by rats"
 					+ "\n- The total amount of wheat in storage is " + currentGame.getWheatInStorage() + " bushels");
+			pause(2000);
 		} catch (GameControlException gce) {
-			System.out.println(gce.getMessage());
+			ErrorView.display(this.getClass().getName(), gce.getMessage());
 		}
 
 		/* if (errorResult == false) {

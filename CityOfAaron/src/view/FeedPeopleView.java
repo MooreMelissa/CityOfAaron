@@ -64,7 +64,7 @@ public class FeedPeopleView extends ViewBase {
 		// Returning false will take us back to the Manage Crops Menu.
 		// check input from user can be converted to int call method here
 		if (inputs[0] == null || inputs[0].equals("")) {
-			System.out.println("\nNo amount was entered. Returning to the Manage the Crops Menu...");
+			this.console.println("\nNo amount was entered. Returning to the Manage the Crops Menu...");
 			pause(2000);
 			return false;
 		} else {
@@ -75,7 +75,7 @@ public class FeedPeopleView extends ViewBase {
 				try {
 					if (inputs[0] == null || inputs[0].equals("")) {
 
-						System.out.println("\nNo amount was entered. "
+						this.console.println("\nNo amount was entered. "
 								+ "Returning to the Manage the Crops Menu...");
 						pause(2000);
 
@@ -85,8 +85,9 @@ public class FeedPeopleView extends ViewBase {
 					}
 
 				} catch (NumberFormatException nfe) {
-
-					System.out.println("Not a valid input. Please enter a number");
+					
+					ErrorView.display(this.getClass().getName(), 
+							"Not a valid input. Please enter a number");
 					inputs = getInputs();
 
 				}
@@ -113,13 +114,13 @@ public class FeedPeopleView extends ViewBase {
 			int bushels = GameControl.feedPeople(bushelsFed, totalWheat);
 			game.setWheatInStorage(totalWheat - bushels);
 			game.setBushelsFedToPeople(bushels);
-			System.out.println("\nYou have " + game.getWheatInStorage() + " bushels of wheat in storage.");
+			this.console.println("\nYou have " + game.getWheatInStorage() + " bushels of wheat in storage.");
 			pause(2000);
 			return false;
 
 		} catch (GameControlException gce) {
 
-			System.out.println(gce.getMessage());
+			ErrorView.display(this.getClass().getName(), gce.getMessage());
 			return true;
 		}
 	}

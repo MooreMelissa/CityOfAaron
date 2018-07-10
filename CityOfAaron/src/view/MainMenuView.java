@@ -66,7 +66,7 @@ public class MainMenuView extends ViewBase {
 				helpMenu();
 				break;
 			case "Q":
-				System.out.println("Thank you for playing. Goodbye.");
+				this.console.println("Thank you for playing. Goodbye.");
 				return false;
 		}
 

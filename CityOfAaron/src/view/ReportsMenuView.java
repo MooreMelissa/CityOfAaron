@@ -93,7 +93,7 @@ public class ReportsMenuView extends ViewBase {
 	private void viewAnimals() {
 		InventoryItem[] animals = StorehouseControl.sortAnimals(storehouse.getAnimals());
 		for (InventoryItem animal : animals) {
-			System.out.println(animal);
+			this.console.println(animal);
 		}
 		pause(2000);
 	}
@@ -101,7 +101,7 @@ public class ReportsMenuView extends ViewBase {
 	private void viewTools() {
 		InventoryItem[] tools = StorehouseControl.sortTools(storehouse.getTools());
 		for (InventoryItem tool : tools) {
-			System.out.print(tool);
+			this.console.print(tool);
 		}
 		pause(2000);
 	}
@@ -112,7 +112,7 @@ public class ReportsMenuView extends ViewBase {
 				+ "\nName    Quantity     Condition       Perishable  "
 				+ "\n-------------------------------------------------  ");
 		for (InventoryItem provision : provisions) {
-			System.out.println(provision);
+			this.console.println(provision);
 		}
 		pause(2000);
 	}
@@ -122,7 +122,7 @@ public class ReportsMenuView extends ViewBase {
 		Author[] authors = storehouse.getAuthors();
 		int arrayLength = authors.length;
 		for (int i = 0; i < arrayLength; i++) {
-			System.out.print(authors[i]);
+			this.console.print(authors[i]);
 		}
 		pause(2000);
 	}

@@ -62,7 +62,7 @@ public class BuyLandView extends ViewBase {
 		// If the user just hits 'enter', bail out and don't do the action.
 		// Returning false will take us back to the Game Menu.
 		if (inputs[0] == null || inputs[0].equals("")) {
-			System.out.println("No amount was entered. Returning to the Manage the Crops Menu...");
+			this.console.println("No amount was entered. Returning to the Manage the Crops Menu...");
 			pause(2000);
 			return false;
 		} else {
@@ -70,14 +70,15 @@ public class BuyLandView extends ViewBase {
 			while (check == false) {
 				try {
 					if (inputs[0] == null || inputs[0].equals("") || inputs[0].equals("\n")) {
-						System.out.println("No amount was entered. Returning to the Manage the Crops Menu...");
+						this.console.println("No amount was entered. Returning to the Manage the Crops Menu...");
 						pause(2000);
 					} else {
 						Integer.parseInt(inputs[0]);
 						check = true;
 					}
 				} catch (NumberFormatException nfe) {
-					System.out.println("That was not a valid input. Please enter a number.");
+					ErrorView.display(this.getClass().getName(), 
+							"That was not a valid input. Please enter a number.");
 					inputs = getInputs();
 				}
 			}
@@ -100,14 +101,14 @@ public class BuyLandView extends ViewBase {
 			int cost = GameControl.buyLand(acresToBuy, game.getLandPrice(), totalWheat);
 			game.setWheatInStorage(totalWheat - cost);
 			game.setAcresOwned(game.getAcresOwned() + acresToBuy);
-			System.out.println("\nYou have successfully purchased " + acresToBuy + " acres of land.\n"
+			this.console.println("\nYou have successfully purchased " + acresToBuy + " acres of land.\n"
 					+ "You now own " + game.getAcresOwned() + " total acres.\n"
 					+ "You have " + game.getWheatInStorage() + " bushels of wheat in storage.");
 			pause(2000);
 			return false;
 
 		} catch (GameControlException gce) {
-			System.out.println(gce.getMessage());
+			ErrorView.display(this.getClass().getName(), gce.getMessage());
 			return true;
 		}
 

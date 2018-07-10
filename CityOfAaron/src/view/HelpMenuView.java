@@ -61,7 +61,7 @@ public class HelpMenuView extends ViewBase {
 
 		switch (inputs[0].trim().toUpperCase()) {
 			case "1":
-				System.out.println("Goals of the Game\n"
+				this.console.println("Goals of the Game\n"
 						+ "--------------\n"
 						+ "1- Last as ruler for 10 years\n"
 						+ "2- The City of Aaron is better off than when you took over\n"
@@ -71,27 +71,27 @@ public class HelpMenuView extends ViewBase {
 				pause(2000);
 				break;
 			case "2":
-				System.out.println("The City of Aaron sits on a small hill overlooking the SkyFall River to the South.\n"
+				this.console.println("The City of Aaron sits on a small hill overlooking the SkyFall River to the South.\n"
 						+ "The temple is a beacon of light which shines from the center of the city\n"
 						+ "Endless wheatfields circle the city as the staff of life\n"
 						+ "It is a two days journey South to the City of Zarahemla\n");
 				pause(2000);
 				break;
 			case "3":
-				System.out.println("To View the Map\n"
+				this.console.println("To View the Map\n"
 						+ "--------------\n"
 						+ "Go to Game Menu and select View the Map\n");
 				pause(2000);
 				break;
 			case "4":
-				System.out.println("To Move to Another Location\n"
+				this.console.println("To Move to Another Location\n"
 						+ "--------------\n"
 						+ "Go to Game Menu and select Move Location\n"
 						+ "You will be prompted to enter the coordinates to a location on the map\n");
 				pause(2000);
 				break;
 			case "5":
-				System.out.println("To Display list of Animals, Tools, and Provisions\n"
+				this.console.println("To Display list of Animals, Tools, and Provisions\n"
 						+ "---------------\n"
 						+ "Go to the Reports Menu and select what list you want to view\n");
 				pause(2000);
@@ -100,7 +100,7 @@ public class HelpMenuView extends ViewBase {
 				return false;
 
 			default:
-				System.out.println("Please enter one of the above menu options.");
+				this.console.println("Please enter one of the above menu options.");
 		}
 
 		return true;
