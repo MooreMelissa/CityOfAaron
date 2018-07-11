@@ -73,6 +73,7 @@ public class LoadSavedGameView extends ViewBase {
 			return true;
 		} catch (ClassNotFoundException cnfe) {
 			ErrorView.display(this.getClass().getName(), cnfe.getMessage());
+			return true;
 		}
 		
 		GameMenuView gameMenu = new GameMenuView();
