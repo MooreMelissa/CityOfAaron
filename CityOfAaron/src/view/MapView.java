@@ -73,7 +73,7 @@ public class MapView extends ViewBase {
 			}
 			this.console.print("\n------------------------\n");
 		}
-
+                this.console.flush();
 	}
 
 }
