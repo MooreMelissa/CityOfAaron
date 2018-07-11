@@ -7,6 +7,7 @@ package view;
 
 import control.GameControl;
 import exception.GameControlException;
+import exception.MapControlException;
 import model.Game;
 
 /**
@@ -102,6 +103,8 @@ public class StartNewGameView extends ViewBase {
 			pause(2000);
 		} catch (GameControlException gce) {
 			ErrorView.display(this.getClass().getName(), gce.getMessage());
+		} catch (MapControlException mce) {
+			ErrorView.display(this.getClass().getName(), mce.getMessage());
 		}
 
 		// Once the GameMenuView is created, we will call it here.
