@@ -82,7 +82,6 @@ public class MainMenuView extends ViewBase {
 	}
 
 	private void helpMenu() {
-		//System.out.println("*** helpMenu() called. You must implement the HelpMenuView this week. ***");
 		HelpMenuView helpMenu = new HelpMenuView();
 		helpMenu.displayView();
 	}
