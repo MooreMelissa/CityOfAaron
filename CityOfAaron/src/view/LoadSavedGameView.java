@@ -5,6 +5,12 @@
  */
 package view;
 
+import cityofaaron.CityOfAaron;
+import control.GameControl;
+import exception.GameControlException;
+import java.io.IOException;
+import model.Game;
+
 /**
  *
  * @author heatherholt
@@ -20,7 +26,7 @@ public class LoadSavedGameView extends ViewBase {
 
 	@Override
 	protected String getMessage() {
-		return "\n\nLoad Saved Game View Coming Soon";
+		return "\n\nHere you can load a saved game.";
 	}
 
 	/**
@@ -35,7 +41,7 @@ public class LoadSavedGameView extends ViewBase {
 		// from the user.
 		String[] inputs = new String[1];
 
-		inputs[0] = getUserInput("Press Q to return to the previous menu.");
+		inputs[0] = getUserInput("Please enter the name of your saved game, ending in '.dat'");
 
 		// Repeat for each input you need, putting it into its proper slot in the array.
 		return inputs;
@@ -50,26 +56,29 @@ public class LoadSavedGameView extends ViewBase {
 	 */
 	@Override
 	public boolean doAction(String[] inputs) {
-		switch (inputs[0].trim().toUpperCase()) {
-			case "Q":
-				return false;
+		String filePath = inputs[0];
+		try {
+			GameControl.loadGame(filePath);
+			Game currentGame = CityOfAaron.getCurrentGame();
+			this.console.println("\n\n- Year: " + currentGame.getCurrentYear()
+					+ "\n- The current population is " + currentGame.getCurrentPopulation()
+					+ "\n- The city owns " + currentGame.getAcresOwned() + " acres of crop land"
+					+ "\n- The total amount of wheat in storage is " + currentGame.getWheatInStorage() + " bushels");
+			pause(2000);
+		} catch (GameControlException gce) {
+			ErrorView.display(this.getClass().getName(), gce.getMessage());
+			return true;
+		} catch (IOException ex) {
+			ErrorView.display(this.getClass().getName(), ex.getMessage());
+			return true;
+		} catch (ClassNotFoundException cnfe) {
+			ErrorView.display(this.getClass().getName(), cnfe.getMessage());
 		}
-
-		return true;
-	}
-
-	// Define your action handlers here. These are the methods that your doAction()
-	// method will call based on the user's input. We don't want to do a lot of 
-	// complex game stuff in our doAction() method. It will get messy very quickly.
-	private boolean someActionHandler() {
-		// Define whatever code you need here to accomplish the action.
-		// You can make this a void method if you want. Whatever you need 
-		// here, you are free to do.
-		//
-		// Generally, though, this is where you will call into your Control
-		// classes to do the work of the application.
-
-		return true;
+		
+		GameMenuView gameMenu = new GameMenuView();
+		gameMenu.displayView();
+		
+		return false;
 	}
 
 }

@@ -8,6 +8,11 @@ package control;
 import cityofaaron.CityOfAaron;
 import exception.GameControlException;
 import exception.MapControlException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import model.Game;
 import model.Map;
 import model.Player;
@@ -19,7 +24,7 @@ import model.Storehouse;
  */
 public class GameControl {
 
-	public static Game createNewGame(String playerName) throws GameControlException {
+	public static Game createNewGame(String playerName) throws GameControlException, MapControlException {
 
 		Player player = new Player();
 		player.setName(playerName);
@@ -31,7 +36,7 @@ public class GameControl {
 			Map map = MapControl.createMap(5, 5);
 			game.setTheMap(map);
 		} catch (MapControlException mce) {
-			System.out.println(mce.getMessage());
+			throw new MapControlException (mce.getMessage());
 		}
 
 		CityOfAaron.setCurrentGame(game);
@@ -48,6 +53,38 @@ public class GameControl {
 
 		return game;
 	}
+	
+	public static void saveGame(Game game, String filePath) throws GameControlException, IOException {
+		
+		if (game == null || filePath == null) {
+			throw new GameControlException ("\nError saving Game, please try again.");
+		}
+		
+		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filePath))) {
+			out.writeObject(game);
+		} catch (IOException ex) {
+			throw new IOException ("I/O Error: " + ex.getMessage());
+		}
+	}
+	
+	public static Game loadGame(String filePath) throws GameControlException, IOException, ClassNotFoundException {
+		if (filePath == null) {
+			throw new GameControlException ("\nError loading Game, please try again.");
+		}
+		
+		Game game = null;
+		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filePath))) {
+			game = (Game) in.readObject();
+			CityOfAaron.setCurrentGame(game);
+		} catch (IOException ex) {
+			throw new IOException ("I/O Error: " + ex.getMessage());
+		} catch (ClassNotFoundException cnfe) {
+			throw new ClassNotFoundException ("Class Not Found: " + cnfe.getMessage());
+		}
+		
+		return game;
+	}
+	
 
 	/**
 	 * Transaction to buy land, calculate cost of acres to buy
@@ -245,7 +282,7 @@ public class GameControl {
 			game.setLandPrice(RandomNumbers.getRandom(17, 27));
 
 		} catch (GameControlException gce) {
-			System.out.println(gce.getMessage());
+			throw new GameControlException(gce.getMessage());
 		}
 
 		return true;

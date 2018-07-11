@@ -108,7 +108,7 @@ public class ReportsMenuView extends ViewBase {
 
 	private void viewProvisions() {
 		InventoryItem[] provisions = StorehouseControl.sortProvisions(storehouse.getProvisions());
-		System.out.println("             Provisions Report          \n"
+		this.console.println("             Provisions Report          \n"
 				+ "\nName    Quantity     Condition       Perishable  "
 				+ "\n-------------------------------------------------  ");
 		for (InventoryItem provision : provisions) {
@@ -118,7 +118,6 @@ public class ReportsMenuView extends ViewBase {
 	}
 
 	private void viewAuthors() {
-		//System.out.println("* viewAuthors() called. Implementation coming soon. *");
 		Author[] authors = storehouse.getAuthors();
 		int arrayLength = authors.length;
 		for (int i = 0; i < arrayLength; i++) {
