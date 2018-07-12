@@ -146,17 +146,13 @@ public class GameControl {
 			throws GameControlException {
 
 		if (bushelsFed < 0) {
-			throw new GameControlException("\n** Invalid Input **\n"
-					+ "Number of bushels to feed people"
-					+ " cannot be a negative number."
-					+ "\nPlease try again");
+			throw new GameControlException("Number of bushels to feed people"
+					+ " cannot be a negative number.");
 		}
 
 		if (bushelsFed > totalWheat) {
-			throw new GameControlException("\n** Invalid input **\n"
-					+ "The amount of bushels entered is exceeded"
-					+ " the wheat in storage."
-					+ "\nPlease try again ");
+			throw new GameControlException("The amount of bushels entered is exceeded"
+					+ " the wheat in storage.");
 		}
 
 		return bushelsFed; // validates users amount
@@ -183,37 +179,29 @@ public class GameControl {
 			int wheatInStorage) throws GameControlException {
 
 		if (acresToPlant < 0) {
-			throw new GameControlException("\n** Invalid Input **\n"
-					+ "Number of acres of land to plant"
-					+ " cannot be a negative number."
-					+ "\nPlease try again");
+			throw new GameControlException("Number of acres of land to plant"
+					+ " cannot be a negative number.");
 		}
 
 		if (acresToPlant > acresOwned) {
-			throw new GameControlException("\n ** Invalid input **"
-					+ "\nThe amount of acres entered is more than acres owned"
-					+ "\nPlease try again");
+			throw new GameControlException("The amount of acres entered is more than acres owned");
 		}
 
 		if (acresToPlant > currentPopulation * 10) {
-			throw new GameControlException("\n** Invalid input **"
-					+ "\nThe amount of acres entered is more than the "
-					+ "current population can take care of"
-					+ "\nPlease try again");
+			throw new GameControlException("The amount of acres entered is more than the "
+					+ "current population can take care of");
 		}
 
 		if (acresToPlant / 2 > wheatInStorage) {
-			throw new GameControlException("\n** Invalid input **"
-					+ "\nThe amount of acres entered is exceeded "
-					+ "the wheat in storage"
-					+ "\nPlease try again");
+			throw new GameControlException("The amount of acres entered is exceeded "
+					+ "the wheat in storage");
 		}
 		
 		int bushelsUsed = acresToPlant / 2;
 		return bushelsUsed;
 	}
 
-	public static boolean liveTheYear(Game game) throws GameControlException {
+	public static void liveTheYear(Game game) throws GameControlException {
 
 		int totalWheat = game.getWheatInStorage();
 		int totalPopulation = game.getCurrentPopulation();
@@ -280,12 +268,12 @@ public class GameControl {
 			game.setWheatInStorage(totalWheat);
 			game.setCurrentYear(game.getCurrentYear() + 1);
 			game.setLandPrice(RandomNumbers.getRandom(17, 27));
+                        
 
 		} catch (GameControlException gce) {
 			throw new GameControlException(gce.getMessage());
 		}
 
-		return true;
 	}
 
 	/**
@@ -388,10 +376,8 @@ public class GameControl {
 			throws GameControlException {
 
 		if (bushelsFed < 0) {
-			throw new GameControlException("\n** Invalid Input **\n"
-					+ "Number of bushels to feed people"
-					+ " cannot be a negative number."
-					+ "\nPlease try again");
+			throw new GameControlException("Number of bushels to feed people"
+					+ " cannot be a negative number.");
 		}
 
 		int noPeopleFed = bushelsFed / 20;
