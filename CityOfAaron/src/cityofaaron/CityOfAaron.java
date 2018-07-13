@@ -57,8 +57,6 @@ public class CityOfAaron {
 		CityOfAaron.logFile = logFile;
 	}
 
-	
-	
 	/**
 	 * @param args the command line arguments
 	 */
@@ -68,7 +66,7 @@ public class CityOfAaron {
 			input = new BufferedReader(new InputStreamReader(System.in));
 			output = new PrintWriter(System.out, true);
 			logFile = new PrintWriter("logFile.txt");
-			
+
 			View startProgramView = new StartProgramView();
 			startProgramView.displayView();
 		} catch (Throwable te) {
@@ -79,12 +77,14 @@ public class CityOfAaron {
 			return;
 		} finally {
 			try {
-				if (input != null)
+				if (input != null) {
 					input.close();
-				
-				if (output != null)
+				}
+
+				if (output != null) {
 					output.close();
-				
+				}
+
 				if (logFile != null) {
 					logFile.close();
 				}
@@ -93,7 +93,7 @@ public class CityOfAaron {
 				System.console().printf("%s%s", "Error closing files");
 				return;
 			}
-			
+
 		}
 
 	}

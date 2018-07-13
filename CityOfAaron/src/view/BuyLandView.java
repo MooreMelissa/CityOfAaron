@@ -77,7 +77,7 @@ public class BuyLandView extends ViewBase {
 						check = true;
 					}
 				} catch (NumberFormatException nfe) {
-					ErrorView.display(this.getClass().getName(), 
+					ErrorView.display(this.getClass().getName(),
 							"That was not a valid input. Please enter a number.");
 					inputs = getInputs();
 				}
