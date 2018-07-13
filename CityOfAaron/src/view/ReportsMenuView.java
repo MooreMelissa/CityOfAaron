@@ -114,7 +114,31 @@ public class ReportsMenuView extends ViewBase {
     }
 
 	private void viewProvisions() {
-		provisionsPrintReport(this.console);
+		//provisionsPrintReport(this.console);
+		//pause(2000);
+                // trying to merge into one function
+                provisionsPrintReport(this.console);
+                String question = getFileName("\n\nDo you want to save Provisions Report to a File? (Y or N)");
+                if (question == null || question.equals("") || question == "N" || question == "n" ) {
+                        return;
+                } else {
+                    String filepath = getFileName("\n\nWhat file to save Provisions Report?");
+                    if (filepath == null || filepath.equals("")) {
+                        return;
+                    }
+
+                    try (PrintWriter provisionsFile = new PrintWriter(filepath)) {
+
+                    provisionsPrintReport(provisionsFile);
+                    provisionsFile.close();
+                    this.console.println("\n\nProvisions Report was successfully saved to " + filepath);
+
+                    } catch (Exception ex) {
+                        ErrorView.display(this.getClass().getName(), ex.getMessage());
+
+                    }
+                }
+       
 		pause(2000);
 	}
 
