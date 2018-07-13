@@ -75,10 +75,10 @@ public class LoadSavedGameView extends ViewBase {
 			ErrorView.display(this.getClass().getName(), cnfe.getMessage());
 			return true;
 		}
-		
+
 		GameMenuView gameMenu = new GameMenuView();
 		gameMenu.displayView();
-		
+
 		return false;
 	}
 

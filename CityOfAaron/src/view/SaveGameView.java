@@ -56,7 +56,7 @@ public class SaveGameView extends ViewBase {
 	 */
 	@Override
 	public boolean doAction(String[] inputs) {
-		
+
 		String filePath = inputs[0];
 		Game game = CityOfAaron.getCurrentGame();
 		try {

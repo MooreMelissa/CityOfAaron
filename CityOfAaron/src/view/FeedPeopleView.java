@@ -85,8 +85,8 @@ public class FeedPeopleView extends ViewBase {
 					}
 
 				} catch (NumberFormatException nfe) {
-					
-					ErrorView.display(this.getClass().getName(), 
+
+					ErrorView.display(this.getClass().getName(),
 							"Not a valid input. Please enter a number");
 					inputs = getInputs();
 

@@ -66,7 +66,7 @@ public class PayTithingView extends ViewBase {
 					Integer.parseInt(inputs[0]);
 					check = true;
 				} catch (NumberFormatException nfe) {
-					ErrorView.display(this.getClass().getName(), 
+					ErrorView.display(this.getClass().getName(),
 							"That was an invalid entry. Enter a number between 1 and 100.");
 					inputs = getInputs();
 				}
