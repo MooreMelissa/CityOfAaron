@@ -36,7 +36,6 @@ public class ReportsMenuView extends ViewBase {
                 + "-------------\n"
                 + "A - View Animals in Storehouse\n"
                 + "T - View Tools in Storehouse\n"
-                + "U - Save Tools Report to File\n"
                 + "P - View Provisions in Storehouse\n"
                 + "V - View Authors of Game\n"
                 + "Q - Return to Game Menu";
@@ -77,9 +76,6 @@ public class ReportsMenuView extends ViewBase {
             case "T":
                 viewTools();
                 break;
-            case "U":
-                toolsSaveToFile();
-                break;
             case "P":
                 viewProvisions();
                 break;
@@ -106,7 +102,35 @@ public class ReportsMenuView extends ViewBase {
 
     private void viewTools() {
         toolsPrintReport(this.console);
-        pause(2000);
+        String question = getFileName("\n\nDo you want to save Provisions Report to a File? (Yes of No)");
+        switch (question) {
+
+            case "Yes":
+            case "yes":
+            case "y":
+            case "Y":
+                String filepath = getFileName("\n\nWhat file would you like to save the Tools Report to?");
+                if (filepath == null || filepath.equals("")) {
+                    this.console.println("\n\nReturning to Reports Menu");
+                    pause(2000);
+                    return;
+                }
+                try (PrintWriter toolsFile = new PrintWriter(filepath)) {
+
+                    toolsPrintReport(toolsFile);
+                    toolsFile.close();
+                    this.console.println("\n\nTools Report was successfully saved to " + filepath);
+                } catch (Exception ex) {
+                    ErrorView.display(this.getClass().getName(), ex.getMessage());
+                }
+                pause(2000);
+                break;
+
+            default:
+                this.console.println("\n\nReturning to Reports Menu");
+                pause(2000);
+                break;
+        }
     }
 
     private void viewProvisions() {
@@ -165,22 +189,6 @@ public class ReportsMenuView extends ViewBase {
             ErrorView.display(this.getClass().getName(), ex.getMessage());
         }
         return null;
-    }
-
-    private void toolsSaveToFile() {
-        String filepath = getFileName("What file would you like to save your Tools Report to?");
-        if (filepath == null || filepath.equals("")) {
-            return;
-        }
-
-        try (PrintWriter toolsFile = new PrintWriter(filepath)) {
-
-            toolsPrintReport(toolsFile);
-            toolsFile.close();
-            this.console.println("The Tools Report was sucessfully saved to " + filepath);
-        } catch (Exception ex) {
-            ErrorView.display(this.getClass().getName(), ex.getMessage());
-        }
     }
 
     private void toolsPrintReport(PrintWriter printWriter) {
