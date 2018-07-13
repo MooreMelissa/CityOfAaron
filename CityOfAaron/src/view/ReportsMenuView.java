@@ -170,6 +170,8 @@ public class ReportsMenuView extends ViewBase {
 
             case "Yes":
             case "yes":
+            case "Y":
+            case "y":
                 String filepath = getFileName("\n\nWhat file to save Provisions Report?");
                 if (filepath == null || filepath.equals("")) {
                     this.console.println("\n\nReturing to Reports Menu");
@@ -217,8 +219,8 @@ public class ReportsMenuView extends ViewBase {
         }
         return null;
     }
-    
-        private void animalsPrintReport(PrintWriter printWriter) {
+
+    private void animalsPrintReport(PrintWriter printWriter) {
         InventoryItem[] animals = StorehouseControl.sortAnimals(storehouse.getAnimals());
 
         printWriter.println("    Animals Report     ");
