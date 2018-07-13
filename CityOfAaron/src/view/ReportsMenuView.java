@@ -157,14 +157,14 @@ public class ReportsMenuView extends ViewBase {
     private void provisionsPrintReport(PrintWriter printWriter) {
         InventoryItem[] provisions = StorehouseControl.sortProvisions(storehouse.getProvisions());
 
-        printWriter.println("               Provisions Report           \n");
-        printWriter.printf("%n%-20s%20s%20s%20s", "Name", "Quantity", "Condition", "Perishable");
-        printWriter.printf("%n%-20s%20s%20s%20s", "-----", "----------", "----------", "-----------");
+        printWriter.println("               Provisions Report           ");
+        printWriter.printf("%n%-12s%-10s%-10s%-12s", "Name", "Quantity", "Condition", "Perishable");
+        printWriter.printf("%n%-12s%-10s%-10s%-12s", "-----", "---------", "---------", "-----------");
         for (InventoryItem provision : provisions) {
             boolean perishable = (provision instanceof Provision)
                     ? ((Provision) provision).isPerishable()
                     : false;
-            printWriter.printf("%n%-20s%10d%20s%20s", provision.getName(), provision.getQuantity(),
+            printWriter.printf("%n%-12s%-10d%-10s%-12s", provision.getName(), provision.getQuantity(),
                     provision.getCondition(), perishable);
 
         }
