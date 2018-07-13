@@ -36,7 +36,7 @@ public class GameControl {
 			Map map = MapControl.createMap(5, 5);
 			game.setTheMap(map);
 		} catch (MapControlException mce) {
-			throw new MapControlException (mce.getMessage());
+			throw new MapControlException(mce.getMessage());
 		}
 
 		CityOfAaron.setCurrentGame(game);
@@ -53,38 +53,37 @@ public class GameControl {
 
 		return game;
 	}
-	
+
 	public static void saveGame(Game game, String filePath) throws GameControlException, IOException {
-		
+
 		if (game == null || filePath == null) {
-			throw new GameControlException ("\nError saving Game, please try again.");
+			throw new GameControlException("\nError saving Game, please try again.");
 		}
-		
+
 		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filePath))) {
 			out.writeObject(game);
 		} catch (IOException ex) {
-			throw new IOException ("I/O Error: " + ex.getMessage());
+			throw new IOException("I/O Error: " + ex.getMessage());
 		}
 	}
-	
+
 	public static Game loadGame(String filePath) throws GameControlException, IOException, ClassNotFoundException {
 		if (filePath == null) {
-			throw new GameControlException ("\nError loading Game, please try again.");
+			throw new GameControlException("\nError loading Game, please try again.");
 		}
-		
+
 		Game game = null;
 		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filePath))) {
 			game = (Game) in.readObject();
 			CityOfAaron.setCurrentGame(game);
 		} catch (IOException ex) {
-			throw new IOException ("I/O Error: " + ex.getMessage());
+			throw new IOException("I/O Error: " + ex.getMessage());
 		} catch (ClassNotFoundException cnfe) {
-			throw new ClassNotFoundException ("Class Not Found: " + cnfe.getMessage());
+			throw new ClassNotFoundException("Class Not Found: " + cnfe.getMessage());
 		}
-		
+
 		return game;
 	}
-	
 
 	/**
 	 * Transaction to buy land, calculate cost of acres to buy
@@ -196,7 +195,7 @@ public class GameControl {
 			throw new GameControlException("The amount of acres entered is exceeded "
 					+ "the wheat in storage");
 		}
-		
+
 		int bushelsUsed = acresToPlant / 2;
 		return bushelsUsed;
 	}
@@ -268,7 +267,6 @@ public class GameControl {
 			game.setWheatInStorage(totalWheat);
 			game.setCurrentYear(game.getCurrentYear() + 1);
 			game.setLandPrice(RandomNumbers.getRandom(17, 27));
-                        
 
 		} catch (GameControlException gce) {
 			throw new GameControlException(gce.getMessage());
@@ -366,12 +364,15 @@ public class GameControl {
 	 * IF (bushelFed < 0 ) THEN RETURN -1 int noPeopleFed = bushelFed / 20 int
 	 * starvedPeople = 0 IF (noPeopleFed < totalPopulation) THEN starvedPeople =
 	 * totalPopulation – noPeopleFed RETURN starvedPeople END @param bushelsFed
-	 * @param totalPopulation 
-         * @param bushelsFed 
-         * @throws exception.GameControlException
-	 * @return
+	 * @param totalPopulation @param bushelsFed @throws
+	 * exception.GameControlException
+	 * @re
+	 *
+	 * t
+	 * u
+	 * r
+	 * n
 	 */
-        
 	public static int populationMortality(int bushelsFed, int totalPopulation)
 			throws GameControlException {
 

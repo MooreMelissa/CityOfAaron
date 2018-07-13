@@ -10,11 +10,9 @@ import java.util.Scanner;
  * @author JK
  */
 public abstract class ViewBase implements View {
-	
-	
+
 	protected final BufferedReader keyboard = CityOfAaron.getInput();
 	protected final PrintWriter console = CityOfAaron.getOutput();
-	
 
 	/**
 	 * Constructor
@@ -78,7 +76,7 @@ public abstract class ViewBase implements View {
 
 		String input = "";
 		boolean inputReceived = false;
-		
+
 		try {
 			while (inputReceived == false) {
 
