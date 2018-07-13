@@ -146,7 +146,7 @@ public class ReportsMenuView extends ViewBase {
             
             provisionsPrintReport(provisionsFile);
             provisionsFile.close();
-            this.console.println("Provisions Report was successfully save to" + filepath);
+            this.console.println("\n\nProvisions Report was successfully save to " + filepath);
             
         } catch (Exception ex) {
             ErrorView.display(this.getClass().getName(), ex.getMessage());
