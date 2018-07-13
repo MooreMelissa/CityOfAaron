@@ -7,6 +7,7 @@ package view;
 
 import cityofaaron.CityOfAaron;
 import control.StorehouseControl;
+import java.io.FileWriter;
 import java.io.PrintWriter;
 import model.Author;
 import model.Game;
@@ -126,7 +127,7 @@ public class ReportsMenuView extends ViewBase {
                     return;
                 }
 
-                try (PrintWriter provisionsFile = new PrintWriter(filepath)) {
+                try (PrintWriter provisionsFile = new PrintWriter(new FileWriter(filepath))) {
 
                     provisionsPrintReport(provisionsFile);
                     provisionsFile.close();
