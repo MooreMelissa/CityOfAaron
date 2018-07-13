@@ -20,15 +20,15 @@ import model.Provision;
  */
 public class ReportsMenuView extends ViewBase {
 
-	Game game = CityOfAaron.getCurrentGame();
-	Storehouse storehouse = game.getTheStorehouse();
+    Game game = CityOfAaron.getCurrentGame();
+    Storehouse storehouse = game.getTheStorehouse();
 
-	/**
-	 * Constructor
-	 */
-	public ReportsMenuView() {
+    /**
+     * Constructor
+     */
+    public ReportsMenuView() {
 
-	}
+    }
 
     @Override
     protected String getMessage() {
@@ -42,33 +42,33 @@ public class ReportsMenuView extends ViewBase {
                 + "Q - Return to Game Menu";
     }
 
-	/**
-	 * Get the set of inputs from the user.
-	 *
-	 * @return
-	 */
-	@Override
-	public String[] getInputs() {
+    /**
+     * Get the set of inputs from the user.
+     *
+     * @return
+     */
+    @Override
+    public String[] getInputs() {
 
-		// Declare the array to have the number of elements you intend to get 
-		// from the user.
-		String[] inputs = new String[1];
+        // Declare the array to have the number of elements you intend to get 
+        // from the user.
+        String[] inputs = new String[1];
 
-		inputs[0] = getUserInput("Please choose a menu option:");
+        inputs[0] = getUserInput("Please choose a menu option:");
 
-		// Repeat for each input you need, putting it into its proper slot in the array.
-		return inputs;
-	}
+        // Repeat for each input you need, putting it into its proper slot in the array.
+        return inputs;
+    }
 
-	/**
-	 * Perform the action indicated by the user's input.
-	 *
-	 * @param inputs
-	 * @return true if the view should repeat itself, and false if the view
-	 * should exit and return to the previous view.
-	 */
-	@Override
-	public boolean doAction(String[] inputs) {
+    /**
+     * Perform the action indicated by the user's input.
+     *
+     * @param inputs
+     * @return true if the view should repeat itself, and false if the view
+     * should exit and return to the previous view.
+     */
+    @Override
+    public boolean doAction(String[] inputs) {
 
         switch (inputs[0].trim().toUpperCase()) {
             case "A":
@@ -90,63 +90,62 @@ public class ReportsMenuView extends ViewBase {
                 return false;
         }
 
-		return true;
-	}
+        return true;
+    }
 
-	// Define your action handlers here. These are the methods that your doAction()
-	// method will call based on the user's input. We don't want to do a lot of 
-	// complex game stuff in our doAction() method. It will get messy very quickly.
-	private void viewAnimals() {
-		InventoryItem[] animals = StorehouseControl.sortAnimals(storehouse.getAnimals());
-		for (InventoryItem animal : animals) {
-			this.console.println(animal);
-		}
-		pause(2000);
-	}
+    // Define your action handlers here. These are the methods that your doAction()
+    // method will call based on the user's input. We don't want to do a lot of 
+    // complex game stuff in our doAction() method. It will get messy very quickly.
+    private void viewAnimals() {
+        InventoryItem[] animals = StorehouseControl.sortAnimals(storehouse.getAnimals());
+        for (InventoryItem animal : animals) {
+            this.console.println(animal);
+        }
+        pause(2000);
+    }
 
     private void viewTools() {
         toolsPrintReport(this.console);
         pause(2000);
     }
 
-	private void viewProvisions() {
-		//provisionsPrintReport(this.console);
-		//pause(2000);
-                // trying to merge into one function
-                provisionsPrintReport(this.console);
-                String question = getFileName("\n\nDo you want to save Provisions Report to a File? (Yes or No)");
-                switch(question) {
-                    
-                    case "Yes":
-                    case "yes":
-                        String filepath = getFileName("\n\nWhat file to save Provisions Report?");
-                        if (filepath == null || filepath.equals("")) {
-                            this.console.println("\n\nReturing to Reports Menu");
-                            pause(2000);
-                            return;
-                        }
+    private void viewProvisions() {
+        //provisionsPrintReport(this.console);
+        //pause(2000);
+        // trying to merge into one function
+        provisionsPrintReport(this.console);
+        String question = getFileName("\n\nDo you want to save Provisions Report to a File? (Yes or No)");
+        switch (question) {
 
-                        try (PrintWriter provisionsFile = new PrintWriter(filepath)) {
-
-                        provisionsPrintReport(provisionsFile);
-                        provisionsFile.close();
-                        this.console.println("\n\nProvisions Report was successfully saved to " + filepath);
-
-                        } catch (Exception ex) {
-                            ErrorView.display(this.getClass().getName(), ex.getMessage());
-
-                        }
-                        pause(2000);
-                        break;
-               
-                    default:
-                        this.console.println("\n\nReturing to Reports Menu");
-                        pause(2000);
-                        break;
-                
-                
+            case "Yes":
+            case "yes":
+                String filepath = getFileName("\n\nWhat file to save Provisions Report?");
+                if (filepath == null || filepath.equals("")) {
+                    this.console.println("\n\nReturing to Reports Menu");
+                    pause(2000);
+                    return;
                 }
-	}
+
+                try (PrintWriter provisionsFile = new PrintWriter(filepath)) {
+
+                    provisionsPrintReport(provisionsFile);
+                    provisionsFile.close();
+                    this.console.println("\n\nProvisions Report was successfully saved to " + filepath);
+
+                } catch (Exception ex) {
+                    ErrorView.display(this.getClass().getName(), ex.getMessage());
+
+                }
+                pause(2000);
+                break;
+
+            default:
+                this.console.println("\n\nReturing to Reports Menu");
+                pause(2000);
+                break;
+
+        }
+    }
 
     private void viewAuthors() {
         Author[] authors = storehouse.getAuthors();
@@ -196,39 +195,20 @@ public class ReportsMenuView extends ViewBase {
         printWriter.flush();
     }
 
-    /*private void provisionsSaveToFile() {
+    private void provisionsPrintReport(PrintWriter printWriter) {
+        InventoryItem[] provisions = StorehouseControl.sortProvisions(storehouse.getProvisions());
 
-        String filepath = getFileName("What file to save Provisions Report?");
-        if (filepath == null || filepath.equals("")) {
-            return;
-        }
-
-        try (PrintWriter provisionsFile = new PrintWriter(filepath)) {
-
-            provisionsPrintReport(provisionsFile);
-            provisionsFile.close();
-            this.console.println("\n\nProvisions Report was successfully saved to " + filepath);
-
-        } catch (Exception ex) {
-            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        printWriter.println("               Provisions Report           ");
+        printWriter.printf("%n%-12s%-10s%-10s%-12s", "Name", "Quantity", "Condition", "Perishable");
+        printWriter.printf("%n%-12s%-10s%-10s%-12s", "-----", "---------", "---------", "-----------");
+        for (InventoryItem provision : provisions) {
+            boolean perishable = (provision instanceof Provision)
+                    ? ((Provision) provision).isPerishable()
+                    : false;
+            printWriter.printf("%n%-12s%-10d%-10s%-12s", provision.getName(), provision.getQuantity(),
+                    provision.getCondition(), perishable);
 
         }
-    }  */  
-
-	private void provisionsPrintReport(PrintWriter printWriter) {
-		InventoryItem[] provisions = StorehouseControl.sortProvisions(storehouse.getProvisions());
-
-		printWriter.println("               Provisions Report           ");
-		printWriter.printf("%n%-12s%-10s%-10s%-12s", "Name", "Quantity", "Condition", "Perishable");
-		printWriter.printf("%n%-12s%-10s%-10s%-12s", "-----", "---------", "---------", "-----------");
-		for (InventoryItem provision : provisions) {
-			boolean perishable = (provision instanceof Provision)
-					? ((Provision) provision).isPerishable()
-					: false;
-			printWriter.printf("%n%-12s%-10d%-10s%-12s", provision.getName(), provision.getQuantity(),
-					provision.getCondition(), perishable);
-
-		}
-		printWriter.flush();
-	}
+        printWriter.flush();
+    }
 }
