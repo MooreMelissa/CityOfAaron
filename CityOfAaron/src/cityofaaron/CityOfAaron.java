@@ -88,6 +88,7 @@ public class CityOfAaron {
 				if (logFile != null) {
 					logFile.close();
 				}
+
 			} catch (IOException ex) {
 				System.console().printf("%s%s", "Error closing files");
 				return;

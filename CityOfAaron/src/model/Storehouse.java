@@ -25,7 +25,7 @@ public class Storehouse implements Serializable {
 		new InventoryItem("Jig Saw", ItemType.Tool, 1, Condition.Good),
 		new InventoryItem("Axe", ItemType.Tool, 4, Condition.Poor),
 		new InventoryItem("Wrench", ItemType.Tool, 12, Condition.Fair),
-		new InventoryItem("Screw Driver", ItemType.Tool, 6, Condition.Good)};
+		new InventoryItem("Drill", ItemType.Tool, 6, Condition.Good)};
 	private InventoryItem[] provisions = {new Provision("Apples", ItemType.Provisions, 5, Condition.Good, true),
 		new Provision("Crates", ItemType.Provisions, 20, Condition.Fair, false),
 		new Provision("Blankets", ItemType.Provisions, 8, Condition.Poor, false),
