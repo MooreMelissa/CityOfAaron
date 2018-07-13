@@ -14,6 +14,7 @@ import model.Game;
 import model.InventoryItem;
 import model.Storehouse;
 import model.Provision;
+import model.Animal;
 
 /**
  *
@@ -37,7 +38,6 @@ public class ReportsMenuView extends ViewBase {
                 + "-------------\n"
                 + "A - View Animals in Storehouse\n"
                 + "T - View Tools in Storehouse\n"
-                + "U - Save Tools Report to File\n"
                 + "P - View Provisions in Storehouse\n"
                 + "V - View Authors of Game\n"
                 + "Q - Return to Game Menu";
@@ -78,9 +78,6 @@ public class ReportsMenuView extends ViewBase {
             case "T":
                 viewTools();
                 break;
-            case "U":
-                toolsSaveToFile();
-                break;
             case "P":
                 viewProvisions();
                 break;
@@ -98,16 +95,69 @@ public class ReportsMenuView extends ViewBase {
     // method will call based on the user's input. We don't want to do a lot of 
     // complex game stuff in our doAction() method. It will get messy very quickly.
     private void viewAnimals() {
-        InventoryItem[] animals = StorehouseControl.sortAnimals(storehouse.getAnimals());
-        for (InventoryItem animal : animals) {
-            this.console.println(animal);
+        animalsPrintReport(this.console);
+        String question = getFileName("\n\nDo you want to save the Animals Report to a File? (Yes of No)");
+        switch (question) {
+
+            case "Yes":
+            case "yes":
+            case "y":
+            case "Y":
+                String filepath = getFileName("\n\nWhat file would you like to save the Animals Report to?");
+                if (filepath == null || filepath.equals("")) {
+                    this.console.println("\n\nReturning to Reports Menu");
+                    pause(2000);
+                    return;
+                }
+                try (PrintWriter animalsFile = new PrintWriter(filepath)) {
+
+                    animalsPrintReport(animalsFile);
+                    animalsFile.close();
+                    this.console.println("\n\nThe animals Report was successfully saved to " + filepath);
+                } catch (Exception ex) {
+                    ErrorView.display(this.getClass().getName(), ex.getMessage());
+                }
+                pause(2000);
+                break;
+
+            default:
+                this.console.println("\n\nReturning to Reports Menu");
+                pause(2000);
+                break;
         }
-        pause(2000);
     }
 
     private void viewTools() {
         toolsPrintReport(this.console);
-        pause(2000);
+        String question = getFileName("\n\nDo you want to save the Tools Report to a File? (Yes of No)");
+        switch (question) {
+
+            case "Yes":
+            case "yes":
+            case "y":
+            case "Y":
+                String filepath = getFileName("\n\nWhat file would you like to save the Tools Report to?");
+                if (filepath == null || filepath.equals("")) {
+                    this.console.println("\n\nReturning to Reports Menu");
+                    pause(2000);
+                    return;
+                }
+                try (PrintWriter toolsFile = new PrintWriter(filepath)) {
+
+                    toolsPrintReport(toolsFile);
+                    toolsFile.close();
+                    this.console.println("\n\nTools Report was successfully saved to " + filepath);
+                } catch (Exception ex) {
+                    ErrorView.display(this.getClass().getName(), ex.getMessage());
+                }
+                pause(2000);
+                break;
+
+            default:
+                this.console.println("\n\nReturning to Reports Menu");
+                pause(2000);
+                break;
+        }
     }
 
     private void viewProvisions() {
@@ -167,21 +217,18 @@ public class ReportsMenuView extends ViewBase {
         }
         return null;
     }
+    
+        private void animalsPrintReport(PrintWriter printWriter) {
+        InventoryItem[] animals = StorehouseControl.sortAnimals(storehouse.getAnimals());
 
-    private void toolsSaveToFile() {
-        String filepath = getFileName("What file would you like to save your Tools Report to?");
-        if (filepath == null || filepath.equals("")) {
-            return;
+        printWriter.println("    Animals Report     ");
+        printWriter.printf("%n%-12s%-10s%-10s%-10s", "Name", "Quantity", "Condition", "Age");
+        printWriter.printf("%n%-12s%-10s%-10s%-10s", "----", "--------", "---------", "---");
+        for (InventoryItem animal : animals) {
+            int age = ((Animal) animal).getAge();
+            printWriter.printf("%n%-12s%-10d%-10s%-10d", animal.getName(), animal.getQuantity(), animal.getCondition(), age);
         }
-
-        try (PrintWriter toolsFile = new PrintWriter(filepath)) {
-
-            toolsPrintReport(toolsFile);
-            toolsFile.close();
-            this.console.println("The Tools Report was sucessfully saved to " + filepath);
-        } catch (Exception ex) {
-            ErrorView.display(this.getClass().getName(), ex.getMessage());
-        }
+        printWriter.flush();
     }
 
     private void toolsPrintReport(PrintWriter printWriter) {
