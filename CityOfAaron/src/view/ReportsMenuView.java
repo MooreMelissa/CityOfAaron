@@ -118,28 +118,47 @@ public class ReportsMenuView extends ViewBase {
 		//pause(2000);
                 // trying to merge into one function
                 provisionsPrintReport(this.console);
-                String question = getFileName("\n\nDo you want to save Provisions Report to a File? (Y or N)");
-                if (question == null || question.equals("") || question == "N" || question == "n" ) {
-                        return;
-                } else {
-                    String filepath = getFileName("\n\nWhat file to save Provisions Report?");
-                    if (filepath == null || filepath.equals("")) {
-                        return;
-                    }
+                String question = getFileName("\n\nDo you want to save Provisions Report to a File? (Yes or No)");
+                switch(question) {
+                    
+                    case "Yes":
+                        String filepath = getFileName("\n\nWhat file to save Provisions Report?");
+                        if (filepath == null || filepath.equals("")) {
+                            return;
+                        }
 
-                    try (PrintWriter provisionsFile = new PrintWriter(filepath)) {
+                        try (PrintWriter provisionsFile = new PrintWriter(filepath)) {
 
-                    provisionsPrintReport(provisionsFile);
-                    provisionsFile.close();
-                    this.console.println("\n\nProvisions Report was successfully saved to " + filepath);
+                        provisionsPrintReport(provisionsFile);
+                        provisionsFile.close();
+                        this.console.println("\n\nProvisions Report was successfully saved to " + filepath);
 
-                    } catch (Exception ex) {
-                        ErrorView.display(this.getClass().getName(), ex.getMessage());
+                        } catch (Exception ex) {
+                            ErrorView.display(this.getClass().getName(), ex.getMessage());
 
-                    }
+                        }
+                        break;
+                case "yes":
+                        String filepaths = getFileName("\n\nWhat file to save Provisions Report?");
+                        if (filepaths == null || filepaths.equals("")) {
+                            return;
+                        }
+
+                        try (PrintWriter provisionsFile = new PrintWriter(filepaths)) {
+
+                        provisionsPrintReport(provisionsFile);
+                        provisionsFile.close();
+                        this.console.println("\n\nProvisions Report was successfully saved to " + filepaths);
+
+                        } catch (Exception ex) {
+                            ErrorView.display(this.getClass().getName(), ex.getMessage());
+
+                        }
+                
+                    
+                
+                
                 }
-       
-		pause(2000);
 	}
 
     private void viewAuthors() {
