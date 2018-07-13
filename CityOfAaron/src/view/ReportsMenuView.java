@@ -38,7 +38,6 @@ public class ReportsMenuView extends ViewBase {
                 + "T - View Tools in Storehouse\n"
                 + "U - Save Tools Report to File\n"
                 + "P - View Provisions in Storehouse\n"
-                + "R - Save Provisions Report to File\n"
                 + "V - View Authors of Game\n"
                 + "Q - Return to Game Menu";
     }
@@ -84,9 +83,6 @@ public class ReportsMenuView extends ViewBase {
             case "P":
                 viewProvisions();
                 break;
-            case "R":
-                provisionsSaveToFile();
-                break;
             case "V":
                 viewAuthors();
                 break;
@@ -122,8 +118,11 @@ public class ReportsMenuView extends ViewBase {
                 switch(question) {
                     
                     case "Yes":
+                    case "yes":
                         String filepath = getFileName("\n\nWhat file to save Provisions Report?");
                         if (filepath == null || filepath.equals("")) {
+                            this.console.println("\n\nReturing to Reports Menu");
+                            pause(2000);
                             return;
                         }
 
@@ -137,25 +136,13 @@ public class ReportsMenuView extends ViewBase {
                             ErrorView.display(this.getClass().getName(), ex.getMessage());
 
                         }
+                        pause(2000);
                         break;
-                case "yes":
-                        String filepaths = getFileName("\n\nWhat file to save Provisions Report?");
-                        if (filepaths == null || filepaths.equals("")) {
-                            return;
-                        }
-
-                        try (PrintWriter provisionsFile = new PrintWriter(filepaths)) {
-
-                        provisionsPrintReport(provisionsFile);
-                        provisionsFile.close();
-                        this.console.println("\n\nProvisions Report was successfully saved to " + filepaths);
-
-                        } catch (Exception ex) {
-                            ErrorView.display(this.getClass().getName(), ex.getMessage());
-
-                        }
-                
-                    
+               
+                    default:
+                        this.console.println("\n\nReturing to Reports Menu");
+                        pause(2000);
+                        break;
                 
                 
                 }
@@ -209,7 +196,7 @@ public class ReportsMenuView extends ViewBase {
         printWriter.flush();
     }
 
-    private void provisionsSaveToFile() {
+    /*private void provisionsSaveToFile() {
 
         String filepath = getFileName("What file to save Provisions Report?");
         if (filepath == null || filepath.equals("")) {
@@ -226,7 +213,7 @@ public class ReportsMenuView extends ViewBase {
             ErrorView.display(this.getClass().getName(), ex.getMessage());
 
         }
-    }    
+    }  */  
 
 	private void provisionsPrintReport(PrintWriter printWriter) {
 		InventoryItem[] provisions = StorehouseControl.sortProvisions(storehouse.getProvisions());
