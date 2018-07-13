@@ -30,17 +30,18 @@ public class ReportsMenuView extends ViewBase {
 
 	}
 
-	@Override
-	protected String getMessage() {
-		return "\n\nReports Menu\n"
-				+ "-------------\n"
-				+ "A - View Animals in Storehouse\n"
-				+ "T - View Tools in Storehouse\n"
-				+ "P - View Provisions in Storehouse\n"
-				+ "R - Save Provisions Report to File\n"
-				+ "V - View Authors of Game\n"
-				+ "Q - Return to Game Menu";
-	}
+    @Override
+    protected String getMessage() {
+        return "\n\nReports Menu\n"
+                + "-------------\n"
+                + "A - View Animals in Storehouse\n"
+                + "T - View Tools in Storehouse\n"
+                + "U - Save Tools Report to File\n"
+                + "P - View Provisions in Storehouse\n"
+                + "R - Save Provisions Report to File\n"
+                + "V - View Authors of Game\n"
+                + "Q - Return to Game Menu";
+    }
 
 	/**
 	 * Get the set of inputs from the user.
@@ -70,25 +71,28 @@ public class ReportsMenuView extends ViewBase {
 	@Override
 	public boolean doAction(String[] inputs) {
 
-		switch (inputs[0].trim().toUpperCase()) {
-			case "A":
-				viewAnimals();
-				break;
-			case "T":
-				viewTools();
-				break;
-			case "P":
-				viewProvisions();
-				break;
-			case "R":
-				provisionsSaveToFile();
-				break;
-			case "V":
-				viewAuthors();
-				break;
-			case "Q":
-				return false;
-		}
+        switch (inputs[0].trim().toUpperCase()) {
+            case "A":
+                viewAnimals();
+                break;
+            case "T":
+                viewTools();
+                break;
+            case "U":
+                toolsSaveToFile();
+                break;
+            case "P":
+                viewProvisions();
+                break;
+            case "R":
+                provisionsSaveToFile();
+                break;
+            case "V":
+                viewAuthors();
+                break;
+            case "Q":
+                return false;
+        }
 
 		return true;
 	}
@@ -104,27 +108,79 @@ public class ReportsMenuView extends ViewBase {
 		pause(2000);
 	}
 
-	private void viewTools() {
-		InventoryItem[] tools = StorehouseControl.sortTools(storehouse.getTools());
-		for (InventoryItem tool : tools) {
-			this.console.print(tool);
-		}
-		pause(2000);
-	}
+    private void viewTools() {
+        toolsPrintReport(this.console);
+        pause(2000);
+    }
 
 	private void viewProvisions() {
 		provisionsPrintReport(this.console);
 		pause(2000);
 	}
 
-	private void viewAuthors() {
-		Author[] authors = storehouse.getAuthors();
-		int arrayLength = authors.length;
-		for (int i = 0; i < arrayLength; i++) {
-			this.console.print(authors[i]);
-		}
-		pause(2000);
-	}
+    private void viewAuthors() {
+        Author[] authors = storehouse.getAuthors();
+        int arrayLength = authors.length;
+        for (int i = 0; i < arrayLength; i++) {
+            this.console.print(authors[i]);
+        }
+        pause(2000);
+    }
+
+    private String getFileName(String prompt) {
+        this.console.println(prompt);
+        try {
+            return this.keyboard.readLine();
+
+        } catch (Exception ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        }
+        return null;
+    }
+
+    private void toolsSaveToFile() {
+        String filepath = getFileName("What file would you like to save your Tools Report to?");
+        if (filepath == null || filepath.equals("")) {
+            return;
+        }
+
+        try (PrintWriter toolsFile = new PrintWriter(filepath)) {
+
+            toolsPrintReport(toolsFile);
+            toolsFile.close();
+            this.console.println("The Tools Report was sucessfully saved to " + filepath);
+        } catch (Exception ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        }
+    }
+
+    private void toolsPrintReport(PrintWriter printWriter) {
+        InventoryItem[] tools = StorehouseControl.sortTools(storehouse.getTools());
+
+        printWriter.println("    Tools Report     ");
+        printWriter.printf("%n%-12s%-10s%-10s", "Name", "Quantity", "Condition");
+        printWriter.printf("%n%-12s%-10s%-10s", "----", "--------", "---------");
+        for (InventoryItem tool : tools) {
+            printWriter.printf("%n%-12s%-10d%-10s", tool.getName(), tool.getQuantity(), tool.getCondition());
+        }
+        printWriter.flush();
+    }
+
+    private void provisionsSaveToFile() {
+
+        String filepath = getFileName("What file to save Provisions Report?");
+        if (filepath == null || filepath.equals("")) {
+            return;
+        }
+
+        try (PrintWriter provisionsFile = new PrintWriter(filepath)) {
+
+            provisionsPrintReport(provisionsFile);
+            provisionsFile.close();
+            this.console.println("Provisions Report was successfully save to" + filepath);
+
+        } catch (Exception ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
 
 	private String getFileName(String prompt) {
 		this.console.println(prompt);
