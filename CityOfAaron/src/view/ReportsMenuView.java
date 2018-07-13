@@ -182,35 +182,8 @@ public class ReportsMenuView extends ViewBase {
         } catch (Exception ex) {
             ErrorView.display(this.getClass().getName(), ex.getMessage());
 
-	private String getFileName(String prompt) {
-		this.console.println(prompt);
-		try {
-			return this.keyboard.readLine();
-
-		} catch (Exception ex) {
-			ErrorView.display(this.getClass().getName(), ex.getMessage());
-		}
-		return null;
-	}
-
-	private void provisionsSaveToFile() {
-
-		String filepath = getFileName("What file to save Provisions Report?");
-		if (filepath == null || filepath.equals("")) {
-			return;
-		}
-
-		try (PrintWriter provisionsFile = new PrintWriter(filepath)) {
-
-			provisionsPrintReport(provisionsFile);
-			provisionsFile.close();
-			this.console.println("Provisions Report was successfully save to" + filepath);
-
-		} catch (Exception ex) {
-			ErrorView.display(this.getClass().getName(), ex.getMessage());
-
-		}
-	}
+        }
+    }    
 
 	private void provisionsPrintReport(PrintWriter printWriter) {
 		InventoryItem[] provisions = StorehouseControl.sortProvisions(storehouse.getProvisions());
