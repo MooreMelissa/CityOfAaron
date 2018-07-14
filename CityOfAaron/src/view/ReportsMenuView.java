@@ -161,9 +161,7 @@ public class ReportsMenuView extends ViewBase {
     }
 
     private void viewProvisions() {
-        //provisionsPrintReport(this.console);
-        //pause(2000);
-        // trying to merge into one function
+
         provisionsPrintReport(this.console);
         String question = getFileName("\n\nDo you want to save Provisions Report to a File? (Yes or No)");
         switch (question) {
