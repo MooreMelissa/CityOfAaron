@@ -1,0 +1,12 @@
+               Provisions Report           
+
+Name        Quantity  Condition Perishable  
+-----       --------- --------- ----------- 
+Apples      5         Good      true        
+Carts       7         Good      false       
+Nuts        25        Good      true        
+Potatoes    50        Good      true        
+Crates      20        Fair      false       
+Tents       35        Fair      false       
+Blankets    8         Poor      false       
+Ropes       10        Poor      false       
