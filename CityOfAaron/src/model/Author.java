@@ -52,7 +52,6 @@ public class Author implements Serializable {
 		this.skill = skill;
 	}
 
-	
 	@Override
 	public String toString() {
 		return "\n" + name + " - "
