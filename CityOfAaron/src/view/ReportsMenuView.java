@@ -96,7 +96,7 @@ public class ReportsMenuView extends ViewBase {
     // complex game stuff in our doAction() method. It will get messy very quickly.
     private void viewAnimals() {
         animalsPrintReport(this.console);
-        String question = getFileName("\n\nDo you want to save the Animals Report to a File? (Yes of No)");
+        String question = getFileName("\n\nDo you want to save the Animals Report to a File? (Yes or No)");
         switch (question) {
 
             case "Yes":
