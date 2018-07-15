@@ -198,13 +198,36 @@ public class ReportsMenuView extends ViewBase {
         }
     }
 
-    private void viewAuthors() {
-        Author[] authors = storehouse.getAuthors();
-        int arrayLength = authors.length;
-        for (int i = 0; i < arrayLength; i++) {
-            this.console.print(authors[i]);
-        }
-        pause(2000);
+    private void viewAuthors() {		
+		printAuthorsReport(this.console);
+		String question = getFileName("\n\nWould you like to save the "
+				+ "Authors Report? Y/N");
+		switch (question) {
+			case "Yes":
+			case "yes":
+			case "y":
+			case "Y":
+				String filePath = getFileName("\nWhere would you like to save"
+						+ " the Authors Report? ex. 'authors.txt'");
+				if (filePath == null || filePath.equals("")) {
+					this.console.println("\nReturning to the Reports Menu");
+					pause(2000);
+				}
+				try (PrintWriter authorsFile = new PrintWriter(filePath)) {
+					printAuthorsReport(authorsFile);
+					authorsFile.close();
+					this.console.println("\nThe Authors Report was successfully"
+							+ " saved to " + filePath);
+				} catch (Exception ex) {
+					ErrorView.display(this.getClass().getName(), ex.getMessage());
+				}
+				pause(2000);
+				break;
+			default:
+				this.console.println("\nReturning to the Reports Menu");
+				pause(2000);
+				break;
+		}
     }
 
     private String getFileName(String prompt) {
@@ -259,4 +282,17 @@ public class ReportsMenuView extends ViewBase {
         }
         printWriter.flush();
     }
+	
+	private void printAuthorsReport(PrintWriter printWriter) {
+		Author[] authors = storehouse.getAuthors();
+		printWriter.println("\nThe Authors of the Game   ");
+		printWriter.printf("%n%-18s%-20s%-20s", "Name", "Title", "Skill");
+		printWriter.printf("%n%-18s%-20s%-20s", "----", "-----", "-----");
+		for (Author author : authors) {
+			printWriter.printf("%n%-18s%-20s%-20s", author.getName(), 
+					author.getTitle(), author.getSkill());
+		}
+		printWriter.flush();
+	}
+	
 }

@@ -15,14 +15,16 @@ public class Author implements Serializable {
 
 	public String name;
 	public String title;
+	public String skill;
 
 	public Author() {
 		//Empty constructor for JavaBeans
 	}
 
-	public Author(String name, String title) {
+	public Author(String name, String title, String skill) {
 		this.name = name;
 		this.title = title;
+		this.skill = skill;
 	}
 
 	//Getters and Setters
@@ -42,6 +44,15 @@ public class Author implements Serializable {
 		this.title = title;
 	}
 
+	public String getSkill() {
+		return skill;
+	}
+
+	public void setSkill(String skill) {
+		this.skill = skill;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "\n" + name + " - "

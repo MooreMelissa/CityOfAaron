@@ -13,9 +13,9 @@ import java.io.Serializable;
  */
 public class Storehouse implements Serializable {
 
-	private Author[] authors = {new Author("Melissa Moore", "Maiden of Skyfall"),
-		new Author("Rebekah Harris", "Queen of Wakanda"),
-		new Author("Heather Holt", "Lady of Asgard")};
+	private Author[] authors = {new Author("Melissa Moore", "Maiden of Skyfall", "Best Teammate Ever!"),
+		new Author("Rebekah Harris", "Queen of Wakanda", "Best Teammate Ever!"),
+		new Author("Heather Holt", "Lady of Asgard", "")};
 	private InventoryItem[] animals = {new Animal("Tiger", ItemType.Animal, 2, Condition.Good, 10),
 		new Animal("Emu", ItemType.Animal, 5, Condition.Good, 7),
 		new Animal("Zebra", ItemType.Animal, 13, Condition.Good, 5),

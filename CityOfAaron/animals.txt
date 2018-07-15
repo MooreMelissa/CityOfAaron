@@ -1,0 +1,9 @@
+    Animals Report     
+
+Name        Quantity  Condition Age       
+----        --------  --------- ---       
+Badger      8         Good      3         
+Emu         5         Good      7         
+Llama       3         Good      1         
+Tiger       2         Good      10        
+Zebra       13        Good      5         
