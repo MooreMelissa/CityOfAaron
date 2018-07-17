@@ -180,7 +180,7 @@ public class ReportsMenuView extends ViewBase {
 				try (PrintWriter provisionsFile = new PrintWriter(new FileWriter(filepath))) {
 
 					provisionsPrintReport(provisionsFile);
-					provisionsFile.close();
+					//try-with-resource closes the stream for us 
 					this.console.println("\n\nProvisions Report was successfully saved to " + filepath);
 
 				} catch (Exception ex) {
@@ -261,7 +261,7 @@ public class ReportsMenuView extends ViewBase {
 		printWriter.printf("%n%-12s%-10s%-10s", "Name", "Quantity", "Condition");
 		printWriter.printf("%n%-12s%-10s%-10s", "----", "--------", "---------");
 		for (InventoryItem tool : tools) {
-			printWriter.printf("%n%-12s%-10d%-10s", tool.getName(), tool.getQuantity(), tool.getCondition());
+			printWriter.printf("%n%-12s%-10s%-10s", tool.getName(), tool.getQuantity(), tool.getCondition());
 		}
 		printWriter.flush();
 	}
@@ -269,14 +269,15 @@ public class ReportsMenuView extends ViewBase {
 	private void provisionsPrintReport(PrintWriter printWriter) {
 		InventoryItem[] provisions = StorehouseControl.sortProvisions(storehouse.getProvisions());
 
-		printWriter.println("               Provisions Report           ");
-		printWriter.printf("%n%-12s%-10s%-10s%-12s", "Name", "Quantity", "Condition", "Perishable");
-		printWriter.printf("%n%-12s%-10s%-10s%-12s", "-----", "---------", "---------", "-----------");
+		final String format = "%n%-12s%-10s%-10s%-12s";
+                printWriter.println("               Provisions Report           ");
+		printWriter.printf(format, "Name", "Quantity", "Condition", "Perishable");
+		printWriter.printf(format, "-----", "---------", "---------", "-----------");
 		for (InventoryItem provision : provisions) {
 			boolean perishable = (provision instanceof Provision)
 					? ((Provision) provision).isPerishable()
 					: false;
-			printWriter.printf("%n%-12s%-10d%-10s%-12s", provision.getName(), provision.getQuantity(),
+			printWriter.printf(format, provision.getName(), provision.getQuantity(),
 					provision.getCondition(), perishable);
 
 		}
