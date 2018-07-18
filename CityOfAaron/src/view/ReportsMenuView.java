@@ -269,7 +269,7 @@ public class ReportsMenuView extends ViewBase {
 	private void provisionsPrintReport(PrintWriter printWriter) {
 		InventoryItem[] provisions = StorehouseControl.sortProvisions(storehouse.getProvisions());
 
-		final String format = "%n%-12s%-10s%-10s%-12s";
+		String format = "%n%-12s%-10s%-10s%-12s";
                 printWriter.println("               Provisions Report           ");
 		printWriter.printf(format, "Name", "Quantity", "Condition", "Perishable");
 		printWriter.printf(format, "-----", "---------", "---------", "-----------");
